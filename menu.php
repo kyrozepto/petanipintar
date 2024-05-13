@@ -18,13 +18,13 @@
 <body>
     <div class="nav">            
         <div class="logo">
-            <a href="index.php">
+            <a href="menu.php">
                 <img src="image/logo_petanipintar.png" width="40" height="40" alt="Logo">
             </a>
         </div>
         <ul>
             <li><a class="active" href="#">Home</a></li>
-            <li><a href="#">Cerita Kami</a></li>
+            <li><a href="#">Tentang Kami</a></li>
             <li><a href="#">Program</a></li>
             <li><a href="#">Layanan</a></li>
             <li><a href="#">Pusat Bantuan</a></li>
