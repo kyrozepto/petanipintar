@@ -18,7 +18,7 @@
 <body>
     <div class="nav">
         <div class="logo">
-            <a href="index.php">
+            <a href="menu.php">
                 <img src="image/logo_petanipintar.png" width="40" height="40" alt="Logo">
             </a>
         </div>
