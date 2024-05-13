@@ -11,6 +11,16 @@
     <title>Login</title>
 </head>
 <body>
+    <div class="nav">
+        <div class="logo">
+            <a href="menu.php">
+                <img src="image/logo_petanipintar.png" width="40" height="40" alt="Logo">
+            </a>
+        </div>
+        <div>
+            <a href="index.php" class="signup">Kembali</a>
+        </div>
+    </div>
       <div class="container">
         <div class="box form-box">
             <?php 
