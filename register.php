@@ -30,8 +30,8 @@
                         <nav class="header-menu">
                             <ul class="menu">
                                 <li>
-                                    <button onclick="window.location.href='index.php'" class="signin">Kembali</button>
-                                    <button onclick="window.location.href='login.php'" class="signup">Sign In</button>
+                                    <button onclick="window.location.href='login.php'" class="signin">Sign In</button>
+                                    <button onclick="window.location.href='index.php'" class="signup">Home</button>
                                 </li>
                             </ul>
                         </nav>
@@ -115,7 +115,7 @@
                                             <input type="submit" class="btn" name="submit" value="Register" required>
                                         </div>
                                         <div class="links">
-                                            Already a member? <a href="login.php">Sign In</a>
+                                            Sudah memiliki akun? <a href="login.php">Sign In</a>
                                         </div>
                                     </form>
                                 </div>

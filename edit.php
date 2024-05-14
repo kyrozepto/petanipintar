@@ -65,9 +65,9 @@
 
                                 if($edit_query){
                                     echo "<div class='message'>
-                                    <h4><b>Profil Diperbarui!</b></h4>
-                                </div> <br>";
-                                echo "<a href='profile.php'><center><button class='signin'>Kembali ke Profil Akun</button></center>";
+                                        <h5><b>Profil Diperbarui!</b></h5>
+                                    </div> <br>";
+                                    echo "<a href='profile.php'><center><button class='signin'>Kembali ke Profil Akun</button></center>";
                     
                                 }
                             }else{

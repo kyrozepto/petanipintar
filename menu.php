@@ -41,7 +41,7 @@
                                 <li><a href="#help">Pusat Bantuan</a></li>
                                 <li>
                                     <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
-                                    <button onclick="window.location.href='login.php'" class="signup">Keluar</button>
+                                    <button onclick="window.location.href='login.php'" class="signup">Sign Out</button>
                                 </li>
                             </ul>
                         </nav>
@@ -117,7 +117,7 @@
                                             Thus, Petani Pintar can help increase crop yields, reduce production costs, 
                                             and defaulttain environmental sustainability in the agriculture industry 
                                         </p>
-                                        <h5>Ready to join the revolution?<button href="register.php" class="signup">Daftarkan saya</button></h5>
+                                        <h5>Ready to join the revolution?<button onclick="window.location.href='register.php'" class="signup">Daftarkan saya</button></h5>
                                     </div>
                                 </div>
                             </div>

@@ -50,7 +50,7 @@
                                     
                                     echo "<button onclick=\"window.location.href='edit.php?Id=$res_id'\" class=\"signin\">Edit Profil</button>";
                                     ?>
-                                    <button onclick="window.location.href='menu.php'" class="signup">Kembali</button>
+                                    <button onclick="window.location.href='menu.php'" class="signup">Home</button>
                                 </li>
                             </ul>
                         </nav>
