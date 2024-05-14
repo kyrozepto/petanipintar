@@ -198,12 +198,11 @@
                                 <div class="col-lg-4">
                                     <div class="footer-info">
                                         <div class="footer-logo">
-                                            <a href="index.html">
-                                                <img src="image/petanipintar_logo80.png" alt="">
+                                            <a href="index.php">
+                                                <img src="image/petanipintar_logo80.png" alt="Logo">
                                             </a>
                                         </div>
-                                            <h4 class="h4-title">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                            </h4>
+                                        <h4 class="h4-title">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h4>
                                     </div>
                                 </div>
                                 <div class="col-lg-8">

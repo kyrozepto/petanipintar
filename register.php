@@ -127,5 +127,11 @@
             </div>
         </div>
     </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery.mixitup.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
