@@ -801,7 +801,6 @@ p {
 
     .h1-title span {
         font-size: 60px;
-        background-size: 100% 8px;
     }
 
     .banner-text .signup {
@@ -833,5 +832,51 @@ p {
 
     .programs-box {
         padding: 20px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .main-banner {
+        padding: 100px 0 50px;
+    }
+    
+    .default-banner {
+        padding: 50px 0;
+    }
+
+    .h1-title {
+        font-size: 40px;
+        line-height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .h1-title span {
+        line-height: 60px;
+        font-size: 52px;
+    }
+
+    .h2-title {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+
+    .h2-title span {
+        font-size: 46px;
+        background-size: 100% 8px;
+    }
+
+    p {
+        font-size: 15px;
+        line-height: 24px;
+    }
+    
+    a {
+        font-size: 16px;
+    }
+
+    .footer-logo {
+        width: 60px;
+        height: 60px;
     }
 }

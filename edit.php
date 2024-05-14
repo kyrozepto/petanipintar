@@ -65,9 +65,9 @@
 
                                 if($edit_query){
                                     echo "<div class='message'>
-                                    <h4><b>Profil Diperbarui!</b></h4>
-                                </div> <br>";
-                                echo "<a href='profile.php'><center><button class='signin'>Kembali ke Profil Akun</button></center>";
+                                        <h5><b>Profil Diperbarui!</b></h5>
+                                    </div> <br>";
+                                    echo "<a href='profile.php'><center><button class='signin'>Kembali ke Profil Akun</button></center>";
                     
                                 }
                             }else{
@@ -118,5 +118,11 @@
             </div>
         </div>
     </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery.mixitup.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
