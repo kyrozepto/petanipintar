@@ -802,7 +802,12 @@ p {
     .h1-title span {
         font-size: 60px;
     }
-
+    
+    p {
+        font-size: 17px;
+        line-height: 24px;
+    }
+    
     .banner-text .signup {
         margin-left: 3px;
         margin-top: 15px;

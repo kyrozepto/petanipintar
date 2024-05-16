@@ -34,11 +34,11 @@
                         <button class="menu-toggle"><span></span><span></span></button>
                         <nav class="header-menu">
                             <ul class="menu">
-                                <li><a class="active" href="#home">PetaniPintar</a></li>
-                                <li><a href="#about">Tentang Kami</a></li>
-                                <li><a href="#program">Program</a></li>
-                                <li><a href="#tutorial">Petunjuk</a></li>
-                                <li><a href="#help">Pusat Bantuan</a></li>
+                                <li><a href="menu.php">PetaniPintar</a></li>
+                                <li><a href="#">Program Tanam</a></li>
+                                <li><a href="program-pupuk-subsidi.php">Pupuk Subsidi</a></li>
+                                <li><a href="#">Sewa Alat</a></li>
+                                <li><a href="#">Forum</a></li>
                                 <li>
                                     <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
                                     <button onclick="window.location.href='login.php'" class="signup">Sign Out</button>
@@ -182,7 +182,6 @@
     <script src="js/jquery.mixitup.min.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/ScrollTrigger.min.js"></script>
-    <script src="js/smooth-scroll.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="main.js"></script>
 </body>
