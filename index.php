@@ -255,7 +255,6 @@
     <script src="js/jquery.mixitup.min.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/ScrollTrigger.min.js"></script>
-    <script src="js/smooth-scroll.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="main.js"></script>
 </body>

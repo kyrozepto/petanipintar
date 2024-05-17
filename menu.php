@@ -117,7 +117,6 @@
                                             Thus, Petani Pintar can help increase crop yields, reduce production costs, 
                                             and defaulttain environmental sustainability in the agriculture industry 
                                         </p>
-                                        <h5>Ready to join the revolution?<button onclick="window.location.href='register.php'" class="signup">Daftarkan saya</button></h5>
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +181,6 @@
     <script src="js/jquery.mixitup.min.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/ScrollTrigger.min.js"></script>
-    <script src="js/smooth-scroll.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="main.js"></script>
 </body>
