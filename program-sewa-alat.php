@@ -208,25 +208,19 @@
                                 </div>
                                 <div class="col-lg-4 swiper-slide">
                                     <div class="katalog-box text-center">
-                                        <div style="background-image: url(assets/images/chef/c5.jpg);"
+                                        <div style="background-image: url();"
                                             class="katalog-img back-img">
 
                                         </div>
-                                        <h3 class="h3-title">Priyotosh Dey</h3>
+                                        <h3 class="h3-title">Alat Pertanian</h3>
                                         <div class="social-icon">
-                                            <ul>
+                                        <ul>
                                                 <li>
-                                                    <a href="#"><i class="uil uil-facebook-f"></i></a>
+                                                    <p>Deskripsi dan harga.</p>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
-                                                        <i class="uil uil-instagram"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="uil uil-youtube"></i>
-                                                    </a>
+                                                <button onclick="window.location.href=''" class="signin">Lihat Alat</button>
+                                                <button onclick="window.location.href=''" class="signup">Sewa</button>
                                                 </li>
                                             </ul>
                                         </div>

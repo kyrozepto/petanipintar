@@ -199,8 +199,18 @@
                                 </div>
                                 
                                 <div class="field input">
-                                    <label for="age">Alamat lengkap</label>
+                                    <label for="age">Alamat Lengkap</label>
                                     <input type="text" name="alamat" id="alamat" autocomplete="off" required>
+                                </div>
+
+                                <div class="field input">
+                                    <label for="ktp">Foto KTP</label>
+                                    <input <?php if(!isset($_GET['ubah'])){echo "required";} ?> class="form-control" type="file" name="foto_ktp" id="foto_ktp" accept="image/*" >
+                                </div>
+
+                                <div class="field input">
+                                    <label for="ktp">Foto KK</label>
+                                    <input <?php if(!isset($_GET['ubah'])){echo "required";} ?> class="form-control" type="file" name="foto_kk" id="foto_kk" accept="image/*" >
                                 </div>
 
                                 <div class="field input">
