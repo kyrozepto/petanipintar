@@ -274,13 +274,13 @@ p {
 /* ****** landing content settings ******** */
 
 .main-banner {
-    padding: 200px 0 100px;
+    padding: 200px 0 0;
     min-height: 100vh;
     position: relative;
 }
 
 .default-banner {
-    padding: 100px 0 100px;
+    padding: 0 0 100px;
     min-height: 100vh;
     position: relative;
 }
@@ -289,6 +289,10 @@ p {
     width: 100%;
     height: 100%;
     padding-left: 100px;
+}
+
+.img-rounded {
+    border-radius: 15px;
 }
 
 .sec-wp {
@@ -666,7 +670,7 @@ p {
         line-height: 48px;
     }
 
-    .team-img {
+    .katalog-img {
         height: 400px;
     }
 
@@ -808,7 +812,6 @@ p {
         line-height: 24px;
     }
     
->>>>>>> f736da772a9d4a9a2308a3df7723bc33ad36d463
     .banner-text .signup {
         margin-left: 3px;
         margin-top: 15px;
@@ -886,3 +889,114 @@ p {
         height: 60px;
     }
 }
+
+/* katalog sewa alat */
+.uil {
+    color: #2b8109;
+}
+
+.katalog-slider {
+    position: relative;
+}
+
+.katalog-box {
+    padding: 20px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #ececec, #ffffff);
+    transition: 0.2s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+}
+
+.katalog-box:hover {
+    transform: scale(1.03);
+}
+
+.katalog-img {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.katalog-box .h3-title {
+    text-transform: capitalize;
+    color: #0d0d25;
+    font-weight: 600;
+}
+
+.back-img {
+    background-position: center;
+    background-size: cover;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    display: none;
+}
+
+.swiper-button-wp {
+    position: relative;
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    position: unset;
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    font-size: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0;
+    color: #0d0d25;
+    background: #ffffff;
+    box-shadow: -5px 5px 15px #d4d4d4, 5px -5px 15px #ffffff;
+    padding-top: 1px;
+    padding-right: 2px;
+    transition: 0.3s;
+}
+
+.swiper-button-next {
+    box-shadow: 20px 20px 60px #d4d4d4, -20px -20px 60px #ffffff;
+    padding-left: 3px;
+}
+
+.swiper-button-prev:hover {
+    box-shadow: inset 5px 5px 20px #d4d4d4, inset -5px -5px 20px #ffffff;
+    color: #2b8109;
+}
+
+.swiper-button-next:hover {
+    box-shadow: inset -5px 5px 15px #d4d4d4, inset 5px -5px 20px #ffffff;
+    color: #2b8109;
+}
+
+.swiper-pagination {
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 60px;
+    background: linear-gradient(145deg, #ececec, #ffffff);
+    box-shadow: 25px 28px 55px #d4d4d4, -28px -28px 55px #ffffff;
+    max-width: fit-content;
+    left: 50% !important;
+    transform: translate(-50%, 0);
+    bottom: 0 !important;
+    color: #000;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    margin: 0px 10px !important;
+    border-radius: 10px;
+    transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+}
+
+.swiper-pagination-bullet-active {
+    background: #2b8109;
+    width: 30px;
+}
+
+/* *************** */

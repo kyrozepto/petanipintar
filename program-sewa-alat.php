@@ -14,9 +14,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petani Pintar - Pupuk Subsidi</title>
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
 
 <body class="body-fixed">
@@ -60,12 +61,12 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="banner-text">
-                                    <h2 class="h2-title">Program Pupuk Bersubsidi dengan <span>PetaniPintar</span></h2>
+                                    <h2 class="h2-title">Sewa Alat Pertanian dengan <span>PetaniPintar</span></h2>
                                     <p>
-                                        Program yang dirancang untuk membantu petani dalam meningkatkan produksi pertanian melalui akses pupuk bersubsidi yang mudah, tepat, dan akuntabel.
+                                        Mempermudah petani untuk berkomunikasi dengan pihak terkait dalam sektor pertanian untuk dapat menyewa alat pertanian yang dibutuhkan.
                                     </p>
                                     <div class="banner-btn mt-4">
-                                        <a href="#form" class="sec-btn">Kirim Permohonan</a>
+                                        <a href="#katalog" class="sec-btn">Cari Alat Pertanian</a>
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +93,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="banner-text">
-                                        <h2 class="h2-title">Program Pupuk Bersubsidi dengan <span>PetaniPintar</span></h2>
+                                        <h2 class="h2-title">Tentang Program <span>PetaniPintar</span></h2>
                                         <p>
                                             Petani Pintar is a concept that combines technology and artificial intelligence to enhance productivity and efficiency in agriculture.
                                         </p>
@@ -112,7 +113,140 @@
                     </div>
                 </section>
 
-                <section class="default-banner" id="program">
+                <section class="default-banner" id="katalog">
+                <div class="sec-wp">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="sec-title text-center mb-5">
+                                    <p class="sec-sub-title mb-3">Katalog Peralatan</p>
+                                    <h2 class="h2-title">Pertanian Modern</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row katalog-slider">
+                            <div class="swiper-wrapper">
+                                <div class="col-lg-4 swiper-slide">
+                                    <div class="katalog-box text-center">
+                                        <div style="background-image: url(image/alat/1.jpg);"
+                                            class="katalog-img back-img">
+
+                                        </div>
+                                        <h3 class="h3-title">Kultivator</h3>
+                                        <div class="social-icon">
+                                            <ul>
+                                                <li>
+                                                    <p>Deskripsi dan harga.</p>
+                                                </li>
+                                                <li>
+                                                <button onclick="window.location.href=''" class="signin">Lihat Alat</button>
+                                                <button onclick="window.location.href=''" class="signup">Sewa</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 swiper-slide">
+                                    <div class="katalog-box text-center">
+                                    <div style="background-image: url(image/alat/2.jpg);"
+                                            class="katalog-img back-img">
+
+                                        </div>
+                                        <h3 class="h3-title">Mesin Tanam Padi</h3>
+                                        <div class="social-icon">
+                                            <ul>
+                                                <li>
+                                                    <p>Deskripsi dan harga.</p>
+                                                </li>
+                                                <li>
+                                                <button onclick="window.location.href=''" class="signin">Lihat Alat</button>
+                                                <button onclick="window.location.href=''" class="signup">Sewa</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 swiper-slide">
+                                    <div class="katalog-box text-center">
+                                    <div style="background-image: url(image/alat/3.jpg);"
+                                            class="katalog-img back-img">
+
+                                        </div>
+                                        <h3 class="h3-title">Alat Pertanian3</h3>
+                                        <div class="social-icon">
+                                            <ul>
+                                                <li>
+                                                    <p>Deskripsi dan harga.</p>
+                                                </li>
+                                                <li>
+                                                <button onclick="window.location.href=''" class="signin">Lihat Alat</button>
+                                                <button onclick="window.location.href=''" class="signup">Sewa</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 swiper-slide">
+                                    <div class="katalog-box text-center">
+                                    <div style="background-image: url(image/alat/4.jpg);"
+                                            class="katalog-img back-img">
+
+                                        </div>
+                                        <h3 class="h3-title">Alat Pertanian4</h3>
+                                        <div class="social-icon">
+                                            <ul>
+                                                <li>
+                                                    <p>Deskripsi dan harga.</p>
+                                                </li>
+                                                <li>
+                                                <button onclick="window.location.href=''" class="signin">Lihat Alat</button>
+                                                <button onclick="window.location.href=''" class="signup">Sewa</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 swiper-slide">
+                                    <div class="katalog-box text-center">
+                                        <div style="background-image: url(assets/images/chef/c5.jpg);"
+                                            class="katalog-img back-img">
+
+                                        </div>
+                                        <h3 class="h3-title">Priyotosh Dey</h3>
+                                        <div class="social-icon">
+                                            <ul>
+                                                <li>
+                                                    <a href="#"><i class="uil uil-facebook-f"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="uil uil-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="uil uil-youtube"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-wp">
+                                <div class="swiper-button-prev swiper-button">
+                                    <i class="uil uil-angle-left"></i>
+                                </div>
+                                <div class="swiper-button-next swiper-button">
+                                    <i class="uil uil-angle-right"></i>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+                <!-- <section class="default-banner" id="program">
                     <div class="sec-wp">
                         <div class="container">
                             <div class="row">
@@ -159,83 +293,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
-
-                <section class="default-banner" id="form">
-                    <div class="sec-wp">
-                        <div class="box-container">
-                            <div class="box form-box">
-                                <?php
-                                $id = $_SESSION['id'];
-                                $query = mysqli_query($con, "SELECT * FROM users WHERE Id=$id");
-
-                                while ($result = mysqli_fetch_assoc($query)) {
-                                $res_Email = $result['Email'];
-                                $res_Uname = $result['Username'];
-                                $res_Fullname = $result['Fullname'];
-                                $res_Age = $result['Age'];
-                                }
-                                ?>
-                            <header>Formulir Permohonan</header>
-                            <form action="" method="post">
-                                <div class="field input">
-                                    <label for="email">Email</label>
-                                    <input type="text" name="email" id="email" value="<?php echo $res_Email; ?>" autocomplete="off" required>
-                                </div>
-                                
-                                <div class="field input">
-                                    <label for="username">Username</label>
-                                    <input type="text" name="username" id="username" value="<?php echo $res_Uname; ?>" autocomplete="off" required>
-                                </div>
-
-                                <div class="field input">
-                                    <label for="fullname">Nama Lengkap</label>
-                                    <input type="text" name="fullname" id="fullname" value="<?php echo $res_Fullname; ?>" autocomplete="off" required>
-                                </div>
-
-                                <div class="field input">
-                                    <label for="age">Umur</label>
-                                    <input type="number" name="age" id="age" value="<?php echo $res_Age; ?>" autocomplete="off" required>
-                                </div>
-                                
-                                <div class="field input">
-                                    <label for="age">Alamat lengkap</label>
-                                    <input type="text" name="alamat" id="alamat" autocomplete="off" required>
-                                </div>
-
-                                <div class="field input">
-                                    <label for="age">Luas Lahan</label>
-                                    <input type="number" name="luas_lahan" id="luas_lahan" autocomplete="off" required>
-                                </div>
-
-                                <div class="field input">
-                                        <div class="row">
-                                                <div class="col-6">
-                                                        <label for="jenis_pupuk">Jenis Pupuk</label>
-                                                        <div>
-                                                                <select name="jenis_pupuk" id="jenis_pupuk" required>
-                                                                <option value="">Pilih Jenis</option>
-                                                                <option value="urea">Urea</option>
-                                                                <option value="NPK">NPK</option>
-                                                                <option value="TSP">TSP</option>
-                                                                </select>
-                                                        </div>
-                                                </div>
-
-                                                <div class="col-6">
-                                                        <label for="jumlah_pupuk">Jumlah Pupuk</label>
-                                                        <input type="number" name="jumlah_pupuk" id="jumlah_pupuk" min="1" required>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="field">
-                                    <input type="submit" class="btn" name="submit" value="Submit" required>
-                                </div>
-                                
-                            </form>
-                        </div>
-                    </div>
-                </section>
+                </section> -->
         </div>
         <footer class="site-footer" id="help">
                 <div class="top-footer section">
