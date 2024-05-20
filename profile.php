@@ -71,10 +71,20 @@
                                         <p>Halo <b><?php echo $res_Uname ?></b>!</p>
                                     </div>
                                     <div>
-                                        <p>Nama Lengkap: <b><?php echo $res_Fullname ?></b>.</p>
-                                        <p>Umur: <b><?php echo $res_Age ?> tahun</b>.</p> 
-                                        <p>Email anda adalah <b><?php echo $res_Email ?></b>.</p>
-                                        <p>Status Akun <b>Belum Diverifikasi</b>.</p>
+                                        <p>Nama Lengkap: <b><?php echo $res_Fullname ?></b></p>
+                                        <p>Umur: <b><?php echo $res_Age ?> tahun</b></p> 
+                                        <p>Email anda adalah <b><?php echo $res_Email ?></b></p>
+                                        <p>Status Akun 
+                                            <b>
+                                            <?php
+                                            if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                                                echo "Admin";
+                                            } else {
+                                                echo "Belum Diverifikasi";
+                                            }
+                                            ?>
+                                            </b>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

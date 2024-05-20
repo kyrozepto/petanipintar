@@ -43,7 +43,7 @@
                                 <li><a href="#">Forum</a></li>
                                 <li>
                                     <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
-                                    <button onclick="window.location.href='menu.php'" class="signup">Sign Out</button>
+                                    <button onclick="window.location.href='login.php'" class="signup">Sign Out</button>
                                 </li>
                             </ul>
                         </nav>
@@ -82,7 +82,7 @@
             
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
             <!-- <h2 class="h2-title"><center><span>Learn More</span><br>About our Program</center></h2> -->
-                <section class="default-banner" id="about">
+                <!-- <section class="default-banner" id="about">
                     <div class="sec-wp">
                         <div class="container">
                             <div class="row">
@@ -111,8 +111,9 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
 
+                <!--static katalog 
                 <section class="default-banner" id="katalog">
                 <div class="sec-wp">
                     <div class="container">
@@ -239,55 +240,84 @@
                         </div>
                     </div>
                 </div>
-            </section>
-                <!-- <section class="default-banner" id="program">
-                    <div class="sec-wp">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="sec-title text-center mb-5">
-                                        <h2 class="h2-title">Tahapan Program</h2>
-                                    </div>
+            </section> -->
+
+            <section class="default-banner" id="katalog">
+                <div class="sec-wp">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="sec-title text-center mb-5">
+                                    <p class="sec-sub-title mb-3">Katalog Peralatan</p>
+                                    <h2 class="h2-title">Pertanian Modern</h2>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="programs-box">
-                                        <div class="programs-img back-img"
-                                            style="background-image: url(image/program_tanam.jpg);"></div>
-                                        <div class="programs-text">
-                                            <h4>Buat Formulir Permohonan</h4>
-                                            <p>Buat dan isi formulir permohonan dengan lengkap dan benar, termasuk data diri, lahan pertanian, dan kebutuhan pupuk.
-                                                Upload dokumen yang diperlukan, seperti KTP dan KK.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="programs-box">
-                                        <div class="programs-img back-img"
-                                            style="background-image: url(image/program_pupuk.jpg);"></div>
-                                        <div class="programs-text">
-                                            <h4>Proses Verifikasi Berkas</h4>
-                                            <p>Tim verifikator akan memeriksa kelengkapan dan keabsahan data dan dokumen yang Anda upload.
-                                                Proses verifikasi dapat memakan waktu beberapa hari.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="programs-box">
-                                        <div class="programs-img back-img"
-                                            style="background-image: url(image/program_sewa.jpg);"></div>
-                                        <div class="programs-text">
-                                            <h4>Notifikasi Persetujuan Program</h4>
-                                            <p>Jika verifikasi berkas berhasil, Anda akan menerima notifikasi persetujuan program melalui email.
-                                                Cetak Kartu Tani dan gunakan untuk membeli pupuk bersubsidi di toko resmi.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php 
+                                if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                                    echo '<div class="text-center mb-5">
+                                            <a href="edit-katalog.php" class="add">
+                                                Edit Alat
+                                            </a>
+                                            <a href="add-katalog.php" class="add">
+                                                + Tambah Alat
+                                            </a>
+                                        </div>';
+                                }
+                                ?>
                             </div>
                         </div>
+                        <div class="row katalog-slider">
+                            <div class="swiper-wrapper">
+
+                            <?php
+                            include("php/config.php");
+                            $sql = "SELECT * FROM alat";
+                            $result = $con->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<div class="col-lg-4 swiper-slide">
+                                            <div class="katalog-box text-center">
+                                                <div style="background-image: url(image/alat/'.$row["gambar"].');" class="katalog-img back-img"></div>
+                                                <h3 class="h3-title">'.$row["nama"].'</h3>
+                                                <div class="social-icon">
+                                                    <ul>
+                                                        <li>
+                                                            <p>'.$row["deskripsi"].'</p> 
+                                                        </li>
+                                                        <li>
+                                                            <p>Rp. ' . number_format($row["harga"], 0, ',', '.') . ' / Musim</p>
+                                                        </li>
+                                                        <li>
+                                                            <button onclick="window.location.href=\'detail.php?id='.$row["id"].'\'" class="signin">Lihat Alat</button>
+                                                            <button onclick="window.location.href=\'sewa.php?id='.$row["id"].'\'" class="signup">Sewa</button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>';
+                                }
+                            } else {
+                                echo "Tidak ada data alat.";
+                            }
+                            ?>
+                            </div>
+                            <div class="swiper-button-wp">
+                                <div class="swiper-button-prev swiper-button">
+                                    <i class="uil uil-angle-left"></i>
+                                </div>
+                                <div class="swiper-button-next swiper-button">
+                                    <i class="uil uil-angle-right"></i>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+
+
                     </div>
-                </section> -->
+                </div>
+            </section>
+
+
         </div>
         <footer class="site-footer" id="help">
                 <div class="top-footer section">

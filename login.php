@@ -15,6 +15,13 @@ if(isset($_POST['submit'])){
         $_SESSION['fullname'] = $row['Fullname'];
         $_SESSION['age'] = $row['Age'];
         $_SESSION['id'] = $row['Id'];
+
+        if ($row['role'] == 'admin') {
+            $_SESSION['admin'] = true;
+        } else {
+            $_SESSION['admin'] = false; 
+        }
+
         header("Location: menu.php");
         exit();
     } else {
