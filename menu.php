@@ -34,11 +34,11 @@
                         <button class="menu-toggle"><span></span><span></span></button>
                         <nav class="header-menu">
                             <ul class="menu">
-                                <li><a class="active" href="#home">PetaniPintar</a></li>
-                                <li><a href="#about">Tentang Kami</a></li>
-                                <li><a href="#program">Program</a></li>
-                                <li><a href="#tutorial">Petunjuk</a></li>
-                                <li><a href="#help">Pusat Bantuan</a></li>
+                                <li><a href="menu.php">PetaniPintar</a></li>
+                                <li><a href="#">Program Tanam</a></li>
+                                <li><a href="program-pupuk-subsidi.php">Pupuk Subsidi</a></li>
+                                <li><a href="program-sewa-alat.php">Sewa Alat</a></li>
+                                <li><a href="#">Forum</a></li>
                                 <li>
                                     <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
                                     <button onclick="window.location.href='login.php'" class="signup">Sign Out</button>
@@ -84,7 +84,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="banner-img-wp">
-                                    <img src="img1.png" alt="">
+                                    <img src="img2.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -117,7 +117,6 @@
                                             Thus, Petani Pintar can help increase crop yields, reduce production costs, 
                                             and defaulttain environmental sustainability in the agriculture industry 
                                         </p>
-                                        <h5>Ready to join the revolution?<button onclick="window.location.href='register.php'" class="signup">Daftarkan saya</button></h5>
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +153,7 @@
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Bantuan pengajuan untuk Pupuk Bersubsidi</h4>
                                             <p>Mempercepat proses pengajuan permohonan untuk mendapatkan subsidi pupuk dan menerima laporan masalah yang dihadapi petani.</p>
-                                            <a href="#" class="sec-btn">Pilih Program</a>
+                                            <a href="program-pupuk-subsidi.php" class="sec-btn">Pilih Program</a>
                                         </div>
                                     </div>
                                 </div>
@@ -165,7 +164,7 @@
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Peminjaman Alat Pertanian</h4>
                                             <p>Mempermudah petani untuk berkomunikasi dengan pihak terkait dalam sektor pertanian untuk dapat menyewa alat pertanian yang dibutuhkan.</p>
-                                            <a href="#" class="sec-btn">Pilih Program</a>
+                                            <a href="program-sewa-alat.php" class="sec-btn">Pilih Program</a>
                                         </div>
                                     </div>
                                 </div>
@@ -173,6 +172,64 @@
                         </div>
                     </div>
                 </section>
+            </div>
+            <footer class="site-footer" id="help">
+                <div class="top-footer section">
+                    <div class="sec-wp">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="footer-info">
+                                        <div class="footer-logo">
+                                            <a href="index.php">
+                                                <img src="image/petanipintar_logo80.png" alt="Logo">
+                                            </a>
+                                        </div>
+                                        <h4 class="h4-title">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h4>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="footer-flex-box">
+                                        <div class="footer-menu">
+                                            <h3 class="h3-title">Kontak</h3>
+                                            <ul>
+                                                <li><a href="#">petanipintar@gmail.com</a></li>
+                                                <li><a href="#">+62 1234567890</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="footer-menu food-nav-menu">
+                                            <h3 class="h3-title">Menu</h3>
+                                            <ul class="column-2">
+                                                <li><a href="#about">Tentang Program</a></li>
+                                                <li><a href="#sdk">Syarat dan Ketentuan</a></li>
+                                                <li><a href="#form">Formulir</a></li>
+                                                <li><a href="#help" class="footer-active-menu">Pusat Bantuan</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="footer-menu">
+                                            <h3 class="h3-title">Informasi Lain</h3>
+                                            <ul>
+                                                <li><a href="#">FAQ</a></li>
+                                                <li><a href="#">Kebijakan Privasi</a></li>
+                                                <li><a href="#">Syarat dan Ketentuan</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="end-footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 text-center mb-3">
+                                <a>kamipetanipintar.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </footer>
             </div>
             
         </div>
@@ -182,7 +239,6 @@
     <script src="js/jquery.mixitup.min.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/ScrollTrigger.min.js"></script>
-    <script src="js/smooth-scroll.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="main.js"></script>
 </body>

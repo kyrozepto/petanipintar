@@ -1,7 +1,7 @@
 $(document).ready(function ($) {
         "use strict";
 
-        var team_slider = new Swiper(".team-slider", {
+        var team_slider = new Swiper(".katalog-slider", {
                 slidesPerView: 3,
                 spaceBetween: 30,
                 loop: true,

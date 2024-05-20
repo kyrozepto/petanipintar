@@ -45,7 +45,7 @@
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
                 <div section="main-banner">
                     <div class="sec-wp">
-                        <div class="box-container">
+                        <div class="box-container mt-5">
                             <div class="box form-box">
                                 <?php 
                                 
