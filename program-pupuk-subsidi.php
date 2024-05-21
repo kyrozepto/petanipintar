@@ -36,7 +36,7 @@
                         <nav class="header-menu">
                             <ul class="menu">
                                 <li><a href="menu.php">PetaniPintar</a></li>
-                                <li><a href="#">Program Tanam</a></li>
+                                <li><a href="program-tanam.php">Program Tanam</a></li>
                                 <li><a href="program-pupuk-subsidi.php">Pupuk Subsidi</a></li>
                                 <li><a href="program-sewa-alat.php">Sewa Alat</a></li>
                                 <li><a href="#">Forum</a></li>
@@ -54,7 +54,7 @@
 
     <div id="viewport">
         <div id="js-scroll-content">
-            <!-- <section class="main-banner" id="home">
+            <section class="main-banner" id="home">
                 <div class="sec-wp">
                     <div class="container">
                         <div class="row">
@@ -71,13 +71,13 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="banner-img-wp">
-                                    <img class="img-rounded" src="img2.png" alt="">
+                                    <img class="img-rounded" src="image/illustration/program2.png" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
             
             <section class="main-banner" id="about">
                 <div class="sec-wp">

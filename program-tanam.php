@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petani Pintar - Sewa Alat</title>
+    <title>Petani Pintar - Program Tanam</title>
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
@@ -61,18 +61,17 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="banner-text">
-                                    <h2 class="h2-title">Sewa Alat Pertanian dengan <span>PetaniPintar</span></h2>
+                                    <h2 class="h2-title">Mulai Program Tanam dengan <span>PetaniPintar</span></h2>
                                     <p>
-                                        Mempermudah petani untuk berkomunikasi dengan pihak terkait dalam sektor pertanian untuk dapat menyewa alat pertanian yang dibutuhkan.
-                                    </p>
+                                        Memberdayakan petani dengan memberikan program tanam dan akses sumber daya yang sesuai dengan wilayah mereka.                                    </p>
                                     <div class="banner-btn mt-4">
-                                        <a href="#katalog" class="sec-btn">Cari Alat Pertanian</a>
+                                        <a href="#katalog" class="sec-btn">Mulai Program Tanam</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="banner-img-wp">
-                                    <img class="img-rounded" src="image/illustration/program3.png" alt="">
+                                    <img class="img-rounded" src="image/illustration/program1.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -81,75 +80,6 @@
             </section>
             
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-                <!--static katalog 
-                <section class="default-banner" id="katalog">
-                <div class="sec-wp">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="sec-title text-center mb-5">
-                                    <p class="sec-sub-title mb-3">Katalog Peralatan</p>
-                                    <h2 class="h2-title">Pertanian Modern</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row katalog-slider">
-                            <div class="swiper-wrapper">
-                                <div class="col-lg-4 swiper-slide">
-                                    <div class="katalog-box text-center">
-                                        <div style="background-image: url(image/alat/1.jpg);"
-                                            class="katalog-img back-img">
-
-                                        </div>
-                                        <h3 class="h3-title">Kultivator</h3>
-                                        <div>
-                                            <ul>
-                                                <li>
-                                                    <p>Deskripsi dan harga.</p>
-                                                </li>
-                                                <li>
-                                                <button onclick="window.location.href=''" class="signin">Lihat Alat</button>
-                                                <button onclick="window.location.href=''" class="signup">Sewa</button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 swiper-slide">
-                                    <div class="katalog-box text-center">
-                                    <div style="background-image: url(image/alat/2.jpg);"
-                                            class="katalog-img back-img">
-
-                                        </div>
-                                        <h3 class="h3-title">Mesin Tanam Padi</h3>
-                                        <div>
-                                            <ul>
-                                                <li>
-                                                    <p>Deskripsi dan harga.</p>
-                                                </li>
-                                                <li>
-                                                <button onclick="window.location.href=''" class="signin">Lihat Alat</button>
-                                                <button onclick="window.location.href=''" class="signup">Sewa</button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-button-wp">
-                                <div class="swiper-button-prev swiper-button">
-                                    <i class="uil uil-angle-left"></i>
-                                </div>
-                                <div class="swiper-button-next swiper-button">
-                                    <i class="uil uil-angle-right"></i>
-                                </div>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
-
             <section class="default-banner" id="katalog">
                 <div class="sec-wp">
                     <div class="container">
@@ -157,47 +87,50 @@
                             <div class="col-lg-12">
                                 <div class="sec-title text-center mb-5">
                                     <p class="sec-sub-title mb-3">PetaniPintar</p>
-                                    <h2 class="h2-title">Peralatan Pertanian</h2>
+                                    <h2 class="h2-title">Program Tanam</h2>
                                 </div>
                                 <?php 
                                 if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
                                     echo '<div class="text-center mb-5">
-                                            <a href="edit-katalog.php" class="add">
-                                                Edit Alat
+                                            <a href="edit-program-tanam.php" class="add">
+                                                Edit Program
                                             </a>
-                                            <a href="add-katalog.php" class="add">
-                                                + Tambah Alat
+                                            <a href="add-program-tanam.php" class="add">
+                                                + Tambah Program
                                             </a>
                                         </div>';
                                 }
                                 ?>
                             </div>
                         </div>
-                        <div class="row katalog-slider">
+                        <div class="row katalog-tanam-slider">
                             <div class="swiper-wrapper">
 
                             <?php
                             include("php/config.php");
-                            $sql = "SELECT * FROM alat";
+                            $sql = "SELECT * FROM program_tanam";
                             $result = $con->query($sql);
 
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo '<div class="col-lg-4 swiper-slide">
-                                            <div class="katalog-box text-center">
-                                                <div style="background-image: url(image/alat/'.$row["gambar"].');" class="katalog-img back-img"></div>
-                                                <h3 class="h3-title">'.$row["nama"].'</h3>
+                                    echo '<div class="col-lg-3 swiper-slide">
+                                            <div class="katalog-box">
+                                                <div style="background-image: url(image/tanaman/'.$row["gambar"].');" class="katalog-tanam-img back-img"></div>
+                                                <h3 href="#" class="h3-title">'.$row["nama"].'</h3>
+                                                <div class="row">
+                                                        <div class="col-lg-6">
+                                                                <p class="p-katalog">Perkiraan<br>'.$row["waktu"].' bulan</p> 
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                                <p class="p-katalog">'.$row["daerah"].'</p>
+                                                        </div>
+                                                        <p class="p-katalog">Rp. ' . number_format($row["hasil"], 0, ',', '.') . ' / ton</p>
+                                                </div>
                                                 <div>
-                                                    <ul>
+                                                <ul>
                                                         <li>
-                                                            <p class="p-katalog">'.$row["deskripsi"].'</p> 
-                                                        </li>
-                                                        <li>
-                                                            <p class="p-katalog">Rp. ' . number_format($row["harga"], 0, ',', '.') . ' / Musim</p>
-                                                        </li>
-                                                        <li>
-                                                            <button onclick="window.location.href=\'detail.php?id='.$row["id"].'\'" class="signin">Lihat Alat</button>
-                                                            <button onclick="window.location.href=\'sewa.php?id='.$row["id"].'\'" class="signup">Sewa</button>
+                                                            <button onclick="window.location.href=\'detail.php?id='.$row["id"].'\'" class="signin">Lihat Detail</button>
+                                                            <button onclick="window.location.href=\'sewa.php?id='.$row["id"].'\'" class="signup">Mulai</button>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -205,7 +138,7 @@
                                         </div>';
                                 }
                             } else {
-                                echo "Tidak ada data alat.";
+                                echo "Tidak ada program tanam yang tersedia saat ini.";
                             }
                             ?>
                             </div>
