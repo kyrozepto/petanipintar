@@ -67,14 +67,14 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="banner-img-wp">
-                                    <img src="image/illustration/index.png" alt="">
+                                    <img src="img1.png" alt="">
                                 </div>
                             </div>
                         </div>
             </section>
         
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-                <h2 class="h2-title"><center><span>Learn More</span><br>About our Program</center></h2>
+                <h2 class="h2-title"><center><span>Lebih Lanjut</span><br>Mengenai Program Kami</center></h2>
                 <section class="main-banner" id="about">
                     <div class="sec-wp">
                         <div class="container">
@@ -86,19 +86,21 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="banner-text">
-                                        <h2 class="h2-title">What is <span>PetaniPintar</span> and How Does it Work?</h2>
+                                        <h2 class="h2-title">Apa itu   <span>PetaniPintar</span> dan bagaimana cara kerjanya</h2>
                                         <p>
-                                            Petani Pintar is a concept that combines technology and artificial intelligence to enhance productivity and efficiency in agriculture.
+                                            Petani Pintar adalah sebuah konsep yang menggabungkan teknologi dan kecerdasan buatan untuk meningkatkan
+                                            produktivitas dan efisiensi di bidang pertanian.
                                         </p>
                                         <p>
-                                            Through the implementation of various technological solutions such as sensors, data analytics, and smart software,
-                                            Petani Pintar enables farmers to monitor crop conditions, manage resources more efficiently, and optimize farming processes as a whole.
+                                            Melalui penerapan berbagai solusi teknologi seperti sensor, analisis data, dan perangkat lunak pintar, 
+                                            Petani Pintar memungkinkan petani memantau kondisi tanaman, mengelola sumber daya dengan lebih efisien, 
+                                            dan mengoptimalkan proses pertanian secara keseluruhan.
                                         </p>
                                         <p>
-                                            Thus, Petani Pintar can help increase crop yields, reduce production costs, 
-                                            and defaulttain environmental sustainability in the agriculture industry 
+                                            Dengan demikian, Petani Pintar dapat membantu meningkatkan hasil panen, 
+                                            menurunkan biaya produksi, dan menjaga kelestarian lingkungan dalam industri pertanian    
                                         </p>
-                                        <h5>Ready to join the revolution?<button onclick="window.location.href='register.php'" class="signup">Daftarkan saya</button></h5>
+                                        <h5>Tertarik untuk bergabung?<button onclick="window.location.href='register.php'" class="signup">Daftarkan saya</button></h5>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +126,7 @@
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Program Tanam berdasarkan Wilayah</h4>
                                             <p>Memberdayakan petani dengan memberikan program tanam dan akses sumber daya yang sesuai dengan wilayah mereka.</p>
-                                            <a href="#" class="sec-btn">Read More</a>
+                                            <a href="#" class="sec-btn">Lebih Lanjut</a>
                                         </div>
                                     </div>
                                 </div>
@@ -135,7 +137,7 @@
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Bantuan pengajuan untuk Pupuk Bersubsidi</h4>
                                             <p>Mempercepat proses pengajuan permohonan untuk mendapatkan subsidi pupuk dan menerima laporan masalah yang dihadapi petani.</p>
-                                            <a href="#" class="sec-btn">Read More</a>
+                                            <a href="#" class="sec-btn">Lebih Lanjut</a>
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +148,7 @@
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Peminjaman Alat Pertanian</h4>
                                             <p>Mempermudah petani untuk berkomunikasi dengan pihak terkait dalam sektor pertanian untuk dapat menyewa alat pertanian yang dibutuhkan.</p>
-                                            <a href="#" class="sec-btn">Read More</a>
+                                            <a href="#" class="sec-btn">Lebih Lanjut</a>
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +163,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="sec-title text-center mb-5">
-                                        <h2 class="h2-title"><center>Start <span>PetaniPintar</span> in 3 steps</center></h2>
+                                        <h2 class="h2-title"><center>Mulai <span>PetaniPintar</span> dengan 3 langkah</center></h2>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -202,7 +204,7 @@
                                                 <img src="image/petanipintar_logo80.png" alt="Logo">
                                             </a>
                                         </div>
-                                        <h4 class="h4-title">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h4>
+                                        <h4 class="h4-title">Untuk informasi lebih lanjut, hubungi kami.</h4>
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
@@ -210,8 +212,8 @@
                                         <div class="footer-menu">
                                             <h3 class="h3-title">Kontak</h3>
                                             <ul>
-                                                <li><a href="#">petanipintar@gmail.com</a></li>
-                                                <li><a href="#">+62 1234567890</a></li>
+                                                <li><a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=petanipintar@gmail.com">petanipintar@gmail.com</a></li>
+                                                <li><a href="https://wa.me/628234567890">+62 1234567890</a></li>
                                             </ul>
                                         </div>
                                         <div class="footer-menu food-nav-menu">
@@ -221,7 +223,7 @@
                                                 <li><a href="#about">Tentang Kami</a></li>
                                                 <li><a href="#program">Program</a></li>
                                                 <li><a href="#tutorial">Petunjuk</a></li>
-                                                <li><a href="#help" class="footer-active-menu">Pusat Bantuan</a></li>
+                                                <li><a href="#help">Pusat Bantuan</a></li>
                                             </ul>
                                         </div>
                                         <div class="footer-menu">
@@ -255,6 +257,7 @@
     <script src="js/jquery.mixitup.min.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/smooth-scroll.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="main.js"></script>
 </body>
