@@ -67,7 +67,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="banner-img-wp">
-                                    <img src="image/illustration/index.png" alt="">
+                                    <img src="img1.png" alt="">
                                 </div>
                             </div>
                         </div>
