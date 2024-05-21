@@ -7,15 +7,12 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
     exit;
 }
 
-// Variabel untuk menyimpan data alat
 $program = array();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['id_program_tanam']) && !empty($_POST['id_program_tanam']) && !isset($_POST['update'])) {
-        // Ambil ID alat yang dipilih dari form
         $id_program_tanam = $_POST['id_program_tanam'];
 
-        // Ambil data alat dari database berdasarkan ID
         $sql = "SELECT * FROM program_tanam WHERE id = $id_program_tanam";
         $result = $con->query($sql);
 
@@ -25,14 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Program tidak ditemukan.";
         }
     } elseif (isset($_POST['update'])) {
-        // Ambil data dari form
         $id_program_tanam = $_POST['id_program_tanam'];
         $nama = $_POST['nama'];
         $waktu = $_POST['waktu'];
         $daerah = $_POST['daerah'];
         $hasil = $_POST['hasil'];
 
-        // Ambil data alat sebelumnya dari database untuk memastikan gambar lama tersedia
         $sql = "SELECT * FROM program_tanam WHERE id = $id_program_tanam";
         $result = $con->query($sql);
         if ($result->num_rows > 0) {
@@ -45,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-            // Cek apakah file gambar valid
             $check = getimagesize($_FILES["gambar"]["tmp_name"]);
             if ($check !== false) {
                 $uploadOk = 1;
@@ -69,27 +63,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $uploadOk = 0;
             }
 
-            // Jika semua cek lolos, upload file
             if ($uploadOk == 1) {
                 if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file)) {
-                    // Hapus gambar lama jika diganti
                     if (isset($program['gambar']) && file_exists($target_dir . $program['gambar'])) {
                         unlink($target_dir . $program['gambar']);
                     }
                     $gambar = basename($_FILES["gambar"]["name"]);
                 } else {
                     echo "Maaf, terjadi kesalahan saat mengunggah file.";
-                    $gambar = $program['gambar']; // fallback jika upload gagal
+                    $gambar = $program['gambar'];
                 }
             } else {
-                $gambar = $program['gambar']; // fallback jika upload gagal
+                $gambar = $program['gambar'];
             }
         } else {
-            // Jika tidak ada gambar baru, gunakan gambar lama
             $gambar = $program['gambar']; 
         }
 
-        // Update data alat
         $stmt = $con->prepare("UPDATE alat SET nama = ?, waktu = ?, daerah = ?, hasil = ?, gambar = ? WHERE id = ?");
         $stmt->bind_param("ssdsi", $nama, $waktu, $daerah, $hasil, $gambar, $id_program_tanam);
 

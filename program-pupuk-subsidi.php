@@ -79,7 +79,7 @@
                 </div>
             </section>
             
-            <section class="main-banner" id="about">
+            <section class="main-banner" id="sdk">
                 <div class="sec-wp">
                     <div class="container">
                         <div class="row">
@@ -90,7 +90,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="banner-text">
-                                    <h2 class="h2-title">Program Pupuk Bersubsidi dengan <span>PetaniPintar</span></h2>
+                                    <h2 class="h2-title"><span>Syarat dan Ketentuan</span> Program Pupuk</h2>
                                     <p>
                                     Program yang dirancang untuk membantu petani dalam meningkatkan produksi pertanian melalui akses pupuk bersubsidi yang mudah, tepat, dan akuntabel.
                                     </p>
@@ -200,12 +200,12 @@
                                     <input type="number" name="nik" id="nik" value="<?php echo $res_Nik; ?>" autocomplete="off" required>
                                 </div>
 
-                                <div class="field input">
+                                <div class="mb-2">
                                     <label for="foto_ktp">Foto KTP</label>
                                     <input <?php if(!isset($_GET['ubah'])){echo "required";} ?> class="form-control" type="file" name="foto_ktp" id="foto_ktp" accept="image/*" >
                                 </div>
 
-                                <div class="field input">
+                                <div class="mb-2">
                                     <label for="foto_kk">Foto KK</label>
                                     <input <?php if(!isset($_GET['ubah'])){echo "required";} ?> class="form-control" type="file" name="foto_kk" id="foto_kk" accept="image/*" >
                                 </div>
@@ -225,8 +225,8 @@
                                                 <div class="col-6">
                                                         <label for="jenis_pupuk">Jenis Pupuk</label>
                                                         <div>
-                                                                <select name="jenis_pupuk" id="jenis_pupuk" required>
-                                                                <option value="">Pilih Jenis</option>
+                                                                <select name="jenis_pupuk" id="jenis_pupuk" class="form-control" required>
+                                                                <option value=""></option>
                                                                 <option value="urea">Urea</option>
                                                                 <option value="NPK">NPK</option>
                                                                 <option value="TSP">TSP</option>
@@ -279,7 +279,7 @@
                                                 <li><a href="#about">Tentang Program</a></li>
                                                 <li><a href="#sdk">Syarat dan Ketentuan</a></li>
                                                 <li><a href="#form">Formulir</a></li>
-                                                <li><a href="#help" class="footer-active-menu">Pusat Bantuan</a></li>
+                                                <li><a href="#help">Pusat Bantuan</a></li>
                                             </ul>
                                         </div>
                                         <div class="footer-menu">

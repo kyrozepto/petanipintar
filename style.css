@@ -121,6 +121,23 @@ ul {
     box-shadow: inset 3px 3px 4px #1a5204;
 }
 
+.add-alt {
+    background: #f3f3f5;
+    border-radius: 30px;
+    border: none;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: 400;
+    color: black;
+    transition: 0.5s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+}
+
+.add-alt:hover {
+    border-color: black;
+    color: black;
+    box-shadow: inset 3px 3px 4px #cccccc, inset -3px -3px 4px #ffffff;
+}
+
 .sec-btn {
     font-weight: 600;
     min-width: 120px;
@@ -423,6 +440,13 @@ p {
     transition: 0.2s cubic-bezier(0.22, 0.78, 0.45, 1.02);
 }
 
+.detail-box {
+    padding-left: 30px;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 10px 10px 30px #dcdcdc;
+}
+
 .katalog-box:hover {
     transform: scale(1.01);
 }
@@ -546,7 +570,12 @@ p {
     line-height: 22px;
 }
 
-.katalog-box .signin, .signup {       
+.katalog-box .signin {       
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.katalog-box .signup {       
     font-size: 14px;
     line-height: 22px;
 }
@@ -554,6 +583,14 @@ p {
 .katalog-box .h3-title:hover {
     color: #2b8109;
 }
+
+/* detail program tanam */
+
+.p-detail {
+    font-size: 18px;
+    line-height: 28px;
+}
+
 /* media */
 
 @media screen and (min-width: 992px) {
@@ -1038,7 +1075,7 @@ p {
     .h2-title {
         font-size: 28px;
         margin-bottom: 10px;
-        line-height: 36px;
+        line-height: 40px;
     }
 
     .h2-title span {
@@ -1047,6 +1084,11 @@ p {
     }
 
     p {
+        font-size: 15px;
+        line-height: 24px;
+    }
+
+    .p-detail {
         font-size: 15px;
         line-height: 24px;
     }

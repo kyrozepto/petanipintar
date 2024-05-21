@@ -55,7 +55,7 @@
 
     <div id="viewport">
         <div id="js-scroll-content">
-            <section class="main-banner" id="home">
+            <section class="main-banner" id="about">
                 <div class="sec-wp">
                     <div class="container">
                         <div class="row">
@@ -80,7 +80,7 @@
             </section>
             
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-            <section class="default-banner" id="katalog">
+            <section class="default-banner" id="program">
                 <div class="sec-wp">
                     <div class="container">
                         <div class="row">
@@ -129,8 +129,8 @@
                                                 <div>
                                                 <ul>
                                                         <li>
-                                                            <button onclick="window.location.href=\'detail.php?id='.$row["id"].'\'" class="signin">Lihat Detail</button>
-                                                            <button onclick="window.location.href=\'sewa.php?id='.$row["id"].'\'" class="signup">Mulai</button>
+                                                            <button onclick="window.location.href=\'detail-program-tanam.php?id='.$row["id"].'\'" class="signin">Lihat Detail</button>
+                                                            <button onclick="window.location.href=\'mulai-program-tanam.php?id='.$row["id"].'\'" class="signup">Mulai</button>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -189,8 +189,8 @@
                                             <ul class="column-2">
                                                 <li><a href="#about">Tentang Program</a></li>
                                                 <li><a href="#sdk">Syarat dan Ketentuan</a></li>
-                                                <li><a href="#form">Formulir</a></li>
-                                                <li><a href="#help" class="footer-active-menu">Pusat Bantuan</a></li>
+                                                <li><a href="#program">Program Tanam</a></li>
+                                                <li><a href="#help">Pusat Bantuan</a></li>
                                             </ul>
                                         </div>
                                         <div class="footer-menu">

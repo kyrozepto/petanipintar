@@ -1,10 +1,11 @@
 CREATE TABLE users(
-    Id int PRIMARY KEY AUTO_INCREMENT,
-    Email varchar(200),
-    Password varchar(200),
-    Username varchar(200),
-    Fullname varchar(200),
-    Age int
+    Id int AUTO_INCREMENT PRIMARY KEY,
+    Email VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Username VARCHAR(255) NOT NULL,
+    Fullname VARCHAR(255) NOT NULL,
+    Age INT,
+    role VARCHAR(50) DEFAULT 'user'
 );
 
 CREATE TABLE program_tanam (
@@ -13,7 +14,9 @@ CREATE TABLE program_tanam (
     waktu INT NOT NULL,
     daerah VARCHAR(255) NOT NULL,
     hasil DECIMAL(10, 2) NOT NULL,
-    gambar VARCHAR(255)
+    gambar VARCHAR(255),
+    jumlah INT NOT NULL,
+    koordinat VARCHAR(255)
 );
 
 CREATE TABLE alat (

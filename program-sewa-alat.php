@@ -55,7 +55,7 @@
 
     <div id="viewport">
         <div id="js-scroll-content">
-            <section class="main-banner" id="home">
+            <section class="main-banner" id="about">
                 <div class="sec-wp">
                     <div class="container">
                         <div class="row">
@@ -150,7 +150,7 @@
                 </div>
             </section> -->
 
-            <section class="default-banner" id="katalog">
+            <section class="default-banner" id="program">
                 <div class="sec-wp">
                     <div class="container">
                         <div class="row">
@@ -256,8 +256,8 @@
                                             <ul class="column-2">
                                                 <li><a href="#about">Tentang Program</a></li>
                                                 <li><a href="#sdk">Syarat dan Ketentuan</a></li>
-                                                <li><a href="#form">Formulir</a></li>
-                                                <li><a href="#help" class="footer-active-menu">Pusat Bantuan</a></li>
+                                                <li><a href="#program">Katalog</a></li>
+                                                <li><a href="#help">Pusat Bantuan</a></li>
                                             </ul>
                                         </div>
                                         <div class="footer-menu">
