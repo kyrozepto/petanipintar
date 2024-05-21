@@ -41,14 +41,14 @@
                                     $query = mysqli_query($con,"SELECT*FROM users WHERE Id=$id");
 
                                     while($result = mysqli_fetch_assoc($query)){
-                                        $res_Email = $result['Email'];
-                                        $res_Uname = $result['Username'];
-                                        $res_Fullname = $result['Fullname'];
-                                        $res_Age = $result['Age'];
-                                        $res_id = $result['Id'];
+                                        $res_email = $result['email'];
+                                        $res_username = $result['username'];
+                                        $res_fullname = $result['fullname'];
+                                        $res_age = $result['age'];
+                                        $res_id = $result['id'];
                                     }
                                     
-                                    echo "<button onclick=\"window.location.href='edit.php?Id=$res_id'\" class=\"signin\">Edit Profil</button>";
+                                    echo "<button onclick=\"window.location.href='edit-profile.php?Id=$res_id'\" class=\"signin\">Edit Profil</button>";
                                     ?>
                                     <button onclick="window.location.href='menu.php'" class="signup">Kembali</button>
                                 </li>
@@ -68,12 +68,12 @@
                             <div>
                                 <div>
                                     <div>
-                                        <p>Halo <b><?php echo $res_Uname ?></b>!</p>
+                                        <p>Halo <b><?php echo $res_username ?></b>!</p>
                                     </div>
                                     <div>
-                                        <p>Nama Lengkap: <b><?php echo $res_Fullname ?></b></p>
-                                        <p>Umur: <b><?php echo $res_Age ?> tahun</b></p> 
-                                        <p>Email anda adalah <b><?php echo $res_Email ?></b></p>
+                                        <p>Nama Lengkap: <b><?php echo $res_fullname ?></b></p>
+                                        <p>Umur: <b><?php echo $res_age ?> tahun</b></p> 
+                                        <p>Email anda adalah <b><?php echo $res_email ?></b></p>
                                         <p>Status Akun 
                                             <b>
                                             <?php

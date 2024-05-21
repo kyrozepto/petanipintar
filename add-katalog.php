@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <input type="number" id="harga" name="harga" autocomplete="off" required>
                                 </div>
 
-                                <div class="field input">
+                                <div class="mb-2">
                                     <label for="gambar">Gambar</label>
                                     <input type="file" class="form-control" id="gambar" name="gambar">
                                 </div>

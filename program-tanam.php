@@ -5,6 +5,7 @@
    if(!isset($_SESSION['valid'])){
         header("Location: index.php");
        }
+
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +66,7 @@
                                     <p>
                                         Memberdayakan petani dengan memberikan program tanam dan akses sumber daya yang sesuai dengan wilayah mereka.                                    </p>
                                     <div class="banner-btn mt-4">
-                                        <a href="#katalog" class="sec-btn">Mulai Program Tanam</a>
+                                        <a href="#program" class="sec-btn">Mulai Program Tanam</a>
                                     </div>
                                 </div>
                             </div>
@@ -86,8 +87,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="sec-title text-center mb-5">
-                                    <p class="sec-sub-title mb-3">PetaniPintar</p>
-                                    <h2 class="h2-title">Program Tanam</h2>
+                                    <h2 class="h2-title mb-0">Program Tanam</h2>
+                                    <h2 class="h2-title"><span>PetaniPintar</span></h2>
                                 </div>
                                 <?php 
                                 if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
@@ -113,25 +114,34 @@
 
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
+                                    $sql_user_program = "SELECT * FROM user_program_tanam WHERE id_user = " . $_SESSION['id'] . " AND id_program_tanam = " . $row["id"];
+                                    $result_user_program = $con->query($sql_user_program);
+
                                     echo '<div class="col-lg-3 swiper-slide">
                                             <div class="katalog-box">
-                                                <div style="background-image: url(image/tanaman/'.$row["gambar"].');" class="katalog-tanam-img back-img"></div>
-                                                <h3 href="#" class="h3-title">'.$row["nama"].'</h3>
+                                                <div style="background-image: url(image/tanaman/' . $row["gambar"] . ');" class="katalog-tanam-img back-img"></div>
+                                                <h3 onclick="window.location.href=\'detail-program-tanam.php?id=' . $row["id"] . '\'" class="h3-title">' . $row["nama"] . '</h3>
                                                 <div class="row">
-                                                        <div class="col-lg-6">
-                                                                <p class="p-katalog">Perkiraan<br>'.$row["waktu"].' bulan</p> 
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                                <p class="p-katalog">'.$row["daerah"].'</p>
-                                                        </div>
-                                                        <p class="p-katalog">Rp. ' . number_format($row["hasil"], 0, ',', '.') . ' / ton</p>
+                                                    <div class="col-lg-6">
+                                                        <p class="p-katalog">Perkiraan<br>' . $row["waktu"] . ' bulan</p> 
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <p class="p-katalog">' . $row["daerah"] . '</p>
+                                                    </div>
+                                                    <p class="p-katalog">Rp. ' . number_format($row["hasil"], 0, ',', '.') . ' / ton</p>
                                                 </div>
                                                 <div>
-                                                <ul>
+                                                    <ul>
                                                         <li>
-                                                            <button onclick="window.location.href=\'detail-program-tanam.php?id='.$row["id"].'\'" class="signin">Lihat Detail</button>
-                                                            <button onclick="window.location.href=\'mulai-program-tanam.php?id='.$row["id"].'\'" class="signup">Mulai</button>
-                                                        </li>
+                                                            <button onclick="window.location.href=\'detail-program-tanam.php?id=' . $row["id"] . '\'" class="signin">Lihat Detail</button>';
+
+                                                            if ($result_user_program->num_rows > 0) {
+                                                                echo '<button onclick="window.location.href=\'mulai-program-tanam.php?id=' . $row["id"] . '\'" class="signup">Kirim</button>';
+                                                            } else {
+                                                                echo '<button onclick="window.location.href=\'mulai-program-tanam.php?id=' . $row["id"] . '\'" class="signup">Mulai</button>';
+                                                            }
+
+                                                        echo '</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -152,8 +162,6 @@
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
-
-
                     </div>
                 </div>
             </section>

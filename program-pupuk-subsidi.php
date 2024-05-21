@@ -162,32 +162,32 @@
                                 $query = mysqli_query($con, "SELECT * FROM users WHERE Id=$id");
 
                                 while ($result = mysqli_fetch_assoc($query)) {
-                                $res_Email = $result['Email'];
-                                $res_Uname = $result['Username'];
-                                $res_Fullname = $result['Fullname'];
-                                $res_Age = $result['Age'];
+                                $res_email = $result['email'];
+                                $res_username = $result['username'];
+                                $res_fullname = $result['fullname'];
+                                $res_age = $result['age'];
                                 }
                                 ?>
                             <header>Formulir Permohonan</header>
                             <form action="" method="post">
                                 <div class="field input">
                                     <label for="email">Email</label>
-                                    <input type="text" name="email" id="email" value="<?php echo $res_Email; ?>" autocomplete="off" required>
+                                    <input type="text" name="email" id="email" value="<?php echo $res_email; ?>" autocomplete="off" required>
                                 </div>
                                 
                                 <div class="field input">
                                     <label for="username">Username</label>
-                                    <input type="text" name="username" id="username" value="<?php echo $res_Uname; ?>" autocomplete="off" required>
+                                    <input type="text" name="username" id="username" value="<?php echo $res_username; ?>" autocomplete="off" required>
                                 </div>
 
                                 <div class="field input">
                                     <label for="fullname">Nama Lengkap</label>
-                                    <input type="text" name="fullname" id="fullname" value="<?php echo $res_Fullname; ?>" autocomplete="off" required>
+                                    <input type="text" name="fullname" id="fullname" value="<?php echo $res_fullname; ?>" autocomplete="off" required>
                                 </div>
 
                                 <div class="field input">
                                     <label for="age">Umur</label>
-                                    <input type="number" name="age" id="age" value="<?php echo $res_Age; ?>" autocomplete="off" required>
+                                    <input type="number" name="age" id="age" value="<?php echo $res_age; ?>" autocomplete="off" required>
                                 </div>
                                 
                                 <div class="field input">

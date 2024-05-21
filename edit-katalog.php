@@ -181,10 +181,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                             <input type="number" id="harga" name="harga" value="<?php echo $alat['harga']; ?>" autocomplete="off" required>
                                         </div>
 
-                                        <div class="field input">
+                                        <div class="mb-2">
                                             <label for="gambar">Gambar</label>
                                             <img src="image/alat/<?php echo $alat['gambar']; ?>" width="400"><br>
-                                            <input type="file" class="form-control" id="gambar" name="gambar">
+                                            <input type="file" class="form-control mt-2" id="gambar" name="gambar">
                                         </div>
 
                                         <div class="field">

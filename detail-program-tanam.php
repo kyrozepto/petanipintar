@@ -6,11 +6,9 @@ if (!isset($_SESSION['valid'])) {
     header("Location: index.php");
 }
 
-// Ambil ID program dari URL
 if (isset($_GET['id'])) {
     $id_program = $_GET['id'];
 
-    // Ambil detail program dari database
     $sql = "SELECT * FROM program_tanam WHERE id = $id_program";
     $result = $con->query($sql);
 
@@ -18,16 +16,51 @@ if (isset($_GET['id'])) {
         $row = $result->fetch_assoc();
     } else {
         echo "Program tidak ditemukan.";
-        exit; // Hentikan skrip jika program tidak ditemukan
+        exit;
     }
 } else {
     echo "ID program tidak ditemukan.";
-    exit; // Hentikan skrip jika ID program tidak ada
+    exit;
+}
+
+if (isset($_POST['batalkan_program'])) {
+    $id_user = $_SESSION['id'];
+    $id_program_tanam = $_GET['id'];
+
+    $sql_batalkan = "DELETE FROM user_program_tanam WHERE id_user = $id_user AND id_program_tanam = $id_program_tanam";
+
+    if ($con->query($sql_batalkan) === TRUE) {
+        echo "<script>alert('Program tanam berhasil dibatalkan.'); window.location.href = 'program-tanam.php';</script>";
+    } else {
+        echo "Error: " . $sql_batalkan . "<br>" . $con->error;
+    }
+}
+
+function hitungProgressPanen($id_program_tanam, $id_user) {
+    global $con;
+
+    $sql_target = "SELECT jumlah FROM program_tanam WHERE id = $id_program_tanam";
+    $result_target = $con->query($sql_target);
+    $jumlah = $result_target->fetch_assoc()['jumlah'];
+
+    $sql_panen = "SELECT SUM(jumlah_panen) as total_panen 
+                FROM panen 
+                WHERE id_program_tanam = $id_program_tanam AND id_user = $id_user";
+    $result_panen = $con->query($sql_panen);
+    $total_panen = $result_panen->fetch_assoc()['total_panen'];
+
+    if ($jumlah > 0) {
+        $progress = ($total_panen / $jumlah) * 100;
+    } else {
+        $progress = 0;
+    }
+
+    return $progress;
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -113,9 +146,59 @@ if (isset($_GET['id'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-10 mt-5 text-center">
+
+                                <?php
+                                if (isset($_GET['id'])) {
+                                    $id_program_tanam = $_GET['id'];
+
+                                    $sql_program = "SELECT * FROM program_tanam WHERE id = $id_program_tanam";
+                                    $result_program = $con->query($sql_program);
+                                    $row_program = $result_program->fetch_assoc();
+
+                                    $sql_user_program = "SELECT * FROM user_program_tanam WHERE id_user = ".$_SESSION['id']." AND id_program_tanam = ".$id_program_tanam;
+                                    $result_user_program = $con->query($sql_user_program);
+
+                                    if ($result_user_program->num_rows > 0) {
+                                        $progress = hitungProgressPanen($id_program_tanam, $_SESSION['id']);
+                                        ?>
+                            
+                                        <section class="mt-5">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <h4 class="h4-title">Progress Panen <span><?php echo $row_program['nama']; ?></span></h4>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $progress; ?>%;" aria-valuenow="
+                                                            <?php echo $progress; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($progress, 2); ?>%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                            
+                                        <?php
+                                                echo '<form action="" method="post" class="mt-3" align="right">
+                                                <button type="submit" name="batalkan_program" class="add-alt">Batalkan Program</button>
+                                                </form>';
+                                        
+                                    }
+                                }
+                                ?>
+                                
+                                <div class="col-lg-12 mt-5 text-center">
                                     <a href="simpan-program-tanam.php?id=<?php echo $row['id']; ?>" class="add-alt uil-bookmark"></a>
-                                    <a href="mulai-program-tanam.php?id=<?php echo $row['id']; ?>" class="add">Mulai Program</a>
+                                    <?php
+                                    $sql_user_program = "SELECT * FROM user_program_tanam WHERE id_user = " . $_SESSION['id'] . " AND id_program_tanam = " . $id_program;
+                                    $result_user_program = $con->query($sql_user_program);
+
+                                    if ($result_user_program->num_rows > 0) {
+                                        // User sudah memulai program, tampilkan tombol "Kirim Hasil Panen"
+                                        echo '<a href="kirim-hasil-panen.php?id=' . $row['id'] . '" class="add">Kirim Hasil Panen</a>';
+                                    } else {
+                                        // User belum memulai program, tampilkan tombol "Mulai Program"
+                                        echo '<a href="mulai-program-tanam.php?id=' . $row['id'] . '" class="add">Mulai Program</a>';
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>

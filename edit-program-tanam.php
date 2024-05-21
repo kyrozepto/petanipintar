@@ -27,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $waktu = $_POST['waktu'];
         $daerah = $_POST['daerah'];
         $hasil = $_POST['hasil'];
+        $jumlah = $_POST['jumlah'];
+        $koordinat = $_POST['koordinat'];
 
         $sql = "SELECT * FROM program_tanam WHERE id = $id_program_tanam";
         $result = $con->query($sql);
@@ -80,8 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $gambar = $program['gambar']; 
         }
 
-        $stmt = $con->prepare("UPDATE alat SET nama = ?, waktu = ?, daerah = ?, hasil = ?, gambar = ? WHERE id = ?");
-        $stmt->bind_param("ssdsi", $nama, $waktu, $daerah, $hasil, $gambar, $id_program_tanam);
+        $stmt = $con->prepare("UPDATE alat SET nama = ?, waktu = ?, daerah = ?, hasil = ?, gambar = ?, jumlah = ?, koordinat = ?, WHERE id = ?");
+        $stmt->bind_param("ssdsi", $nama, $waktu, $daerah, $hasil, $gambar, $jumlah, $koordinat, $id_program_tanam);
 
         if ($stmt->execute()) {
             echo "Program Tanam berhasil diperbarui.";
@@ -183,14 +185,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </div>
 
                                         <div class="field input">
+                                            <label for="koordinat">Titik Lokasi Pabrik</label>
+                                            <input type="text" id="koordinat" name="koordinat" value="<?php echo $program['koordinat']; ?>" autocomplete="off" required>
+                                        </div>
+
+                                        <div class="field input">
+                                            <label for="jumlah">Banyak Permintaan dalam Ton</label>
+                                            <input type="number" id="jumlah" name="jumlah" value="<?php echo $program['jumlah']; ?>" autocomplete="off" required>
+                                        </div>
+
+                                        <div class="field input">
                                             <label for="hasil">Hasil Panen / ton</label>
                                             <input type="number" id="hasil" name="hasil" value="<?php echo $program['hasil']; ?>" autocomplete="off" required>
                                         </div>
 
-                                        <div class="field input">
+                                        <div class="mb-2">
                                             <label for="gambar">Gambar</label>
                                             <img src="image/tanaman/<?php echo $program['gambar']; ?>" width="400"><br>
-                                            <input type="file" class="form-control" id="gambar" name="gambar">
+                                            <input type="file" class="form-control mt-2" id="gambar" name="gambar">
                                         </div>
 
                                         <div class="field">

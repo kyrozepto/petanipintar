@@ -12,6 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $waktu = $_POST['waktu'];
         $daerah = $_POST['daerah'];
         $hasil = $_POST['hasil'];
+        $jumlah = $_POST['jumlah'];
+        $koordinat = $_POST['koordinat'];
     
         $target_dir = "image/tanaman/";
         $target_file = $target_dir . basename($_FILES["gambar"]["name"]);
@@ -43,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
         if ($uploadOk == 1) {
             if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file)) {
-                $sql = "INSERT INTO program_tanam (nama, waktu, daerah, hasil, gambar) VALUES ('$nama', '$waktu', '$daerah', '$hasil', '".basename($_FILES["gambar"]["name"])."')";
+                $sql = "INSERT INTO program_tanam (nama, waktu, daerah, hasil, gambar, jumlah, koordinat) VALUES ('$nama', '$waktu', '$daerah', '$hasil', 'jumlah', 'koordinat,'".basename($_FILES["gambar"]["name"])."')";
     
                 if ($con->query($sql) === TRUE) {
                     echo "Data program berhasil ditambahkan.";
@@ -123,11 +125,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </div>
 
                                 <div class="field input">
+                                    <label for="koordinat">Titik Lokasi Pabrik</label>
+                                    <input type="text" id="koordinat" name="koordinat" autocomplete="off" required>
+                                </div>
+
+                                <div class="field input">
+                                    <label for="jumlah">Banyak Permintaan dalam Ton</label>
+                                    <input type="number" id="jumlah" name="jumlah" autocomplete="off" required>
+                                </div>
+
+                                <div class="field input">
                                     <label for="hasil">Hasil Panen / ton</label>
                                     <input type="number" id="hasil" name="hasil" autocomplete="off" required>
                                 </div>
 
-                                <div class="field input">
+                                <div class="mb-2">
                                     <label for="gambar">Gambar</label>
                                     <input type="file" class="form-control" id="gambar" name="gambar">
                                 </div>

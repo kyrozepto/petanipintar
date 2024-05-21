@@ -66,7 +66,7 @@
                                         Mempermudah petani untuk berkomunikasi dengan pihak terkait dalam sektor pertanian untuk dapat menyewa alat pertanian yang dibutuhkan.
                                     </p>
                                     <div class="banner-btn mt-4">
-                                        <a href="#katalog" class="sec-btn">Cari Alat Pertanian</a>
+                                        <a href="#program" class="sec-btn">Cari Alat Pertanian</a>
                                     </div>
                                 </div>
                             </div>
@@ -156,8 +156,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="sec-title text-center mb-5">
-                                    <p class="sec-sub-title mb-3">PetaniPintar</p>
-                                    <h2 class="h2-title">Peralatan Pertanian</h2>
+                                    <h2 class="h2-title mb-0">Peralatan Pertanian</h2>
+                                    <h2 class="h2-title"><span>PetaniPintar</span></h2>
                                 </div>
                                 <?php 
                                 if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
@@ -184,7 +184,7 @@
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
                                     echo '<div class="col-lg-4 swiper-slide">
-                                            <div class="katalog-box text-center">
+                                            <div class="katalog-box">
                                                 <div style="background-image: url(image/alat/'.$row["gambar"].');" class="katalog-img back-img"></div>
                                                 <h3 class="h3-title">'.$row["nama"].'</h3>
                                                 <div>
@@ -193,7 +193,7 @@
                                                             <p class="p-katalog">'.$row["deskripsi"].'</p> 
                                                         </li>
                                                         <li>
-                                                            <p class="p-katalog">Rp. ' . number_format($row["harga"], 0, ',', '.') . ' / Musim</p>
+                                                            <p class="p-katalog">Rp. ' . number_format($row["harga"], 0, ',', '.') . ' / musim</p>
                                                         </li>
                                                         <li>
                                                             <button onclick="window.location.href=\'detail.php?id='.$row["id"].'\'" class="signin">Lihat Alat</button>
@@ -256,7 +256,7 @@
                                             <ul class="column-2">
                                                 <li><a href="#about">Tentang Program</a></li>
                                                 <li><a href="#sdk">Syarat dan Ketentuan</a></li>
-                                                <li><a href="#program">Katalog</a></li>
+                                                <li><a href="#program">Peralatan Pertanian</a></li>
                                                 <li><a href="#help">Pusat Bantuan</a></li>
                                             </ul>
                                         </div>
