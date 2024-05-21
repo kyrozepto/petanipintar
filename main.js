@@ -4,10 +4,10 @@ $(document).ready(function ($) {
         var team_slider = new Swiper(".katalog-slider", {
                 slidesPerView: 3,
                 spaceBetween: 30,
-                loop: true,
+                loop: false,
                 autoplay: {
                         delay: 3000,
-                        disableOnInteraction: false,
+                        disableOnInteraction: true,
                 },
                 speed: 2000,
 
@@ -23,7 +23,7 @@ $(document).ready(function ($) {
                         0: {
                                 slidesPerView: 1.2,
                         },
-                        768: {
+                        575: {
                                 slidesPerView: 2,
                         },
                         992: {
@@ -31,6 +31,43 @@ $(document).ready(function ($) {
                         },
                         1200: {
                                 slidesPerView: 3,
+                        },
+                },
+        });
+
+        var tanam_slider = new Swiper(".katalog-tanam-slider", {
+                slidesPerView: 4,
+                spaceBetween: 20,
+                loop: false,
+                autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: true,
+                },
+                speed: 2000,
+
+                navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                },
+                pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                },
+                breakpoints: {
+                        0: {
+                                slidesPerView: 1.2,
+                        },
+                        575: {
+                                slidesPerView: 2,
+                        },
+                        768: {
+                                slidesPerView: 3,
+                        },
+                        1200: {
+                                slidesPerView: 4,
+                        },
+                        1600: {
+                                slidesPerView: 5,
                         },
                 },
         });

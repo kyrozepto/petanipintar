@@ -36,13 +36,13 @@
                         <nav class="header-menu">
                             <ul class="menu">
                                 <li><a href="menu.php">PetaniPintar</a></li>
-                                <li><a href="#">Program Tanam</a></li>
+                                <li><a href="program-tanam.php">Program Tanam</a></li>
                                 <li><a href="program-pupuk-subsidi.php">Pupuk Subsidi</a></li>
                                 <li><a href="program-sewa-alat.php">Sewa Alat</a></li>
                                 <li><a href="#">Forum</a></li>
                                 <li>
                                     <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
-                                    <button onclick="window.location.href='menu.php'" class="signup">Sign Out</button>
+                                    <button onclick="window.location.href='login.php'" class="signup">Sign Out</button>
                                 </li>
                             </ul>
                         </nav>
@@ -71,7 +71,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="banner-img-wp">
-                                    <img class="img-rounded" src="img2.png" alt="">
+                                    <img class="img-rounded" src="image/illustration/program2.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -79,38 +79,30 @@
                 </div>
             </section>
             
-            <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-            <!-- <h2 class="h2-title"><center><span>Learn More</span><br>About our Program</center></h2> -->
-                <section class="default-banner" id="about">
-                    <div class="sec-wp">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="banner-img-wp">
-                                        <img src="image/form1.webp" alt="">
-                                    </div>
+            <section class="main-banner" id="about">
+                <div class="sec-wp">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="banner-img-wp">
+                                    <img src="image/form1.webp" alt="">
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="banner-text">
-                                        <h2 class="h2-title">Program Pupuk Bersubsidi dengan <span>PetaniPintar</span></h2>
-                                        <p>
-                                            Petani Pintar is a concept that combines technology and artificial intelligence to enhance productivity and efficiency in agriculture.
-                                        </p>
-                                        <p>
-                                            Through the implementation of various technological solutions such as sensors, data analytics, and smart software,
-                                            Petani Pintar enables farmers to monitor crop conditions, manage resources more efficiently, and optimize farming processes as a whole.
-                                        </p>
-                                        <p>
-                                            Thus, Petani Pintar can help increase crop yields, reduce production costs, 
-                                            and defaulttain environmental sustainability in the agriculture industry 
-                                        </p>
-                                        <h5>Ready to join the revolution?<button onclick="window.location.href='register.php'" class="signup">Daftarkan saya</button></h5>
-                                    </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="banner-text">
+                                    <h2 class="h2-title">Program Pupuk Bersubsidi dengan <span>PetaniPintar</span></h2>
+                                    <p>
+                                    Program yang dirancang untuk membantu petani dalam meningkatkan produksi pertanian melalui akses pupuk bersubsidi yang mudah, tepat, dan akuntabel.
+                                    </p>
+                                    <h5>Butuh bantuan? <button onclick="window.location.href='#form'" class="signup">Ajukan Permohonan</button></h5>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
+            <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
+            <!-- <h2 class="h2-title"><center><span>Learn More</span><br>About our Program</center></h2> -->
 
                 <section class="default-banner" id="program">
                     <div class="sec-wp">
@@ -128,7 +120,7 @@
                                         <div class="programs-img back-img"
                                             style="background-image: url(image/program_tanam.jpg);"></div>
                                         <div class="programs-text">
-                                            <h4>Buat Formulir Permohonan</h4>
+                                            <h4><b>1.</b> Buat Formulir Permohonan</h4>
                                             <p>Buat dan isi formulir permohonan dengan lengkap dan benar, termasuk data diri, lahan pertanian, dan kebutuhan pupuk.
                                                 Upload dokumen yang diperlukan, seperti KTP dan KK.</p>
                                         </div>
@@ -139,7 +131,7 @@
                                         <div class="programs-img back-img"
                                             style="background-image: url(image/program_pupuk.jpg);"></div>
                                         <div class="programs-text">
-                                            <h4>Proses Verifikasi Berkas</h4>
+                                            <h4><b>2.</b> Proses Verifikasi Berkas</h4>
                                             <p>Tim verifikator akan memeriksa kelengkapan dan keabsahan data dan dokumen yang Anda upload.
                                                 Proses verifikasi dapat memakan waktu beberapa hari.</p>
                                         </div>
@@ -150,7 +142,7 @@
                                         <div class="programs-img back-img"
                                             style="background-image: url(image/program_sewa.jpg);"></div>
                                         <div class="programs-text">
-                                            <h4>Notifikasi Persetujuan Program</h4>
+                                            <h4><b>3.</b> Notifikasi Persetujuan</h4>
                                             <p>Jika verifikasi berkas berhasil, Anda akan menerima notifikasi persetujuan program melalui email.
                                                 Cetak Kartu Tani dan gunakan untuk membeli pupuk bersubsidi di toko resmi.</p>
                                         </div>
@@ -161,7 +153,7 @@
                     </div>
                 </section>
 
-                <section class="default-banner" id="form">
+                <section class="default-banner mb-5" id="form">
                     <div class="sec-wp">
                         <div class="box-container">
                             <div class="box form-box">
@@ -199,13 +191,33 @@
                                 </div>
                                 
                                 <div class="field input">
-                                    <label for="age">Alamat lengkap</label>
+                                    <label for="alamat">Alamat Lengkap</label>
                                     <input type="text" name="alamat" id="alamat" autocomplete="off" required>
                                 </div>
 
                                 <div class="field input">
-                                    <label for="age">Luas Lahan</label>
+                                    <label for="nik">NIK</label>
+                                    <input type="number" name="nik" id="nik" value="<?php echo $res_Nik; ?>" autocomplete="off" required>
+                                </div>
+
+                                <div class="field input">
+                                    <label for="foto_ktp">Foto KTP</label>
+                                    <input <?php if(!isset($_GET['ubah'])){echo "required";} ?> class="form-control" type="file" name="foto_ktp" id="foto_ktp" accept="image/*" >
+                                </div>
+
+                                <div class="field input">
+                                    <label for="foto_kk">Foto KK</label>
+                                    <input <?php if(!isset($_GET['ubah'])){echo "required";} ?> class="form-control" type="file" name="foto_kk" id="foto_kk" accept="image/*" >
+                                </div>
+
+                                <div class="field input">
+                                    <label for="luas_lahan">Luas Lahan</label>
                                     <input type="number" name="luas_lahan" id="luas_lahan" autocomplete="off" required>
+                                </div>
+
+                                <div class="field input">
+                                    <label for="koordinat">Titik Koordinat Lahan</label>
+                                    <input type="text" name="koordinat" id="koordinat" autocomplete="off" required>
                                 </div>
 
                                 <div class="field input">
