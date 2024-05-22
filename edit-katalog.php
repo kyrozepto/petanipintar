@@ -7,15 +7,12 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
     exit;
 }
 
-// Variabel untuk menyimpan data alat
 $alat = array();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['id_alat']) && !empty($_POST['id_alat']) && !isset($_POST['update'])) {
-        // Ambil ID alat yang dipilih dari form
         $id_alat = $_POST['id_alat'];
 
-        // Ambil data alat dari database berdasarkan ID
         $sql = "SELECT * FROM alat WHERE id = $id_alat";
         $result = $con->query($sql);
 
@@ -25,13 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Alat tidak ditemukan.";
         }
     } elseif (isset($_POST['update'])) {
-        // Ambil data dari form
         $id_alat = $_POST['id_alat'];
         $nama = $_POST['nama'];
         $deskripsi = $_POST['deskripsi'];
+        $spesifikasi = $_POST['spesifikasi'];
+        $lokasi = $_POST['lokasi'];
+        $pemilik = $_POST['pemilik'];
         $harga = $_POST['harga'];
 
-        // Ambil data alat sebelumnya dari database untuk memastikan gambar lama tersedia
         $sql = "SELECT * FROM alat WHERE id = $id_alat";
         $result = $con->query($sql);
         if ($result->num_rows > 0) {
@@ -44,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-            // Cek apakah file gambar valid
             $check = getimagesize($_FILES["gambar"]["tmp_name"]);
             if ($check !== false) {
                 $uploadOk = 1;
@@ -68,29 +65,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $uploadOk = 0;
             }
 
-            // Jika semua cek lolos, upload file
             if ($uploadOk == 1) {
                 if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file)) {
-                    // Hapus gambar lama jika diganti
                     if (isset($alat['gambar']) && file_exists($target_dir . $alat['gambar'])) {
                         unlink($target_dir . $alat['gambar']);
                     }
                     $gambar = basename($_FILES["gambar"]["name"]);
                 } else {
                     echo "Maaf, terjadi kesalahan saat mengunggah file.";
-                    $gambar = $alat['gambar']; // fallback jika upload gagal
+                    $gambar = $alat['gambar'];
                 }
             } else {
-                $gambar = $alat['gambar']; // fallback jika upload gagal
+                $gambar = $alat['gambar'];
             }
         } else {
-            // Jika tidak ada gambar baru, gunakan gambar lama
             $gambar = $alat['gambar']; 
         }
 
-        // Update data alat
-        $stmt = $con->prepare("UPDATE alat SET nama = ?, deskripsi = ?, harga = ?, gambar = ? WHERE id = ?");
-        $stmt->bind_param("ssdsi", $nama, $deskripsi, $harga, $gambar, $id_alat);
+        $stmt = $con->prepare("UPDATE alat SET nama = ?, deskripsi = ?, spesifikasi = ?, lokasi = ?, pemilik = ?, harga = ?, gambar = ? WHERE id = ?");
+        $stmt->bind_param("ssdsi", $nama, $deskripsi, $spesifikasi, $lokasi, $pemilik, $harga, $gambar, $id_alat);
 
         if ($stmt->execute()) {
             echo "Data alat berhasil diperbarui.";
@@ -187,14 +180,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </div>
 
                                         <div class="field input">
+                                            <label for="spesifikasi">Spesifikasi Alat</label>
+                                            <textarea id="spesifikasi" name="spesifikasi" autocomplete="off"><?php echo $alat['spesifikasi']; ?></textarea>
+                                        </div>
+
+                                        <div class="field input">
+                                            <label for="lokasi">Lokasi Penyimanan</label>
+                                            <input type="text" id="lokasi" name="lokasi" value="<?php echo $alat['lokasi']; ?>" autocomplete="off" required>
+                                        </div>
+
+                                        <div class="field input">
+                                            <label for="pemilik">Pemilik</label>
+                                            <input type="text" id="pemilik" name="pemilik" value="<?php echo $alat['pemilik']; ?>" autocomplete="off" required>
+                                        </div>
+
+                                        <div class="field input">
                                             <label for="harga">Harga</label>
                                             <input type="number" id="harga" name="harga" value="<?php echo $alat['harga']; ?>" autocomplete="off" required>
                                         </div>
 
-                                        <div class="field input">
+                                        <div class="mb-2">
                                             <label for="gambar">Gambar</label>
                                             <img src="image/alat/<?php echo $alat['gambar']; ?>" width="400"><br>
-                                            <input type="file" class="form-control" id="gambar" name="gambar">
+                                            <input type="file" class="form-control mt-2" id="gambar" name="gambar">
                                         </div>
 
                                         <div class="field">

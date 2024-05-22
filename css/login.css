@@ -240,7 +240,7 @@ main {
         height: 42px;
         background: #2b8109;
         border: 0;
-        color: #fff;
+        color: white;
         font-size: 15px;
         cursor: pointer;
         transition: all .3s;

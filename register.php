@@ -59,7 +59,7 @@
 
                                 //verifying the unique email
 
-                                $verify_query = mysqli_query($con,"SELECT Email FROM users WHERE Email='$email'");
+                                $verify_query = mysqli_query($con,"SELECT email FROM users WHERE email='$email'");
 
                                 if(mysqli_num_rows($verify_query) !=0 ){
                                     echo "<div class='message'>
@@ -69,7 +69,7 @@
                                 }
                                 else{
 
-                                    mysqli_query($con,"INSERT INTO users(Email,Password,Username,Fullname,Age) VALUES('$email','$password','$username','$fullname','$age')") or die("Error Occured");
+                                    mysqli_query($con,"INSERT INTO users(email,password,username,fullname,age) VALUES('$email','$password','$username','$fullname','$age')") or die("Error Occured");
 
                                     echo "<div class='message'>
                                             <p>Registration successfully!</p>

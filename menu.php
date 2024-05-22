@@ -41,7 +41,7 @@
                                 <li><a href="#">Forum</a></li>
                                 <li>
                                     <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
-                                    <button onclick="window.location.href='login.php'" class="signup">Sign Out</button>
+                                    <button onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}" class="signup">Sign Out</button>
                                 </li>
                             </ul>
                         </nav>
@@ -64,15 +64,11 @@
                                 $query = mysqli_query($con,"SELECT*FROM users WHERE Id=$id");
 
                                 while($result = mysqli_fetch_assoc($query)){
-                                        $res_Email = $result['Email'];
-                                        $res_Uname = $result['Username'];
-                                        $res_Fullname = $result['Fullname'];
-                                        $res_Age = $result['Age'];
-                                        $res_id = $result['Id'];
+                                        $res_username = $result['username'];
                                 }
                                 ?>
                                 <div class="banner-text">
-                                    <h2 class="h2-title">Halo <?php echo $res_Uname ?></b>!<br>Selamat datang di<br><span>PetaniPintar</span></h2>
+                                    <h2 class="h2-title">Halo <?php echo $res_username ?></b>!<br>Selamat datang di<br><span>PetaniPintar</span></h2>
                                     <p>
                                         Jadilah penentu kemajuan pertanian masa depan melalui inovasi dan pemanfaatan teknologi digital.
                                         Kamu bisa jadi wajah baru pertanian modern yang mandiri, produktif, dan berkelanjutan.
@@ -93,7 +89,7 @@
             </section>
             
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-            <h2 class="h2-title"><center><span>Learn More</span><br>About our Program</center></h2>
+            <h2 class="h2-title"><center><span>Lebih Lanjut</span><br>Mengenai Program Kami</center></h2>
                 <section class="main-banner" id="about">
                     <div class="sec-wp">
                         <div class="container">
@@ -105,17 +101,19 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="banner-text">
-                                        <h2 class="h2-title">What is <span>PetaniPintar</span> and How Does it Work?</h2>
+                                        <h2 class="h2-title">Apa itu   <span>PetaniPintar</span> dan bagaimana cara kerjanya</h2>
                                         <p>
-                                            Petani Pintar is a concept that combines technology and artificial intelligence to enhance productivity and efficiency in agriculture.
+                                            Petani Pintar adalah sebuah konsep yang menggabungkan teknologi dan kecerdasan buatan untuk meningkatkan
+                                            produktivitas dan efisiensi di bidang pertanian.
                                         </p>
                                         <p>
-                                            Through the implementation of various technological solutions such as sensors, data analytics, and smart software,
-                                            Petani Pintar enables farmers to monitor crop conditions, manage resources more efficiently, and optimize farming processes as a whole.
+                                            Melalui penerapan berbagai solusi teknologi seperti sensor, analisis data, dan perangkat lunak pintar, 
+                                            Petani Pintar memungkinkan petani memantau kondisi tanaman, mengelola sumber daya dengan lebih efisien, 
+                                            dan mengoptimalkan proses pertanian secara keseluruhan.
                                         </p>
                                         <p>
-                                            Thus, Petani Pintar can help increase crop yields, reduce production costs, 
-                                            and defaulttain environmental sustainability in the agriculture industry 
+                                            Dengan demikian, Petani Pintar dapat membantu meningkatkan hasil panen, 
+                                            menurunkan biaya produksi, dan menjaga kelestarian lingkungan dalam industri pertanian    
                                         </p>
                                     </div>
                                 </div>
@@ -185,29 +183,30 @@
                                                 <img src="image/petanipintar_logo80.png" alt="Logo">
                                             </a>
                                         </div>
-                                        <h4 class="h4-title">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h4>
+                                        <h5>Butuh Bantuan?</h5>
+                                        <a>Hubungi kami untuk informasi lebih lanjut.</a>
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="footer-flex-box">
                                         <div class="footer-menu">
-                                            <h3 class="h3-title">Kontak</h3>
+                                            <h4 class="h4-title">Kontak</h4>
                                             <ul>
                                                 <li><a href="#">petanipintar@gmail.com</a></li>
                                                 <li><a href="#">+62 1234567890</a></li>
                                             </ul>
                                         </div>
                                         <div class="footer-menu food-nav-menu">
-                                            <h3 class="h3-title">Menu</h3>
+                                            <h4 class="h4-title">Menu</h4>
                                             <ul class="column-2">
                                                 <li><a href="#about">Tentang Program</a></li>
                                                 <li><a href="#sdk">Syarat dan Ketentuan</a></li>
-                                                <li><a href="#form">Formulir</a></li>
-                                                <li><a href="#help" class="footer-active-menu">Pusat Bantuan</a></li>
+                                                <li><a href="#program">Pilihan Program</a></li>
+                                                <li><a href="#help">Pusat Bantuan</a></li>
                                             </ul>
                                         </div>
                                         <div class="footer-menu">
-                                            <h3 class="h3-title">Informasi Lain</h3>
+                                            <h4 class="h4-title">Informasi Lain</h4>
                                             <ul>
                                                 <li><a href="#">FAQ</a></li>
                                                 <li><a href="#">Kebijakan Privasi</a></li>
