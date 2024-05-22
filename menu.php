@@ -41,7 +41,7 @@
                                 <li><a href="#">Forum</a></li>
                                 <li>
                                     <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
-                                    <button onclick="window.location.href='login.php'" class="signup">Sign Out</button>
+                                    <button onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}" class="signup">Sign Out</button>
                                 </li>
                             </ul>
                         </nav>

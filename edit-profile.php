@@ -67,7 +67,7 @@
                                     echo "<div class='message'>
                                         <h5><b>Profil Diperbarui!</b></h5>
                                     </div> <br>";
-                                    echo "<a href='profile.php'><center><button class='signin'>Kembali ke Profil Akun</button></center>";
+                                    echo "<a href='profile.php'><center><button class='signin'>Kembali ke Profil</button></center>";
                     
                                 }
                             }else{

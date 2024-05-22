@@ -80,7 +80,7 @@
                                     if ($result_riwayat->num_rows > 0) {
                                         while ($row_sewa = $result_riwayat->fetch_assoc()) {
                                             $id_alat = $row_sewa['id_alat'];
-                                            $id_sewa = $row_sewa['id']; // Mendapatkan ID sewa
+                                            $id_sewa = $row_sewa['id'];
                                             $sql_alat = "SELECT * FROM alat WHERE id = $id_alat";
                                             $result_alat = $con->query($sql_alat);
                                             $row_alat = $result_alat->fetch_assoc();
@@ -90,7 +90,7 @@
                                             echo '<h5 class="card-title">';
                                             echo '<span>' . $row_alat['nama'] . '</span>'; 
                                             if ($row_sewa['status_pembayaran'] == 'Belum Dibayar' || $row_sewa['status_pembayaran'] == 'Menunggu Konfirmasi') {
-                                                echo '<a href="php/fungsi-batal-sewa.php?id=' . $id_sewa . '" class="add-alt">Batal</a>';
+                                                echo '<a href="php/fungsi-batal-sewa.php?id=' . $id_sewa . '" class="add-alt" onclick="return confirm(\'Apakah Anda yakin ingin membatalkan pemesanan ini?\')">Batal</a>';
                                             }
                                             echo '</h5>';
                                             echo '<hr>';

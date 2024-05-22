@@ -29,10 +29,14 @@
     <link rel="stylesheet" href="style.css">
     <style>
         p {
-            margin: 20px 0;
+            font-size: 16px;
+            margin: 15px 0;
         }
         .p-halo {
             padding-left: 30px;
+        }
+        .add-alt {
+            font-size: 14px;
         }
     </style>
 </head>
@@ -74,7 +78,7 @@
                 <div class="sec-wp">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 mb-5">
                                 <div class="text-center mb-4">
                                         <h3 class="h3-title">Profil<br><span>Pengguna</span></b></h3>
                                     </div>
@@ -83,7 +87,7 @@
                                     <?php echo "<a href='edit-profile.php?Id=$res_id' class='add-alt'>Edit Profil</a>"; ?> 
                                 </div>
 
-                                <div class="card">
+                                <div class="card mb-3">
                                     <div class="card-body">
                                         <p>Nama Lengkap: <b><?php echo $res_fullname ?></b></p>
                                         <p>Umur: <b><?php echo $res_age ?> tahun</b></p>
@@ -98,6 +102,47 @@
                                                 }
                                                 ?>
                                             </b>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <p class="p-halo">Informasi Rekening</p>
+                                    <a href="add-rekening.php" class="add-alt">Tambahkan</a>
+                                </div>
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <?php
+                                        $sql_rekening = "SELECT * FROM rekening_pemilik WHERE id_user = $id";
+                                        $result_rekening = $con->query($sql_rekening);
+
+                                        if ($result_rekening->num_rows > 0) {
+                                            while ($row_rekening = $result_rekening->fetch_assoc()) {
+                                                echo "<div>";
+                                                echo "<p>Jenis Rekening: <b>" . $row_rekening['jenis_rekening'] . "</b></p>";
+                                                if ($row_rekening['jenis_rekening'] == 'Bank') {
+                                                    echo "<p>Nama Bank: <b>" . $row_rekening['nama_bank'] . "</b></p>";
+                                                }
+                                                echo "<p>Nomor Rekening: <b>" . $row_rekening['nomor_rekening'] . "</b></p>";
+                                                echo "<p>Atas Nama: <b>" . $row_rekening['atas_nama'] . "</b></p>";
+                                                echo "<div style='display: flex; justify-content: flex-end;'>";
+                                                    echo "<form action='edit-rekening.php' method='POST' style='display: inline; margin-right: 10px;'>
+                                                            <input type='hidden' name='id_rekening' value='" . $row_rekening['id'] . "'>
+                                                            <button type='submit' class='add-alt'>Edit</button>
+                                                        </form>";
+
+                                                    echo "<form action='php/fungsi-hapus-rekening.php' method='POST' style='display: inline;'>
+                                                            <input type='hidden' name='id_rekening' value='" . $row_rekening['id'] . "'>
+                                                            <button type='submit' class='add-alt' onclick='return confirm(\"Apakah Anda yakin ingin menghapus rekening ini?\")'>Hapus</button>
+                                                        </form>";
+
+                                                echo "</div>";
+
+                                                echo "<hr>"; 
+                                            }
+                                        } else {
+                                            echo "<p>Belum ada rekening yang ditambahkan.</p>";
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>

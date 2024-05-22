@@ -69,7 +69,7 @@ CREATE TABLE rekening_pemilik (
     id_user INT NOT NULL,
     jenis_rekening ENUM('Bank', 'E-Wallet') NOT NULL,
     nama_bank VARCHAR(255), 
-    nomor_rekening VARCHAR(255) NOT NULL, 
+    nomor_rekening VARCHAR(12) NOT NULL, 
     atas_nama VARCHAR(255) NOT NULL,
     FOREIGN KEY (id_user) REFERENCES users(id) 
 );
