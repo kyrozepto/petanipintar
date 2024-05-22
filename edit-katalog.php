@@ -25,6 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id_alat = $_POST['id_alat'];
         $nama = $_POST['nama'];
         $deskripsi = $_POST['deskripsi'];
+        $spesifikasi = $_POST['spesifikasi'];
+        $lokasi = $_POST['lokasi'];
+        $pemilik = $_POST['pemilik'];
         $harga = $_POST['harga'];
 
         $sql = "SELECT * FROM alat WHERE id = $id_alat";
@@ -79,8 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $gambar = $alat['gambar']; 
         }
 
-        $stmt = $con->prepare("UPDATE alat SET nama = ?, deskripsi = ?, harga = ?, gambar = ? WHERE id = ?");
-        $stmt->bind_param("ssdsi", $nama, $deskripsi, $harga, $gambar, $id_alat);
+        $stmt = $con->prepare("UPDATE alat SET nama = ?, deskripsi = ?, spesifikasi = ?, lokasi = ?, pemilik = ?, harga = ?, gambar = ? WHERE id = ?");
+        $stmt->bind_param("ssdsi", $nama, $deskripsi, $spesifikasi, $lokasi, $pemilik, $harga, $gambar, $id_alat);
 
         if ($stmt->execute()) {
             echo "Data alat berhasil diperbarui.";
@@ -174,6 +177,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         <div class="field input">
                                             <label for="deskripsi">Deskripsi</label>
                                             <textarea id="deskripsi" name="deskripsi" autocomplete="off"><?php echo $alat['deskripsi']; ?></textarea>
+                                        </div>
+
+                                        <div class="field input">
+                                            <label for="spesifikasi">Spesifikasi Alat</label>
+                                            <textarea id="spesifikasi" name="spesifikasi" autocomplete="off"><?php echo $alat['spesifikasi']; ?></textarea>
+                                        </div>
+
+                                        <div class="field input">
+                                            <label for="lokasi">Lokasi Penyimanan</label>
+                                            <input type="text" id="lokasi" name="lokasi" value="<?php echo $alat['lokasi']; ?>" autocomplete="off" required>
+                                        </div>
+
+                                        <div class="field input">
+                                            <label for="pemilik">Pemilik</label>
+                                            <input type="text" id="pemilik" name="pemilik" value="<?php echo $alat['pemilik']; ?>" autocomplete="off" required>
                                         </div>
 
                                         <div class="field input">

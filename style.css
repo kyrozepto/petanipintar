@@ -292,6 +292,24 @@ ul {
     transition: 0.5s cubic-bezier(0.22, 0.78, 0.45, 1.02);
 }
 
+.h3-title {
+    font-size: 40px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    line-height: 46px;
+}
+
+.h3-title span {
+    color: #2b8109;
+    font-size: 52px;
+    font-family: 'Garamound', serif;
+    background-size: 100% 15px;
+    background-position: 0 90%;
+    background-repeat: no-repeat;
+    display: inline;
+    transition: 0.5s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+}
+
 .h4-title span {
     color: #2b8109;
     font-weight: 600;
@@ -598,6 +616,26 @@ p {
     line-height: 28px;
 }
 
+.p-detail b {
+    font-weight: 600;
+}
+
+/* riwayat pembayaran */
+
+.card-body {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.p-card {       
+    font-size: 16px;
+    line-height: 22px;
+    margin: 15px 0;
+}
+
+.p-card span {
+    font-weight: 600;
+}
 /* media */
 
 @media screen and (min-width: 992px) {
@@ -1011,11 +1049,6 @@ p {
         font-size: 60px;
     }
 
-    .h3-title {
-        font-size: 26px;
-        line-height: 36px;
-    }
-
     .katalog-box .h3-title {
         font-size: 24px;
         line-height: 28px;
@@ -1088,6 +1121,15 @@ p {
     .h2-title span {
         font-size: 46px;
         background-size: 100% 8px;
+    }
+
+    .h3-title {
+        font-size: 22px;
+        line-height: 28px;
+    }
+
+    .h3-title span {
+        font-size: 38px;
     }
 
     p {

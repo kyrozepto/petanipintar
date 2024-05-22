@@ -183,20 +183,21 @@
                                                 <img src="image/petanipintar_logo80.png" alt="Logo">
                                             </a>
                                         </div>
-                                        <h4 class="h4-title">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h4>
+                                        <h5>Butuh Bantuan?</h5>
+                                        <a>Hubungi kami untuk informasi lebih lanjut.</a>
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="footer-flex-box">
                                         <div class="footer-menu">
-                                            <h3 class="h3-title">Kontak</h3>
+                                            <h4 class="h4-title">Kontak</h4>
                                             <ul>
                                                 <li><a href="#">petanipintar@gmail.com</a></li>
                                                 <li><a href="#">+62 1234567890</a></li>
                                             </ul>
                                         </div>
                                         <div class="footer-menu food-nav-menu">
-                                            <h3 class="h3-title">Menu</h3>
+                                            <h4 class="h4-title">Menu</h4>
                                             <ul class="column-2">
                                                 <li><a href="#about">Tentang Program</a></li>
                                                 <li><a href="#sdk">Syarat dan Ketentuan</a></li>
@@ -205,7 +206,7 @@
                                             </ul>
                                         </div>
                                         <div class="footer-menu">
-                                            <h3 class="h3-title">Informasi Lain</h3>
+                                            <h4 class="h4-title">Informasi Lain</h4>
                                             <ul>
                                                 <li><a href="#">FAQ</a></li>
                                                 <li><a href="#">Kebijakan Privasi</a></li>

@@ -81,75 +81,6 @@
             </section>
             
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-                <!--static katalog 
-                <section class="default-banner" id="katalog">
-                <div class="sec-wp">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="sec-title text-center mb-5">
-                                    <p class="sec-sub-title mb-3">Katalog Peralatan</p>
-                                    <h2 class="h2-title">Pertanian Modern</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row katalog-slider">
-                            <div class="swiper-wrapper">
-                                <div class="col-lg-4 swiper-slide">
-                                    <div class="katalog-box text-center">
-                                        <div style="background-image: url(image/alat/1.jpg);"
-                                            class="katalog-img back-img">
-
-                                        </div>
-                                        <h3 class="h3-title">Kultivator</h3>
-                                        <div>
-                                            <ul>
-                                                <li>
-                                                    <p>Deskripsi dan harga.</p>
-                                                </li>
-                                                <li>
-                                                <button onclick="window.location.href=''" class="signin">Lihat Alat</button>
-                                                <button onclick="window.location.href=''" class="signup">Sewa</button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 swiper-slide">
-                                    <div class="katalog-box text-center">
-                                    <div style="background-image: url(image/alat/2.jpg);"
-                                            class="katalog-img back-img">
-
-                                        </div>
-                                        <h3 class="h3-title">Mesin Tanam Padi</h3>
-                                        <div>
-                                            <ul>
-                                                <li>
-                                                    <p>Deskripsi dan harga.</p>
-                                                </li>
-                                                <li>
-                                                <button onclick="window.location.href=''" class="signin">Lihat Alat</button>
-                                                <button onclick="window.location.href=''" class="signup">Sewa</button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-button-wp">
-                                <div class="swiper-button-prev swiper-button">
-                                    <i class="uil uil-angle-left"></i>
-                                </div>
-                                <div class="swiper-button-next swiper-button">
-                                    <i class="uil uil-angle-right"></i>
-                                </div>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
-
             <section class="default-banner" id="program">
                 <div class="sec-wp">
                     <div class="container">
@@ -196,8 +127,8 @@
                                                             <p class="p-katalog">Rp. ' . number_format($row["harga"], 0, ',', '.') . ' / musim</p>
                                                         </li>
                                                         <li>
-                                                            <button onclick="window.location.href=\'detail.php?id='.$row["id"].'\'" class="signin">Lihat Alat</button>
-                                                            <button onclick="window.location.href=\'sewa.php?id='.$row["id"].'\'" class="signup">Sewa</button>
+                                                            <button onclick="window.location.href=\'detail-sewa-alat.php?id='.$row["id"].'\'" class="signin">Lihat Detail</button>
+                                                            <button onclick="window.location.href=\'mulai-sewa-alat.php?id='.$row["id"].'\'" class="signup">Sewa</button>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -239,29 +170,30 @@
                                                 <img src="image/petanipintar_logo80.png" alt="Logo">
                                             </a>
                                         </div>
-                                        <h4 class="h4-title">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h4>
+                                        <h5>Butuh Bantuan?</h5>
+                                        <a>Hubungi kami untuk informasi lebih lanjut.</a>
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="footer-flex-box">
                                         <div class="footer-menu">
-                                            <h3 class="h3-title">Kontak</h3>
+                                            <h4 class="h4-title">Kontak</h4>
                                             <ul>
                                                 <li><a href="#">petanipintar@gmail.com</a></li>
                                                 <li><a href="#">+62 1234567890</a></li>
                                             </ul>
                                         </div>
                                         <div class="footer-menu food-nav-menu">
-                                            <h3 class="h3-title">Menu</h3>
+                                            <h4 class="h4-title">Menu</h4>
                                             <ul class="column-2">
                                                 <li><a href="#about">Tentang Program</a></li>
-                                                <li><a href="#sdk">Syarat dan Ketentuan</a></li>
                                                 <li><a href="#program">Peralatan Pertanian</a></li>
+                                                <li><a href="#sdk">Syarat dan Ketentuan</a></li>
                                                 <li><a href="#help">Pusat Bantuan</a></li>
                                             </ul>
                                         </div>
                                         <div class="footer-menu">
-                                            <h3 class="h3-title">Informasi Lain</h3>
+                                            <h4 class="h4-title">Informasi Lain</h4>
                                             <ul>
                                                 <li><a href="#">FAQ</a></li>
                                                 <li><a href="#">Kebijakan Privasi</a></li>

@@ -10,6 +10,9 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nama = $_POST['nama'];
         $deskripsi = $_POST['deskripsi'];
+        $spesifikasi = $_POST['spesifikasi'];
+        $lokasi = $_POST['lokasi'];
+        $pemilik = $_POST['pemilik'];
         $harga = $_POST['harga'];
     
         $target_dir = "image/alat/";
@@ -30,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $uploadOk = 0;
         }
 
-        if ($_FILES["gambar"]["size"] > 500000) { // Maksimum 500KB
+        if ($_FILES["gambar"]["size"] > 500000) { // Maks 500KB
             echo "Maaf, file terlalu besar.";
             $uploadOk = 0;
         }
@@ -42,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
         if ($uploadOk == 1) {
             if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file)) {
-                $sql = "INSERT INTO alat (nama, deskripsi, harga, gambar) VALUES ('$nama', '$deskripsi', '$harga', '".basename($_FILES["gambar"]["name"])."')";
+                $sql = "INSERT INTO alat (nama, deskripsi, harga, gambar) VALUES ('$nama', '$deskripsi', '$spesifikasi', '$lokasi', '$pemilik', '$harga', '".basename($_FILES["gambar"]["name"])."')";
     
                 if ($con->query($sql) === TRUE) {
                     echo "Data alat berhasil ditambahkan.";
@@ -116,6 +119,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <textarea id="deskripsi" name="deskripsi" autocomplete="off"></textarea>
                                 </div>
 
+                                <div class="field input">
+                                    <label for="spesifikasi">Spesifikasi Alat</label>
+                                    <textarea id="spesifikasi" name="spesifikasi" autocomplete="off"></textarea>
+                                </div>
+
+                                <div class="field input">
+                                    <label for="lokasi">Lokasi Penyimpanan</label>
+                                    <input type="text" id="lokasi" name="lokasi" autocomplete="off" required>
+                                </div>
+
+                                <div class="field input">
+                                    <label for="pemilik">Pemilik</label>
+                                    <input type="text" id="pemilik" name="pemilik" autocomplete="off" required>
+                                </div>
+                                
                                 <div class="field input">
                                     <label for="harga">Harga</label>
                                     <input type="number" id="harga" name="harga" autocomplete="off" required>
