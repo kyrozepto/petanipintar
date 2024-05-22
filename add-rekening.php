@@ -21,8 +21,31 @@ if (!isset($_SESSION['valid'])) {
 </head>
 
 <body class="body-fixed">
-    <header class="site-header">
-       </header>
+        <header class="site-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header-logo">
+                        <a href="menu.php">
+                            <img src="image/logo_petanipintar.png" width="40" height="40" alt="Logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="main-navigation">
+                        <button class="menu-toggle"><span></span><span></span></button>
+                        <nav class="header-menu">
+                            <ul class="menu">
+                                <li>
+                                    <button onclick="window.location.href='profile.php'" class="signup">Kembali</button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <div id="viewport">
         <div id="js-scroll-content">
@@ -45,7 +68,7 @@ if (!isset($_SESSION['valid'])) {
 
                                     if ($insert_query) {
                                         echo "<div class='message'>
-                                                <h5><b>Rekening berhasil ditambahkan!</b></h5>
+                                                <h5>Rekening berhasil ditambahkan!</h5>
                                               </div> <br>";
                                         echo "<a href='profile.php'><center><button class='signin'>Kembali ke Profil</button></center>";
                                     } 
