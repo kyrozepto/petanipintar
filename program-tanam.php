@@ -19,6 +19,41 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <style>
+        #map { 
+            height: 550px;
+            border-radius: 15px;
+        }
+        .katalog-box-popup {
+            height:300px; 
+        }
+
+        .katalog-box-popup .katalog-tanam-img {
+            max-height: 150px;
+        }
+        .leaflet-popup-close-button {
+            display: none !important;
+        }
+        .p-map {
+            line-height: 21px;
+            font-size: 15px;
+        }
+        .h3-map {
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Poppins';
+        }
+        .signin {
+            font-family: 'Poppins';
+        }
+        
+        @media (max-width: 575px) {
+            #map {
+                height: 300px;
+            }
+        }
+    </style>
 </head>
 
 <body class="body-fixed">
@@ -166,6 +201,35 @@
                 </div>
             </section>
 
+            <section class="default-banner" id="peta">
+                <div class="sec-wp">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="sec-title mb-5 text-center">
+                                    <h3 class="h3-title mb-1"><span>Temukan Peluang Bertani</span></h3>
+                                    <h3 class="h3-title">di Wilayah Anda</h3>
+                                </div>
+                                <div id="map"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="banner-text mt-3">
+                                    <p class="p-map">
+                                    Dapatkan informasi tentang potensi pertanian di daerah Anda dan manfaatkan program tanam untuk meningkatkan hasil panen dan
+                                    memilih tanaman yang paling cocok di wilayah Anda.
+                                    </p> 
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
 
         </div>
         <footer class="site-footer" id="help">
@@ -235,6 +299,67 @@
     <script src="js/ScrollTrigger.min.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="main.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([-7.0, 110.0], 7); 
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        function tampilkanProgramTanam() {
+        $.getJSON("php/api.php", function(data) {
+            data.forEach(function(program) {
+                var lat = parseFloat(program.latitude);
+                var lng = parseFloat(program.longitude);
+
+                if (!isNaN(lat) && !isNaN(lng)) {
+                    var hasilRupiah = 'Rp. ' + (program.hasil / 1000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + '.000';
+
+                    var programBoxContent = 
+                        '<div class="katalog-box-popup">'  +
+                            '<div style="background-image: url(image/tanaman/' + program.gambar + ');" class="katalog-tanam-img back-img"></div>' +
+                            '<h3 class="h3-map">' + program.nama + '</h3>' +
+                            '<div>' +
+                                '<div>' +
+                                    '<p class="p-map m-0">Perkiraan ' + program.waktu + ' bulan</p>' + 
+                                    '<p class="p-map m-0">' + program.daerah + '</p>' +
+                                '</div>' +
+                                    '<p class="p-map m-2">' + hasilRupiah + ' / ton</p>' + 
+                            '</div>' +
+                            '<div class="text-center">' +
+                                '<ul>' +
+                                    '<li>' +
+                                        '<button onclick="window.location.href=\'detail-program-tanam.php?id=' + program.id + '\'" class="signin">Lihat Detail</button>' +
+                                    '</li>' +
+                                '</ul>' +
+                            '</div>' +
+                        '</div>';
+
+                        var iconUrl = 'image/icon/default.png';
+                        if (program.nama === 'Padi') {
+                            iconUrl = 'image/icon/padi.png';
+                        } else if (program.nama === 'Jagung') {
+                            iconUrl = 'image/icon/jagung.png';
+                        }
+
+                        var programIcon = L.icon({
+                            iconUrl: iconUrl,
+                            iconSize: [40, 40],
+                            iconAnchor: [15, 40],
+                            popupAnchor: [0, -40]
+                        });
+
+                        var marker = L.marker([lat, lng], {icon: programIcon}).addTo(map);
+                        marker.bindPopup(programBoxContent); 
+                    }
+                });
+            });
+        }
+
+
+        tampilkanProgramTanam();
+    </script>
 </body>
 
 </html>

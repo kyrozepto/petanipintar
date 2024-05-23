@@ -54,21 +54,28 @@
                             <div class="box form-box">
                             <?php 
                             if(isset($_POST['submit'])){
-                                $email = $_POST['email'];
+                                $email = mysqli_real_escape_string($con, filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
                                 $username = $_POST['username'];
                                 $fullname = $_POST['fullname'];
                                 $age = $_POST['age'];
 
                                 $id = $_SESSION['id'];
-
-                                $edit_query = mysqli_query($con,"UPDATE users SET Username='$username', Email='$email', Fullname='$fullname', Age='$age' WHERE Id=$id ") or die("error occurred");
-
-                                if($edit_query){
+                                
+                                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                                     echo "<div class='message'>
-                                        <h5><b>Profil Diperbarui!</b></h5>
-                                    </div> <br>";
-                                    echo "<a href='profile.php'><center><button class='signin'>Kembali ke Profil</button></center>";
-                    
+                                            <p>Format email tidak valid!</p>
+                                        </div> <br>";
+                                    echo "<a href='javascript:self.history.back()'><button class='btn'>Ulangi</button>";
+                                } else {
+                                    $edit_query = mysqli_query($con,"UPDATE users SET Username='$username', Email='$email', Fullname='$fullname', Age='$age' WHERE Id=$id ") or die("error occurred");
+
+                                    if($edit_query){
+                                        echo "<div class='message'>
+                                            <h5><b>Profil Diperbarui!</b></h5>
+                                        </div> <br>";
+                                        echo "<a href='profile.php'><center><button class='signin'>Kembali ke Profil</button></center>";
+                                        
+                                    }
                                 }
                             }else{
 
