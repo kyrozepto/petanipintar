@@ -51,43 +51,55 @@
                                 
                                 include("php/config.php");
                                 if(isset($_POST['submit'])){
-                                    $email = $_POST['email'];
-                                    $password = $_POST['password'];
-                                    $username = $_POST['username'];
-                                    $fullname = $_POST['fullname'];
-                                    $age = $_POST['age'];
+                                    $email = mysqli_real_escape_string($con, filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
+                                    $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
+                                    $username = mysqli_real_escape_string($con, htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8'));
+                                    $fullname = mysqli_real_escape_string($con, htmlspecialchars($_POST['fullname'], ENT_QUOTES, 'UTF-8'));
+                                    $age = mysqli_real_escape_string($con, htmlspecialchars($_POST['age'], ENT_QUOTES, 'UTF-8'));
 
-                                //verifying the unique email
+                                    // Validasi format email
+                                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                        echo "<div class='message'>
+                                                <p>Format email tidak valid!</p>
+                                            </div> <br>";
+                                        echo "<a href='javascript:self.history.back()'><button class='btn'>Kembali</button>";
+                                    } else {
+                                        // Verifikasi email unik
+                                        $verify_query = mysqli_query($con, "SELECT email FROM users WHERE email='$email'");
 
-                                $verify_query = mysqli_query($con,"SELECT email FROM users WHERE email='$email'");
+                                        if(mysqli_num_rows($verify_query) != 0){
+                                            echo "<div class='message'>
+                                                    <p>Email ini sudah digunakan, coba yang lain!</p>
+                                                </div> <br>";
+                                            echo "<a href='javascript:self.history.back()'><button class='btn'>Kembali</button>";
+                                        } else {
+                                            // Hash password sebelum menyimpan
+                                            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-                                if(mysqli_num_rows($verify_query) !=0 ){
-                                    echo "<div class='message'>
-                                            <p>This email is used, Try another One Please!</p>
-                                        </div> <br>";
-                                    echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button>";
-                                }
-                                else{
+                                            $stmt = $con->prepare("INSERT INTO users (email, password, username, fullname, age) VALUES (?, ?, ?, ?, ?)");
+                                            $stmt->bind_param("ssssi", $email, $hashed_password, $username, $fullname, $age);
 
-                                    mysqli_query($con,"INSERT INTO users(email,password,username,fullname,age) VALUES('$email','$password','$username','$fullname','$age')") or die("Error Occured");
-
-                                    echo "<div class='message'>
-                                            <p>Registration successfully!</p>
-                                        </div> <br>";
-                                    echo "<a href='login.php'><button class='btn'>Login Now</button>";
-                                
-
-                                }
-
-                                }else{
-                                
+                                            if ($stmt->execute()) {
+                                                echo "<div class='message'>
+                                                        <p>Registrasi berhasil!</p>
+                                                    </div> <br>";
+                                                echo "<a href='login.php'><button class='btn'>Login Sekarang</button>";
+                                            } else {
+                                                echo "<div class='message'>
+                                                        <p>Error terjadi, coba lagi!</p>
+                                                    </div> <br>";
+                                                echo "<a href='javascript:self.history.back()'><button class='btn'>Kembali</button>";
+                                            }
+                                        }
+                                    }
+                                } else {
                                 ?>
 
                                     <header>Sign Up</header>
                                     <form action="" method="post">
                                         <div class="field input">
                                             <label for="email">Email</label>
-                                            <input type="text" name="email" id="email" autocomplete="off" required>
+                                            <input type="email" name="email" id="email" autocomplete="off" required>
                                         </div>
                                         
                                         <div class="field input">
