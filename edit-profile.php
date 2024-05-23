@@ -58,26 +58,61 @@
                                 $username = $_POST['username'];
                                 $fullname = $_POST['fullname'];
                                 $age = $_POST['age'];
-
+                                $alamat = $_POST['alamat'];
                                 $id = $_SESSION['id'];
-                                
+
                                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                                     echo "<div class='message'>
                                             <p>Format email tidak valid!</p>
                                         </div> <br>";
                                     echo "<a href='javascript:self.history.back()'><button class='btn'>Ulangi</button>";
                                 } else {
-                                    $edit_query = mysqli_query($con,"UPDATE users SET Username='$username', Email='$email', Fullname='$fullname', Age='$age' WHERE Id=$id ") or die("error occurred");
 
-                                    if($edit_query){
+                                    $options = array(
+                                        'http' => array(
+                                            'method' => "GET",
+                                            'header' => "User-Agent: PetaniPintar\r\n" 
+                                        )
+                                    );
+
+                                    $context = stream_context_create($options);
+                                    $geocode = file_get_contents('https://nominatim.openstreetmap.org/search?format=json&q=' . urlencode($alamat), false, $context);
+
+                                    $output = json_decode($geocode); 
+
+                                    if (isset($output[0]->lat) && isset($output[0]->lon)) {
+                                        $latitude = $output[0]->lat;
+                                        $longitude = $output[0]->lon;
+
+                                        $edit_query = mysqli_query($con, "UPDATE users SET 
+                                                                    Username='$username', 
+                                                                    Email='$email', 
+                                                                    Fullname='$fullname', 
+                                                                    Age='$age', 
+                                                                    Alamat='$alamat', 
+                                                                    latitude='$latitude', 
+                                                                    longitude='$longitude' 
+                                                                    WHERE Id=$id ") or die("error occurred");
+
+                                        if ($edit_query) {
+                                            echo "<div class='message'>
+                                                    <h5><b>Profil Diperbarui!</b></h5>
+                                                  </div> <br>";
+                                            echo "<a href='profile.php'><center><button class='signin'>Kembali ke Profil</button></center>";
+                                        } else {
+                                            echo "<div class='message'>
+                                                    <p>Terjadi kesalahan saat mengupdate profil. Silakan coba lagi.</p>
+                                                  </div> <br>";
+                                            echo "<a href='javascript:self.history.back()'><button class='btn'>Ulangi</button>";
+                                        }
+                                    } else {
                                         echo "<div class='message'>
-                                            <h5><b>Profil Diperbarui!</b></h5>
-                                        </div> <br>";
-                                        echo "<a href='profile.php'><center><button class='signin'>Kembali ke Profil</button></center>";
-                                        
+                                                <p>Alamat tidak valid. Silakan coba lagi!</p>
+                                              </div> <br>";
+                                        echo "<a href='javascript:self.history.back()'><button class='btn'>Ulangi</button>";
                                     }
                                 }
-                            }else{
+                            } else { 
 
                                 $id = $_SESSION['id'];
                                 $query = mysqli_query($con,"SELECT*FROM users WHERE id=$id ");
@@ -87,6 +122,7 @@
                                     $res_username = $result['username'];
                                     $res_fullname = $result['fullname'];
                                     $res_age = $result['age'];
+                                    $res_alamat = $result['alamat'];
                                 }
 
                             ?>
@@ -110,6 +146,11 @@
                                 <div class="field input">
                                     <label for="age">Umur</label>
                                     <input type="number" name="age" id="age" value="<?php echo $res_age; ?>" autocomplete="off" required>
+                                </div>
+
+                                <div class="field input">
+                                    <label for="alamat">Alamat</label>
+                                    <input type="text" name="alamat" id="alamat" value="<?php echo $res_alamat; ?>" autocomplete="off" required>
                                 </div>
                                 
                                 <div class="field">

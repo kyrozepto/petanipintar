@@ -88,10 +88,14 @@
                                             echo '<div class="card mb-4">';
                                             echo '<div class="card-body">';
                                             echo '<h5 class="card-title">';
-                                            echo '<span>' . $row_alat['nama'] . '</span>'; 
+                                            echo '<span>' . $row_alat['nama'] . '</span>';
+                                            
                                             if ($row_sewa['status_pembayaran'] == 'Belum Dibayar' || $row_sewa['status_pembayaran'] == 'Menunggu Konfirmasi') {
                                                 echo '<a href="php/fungsi-batal-sewa.php?id=' . $id_sewa . '" class="add-alt" onclick="return confirm(\'Apakah Anda yakin ingin membatalkan pemesanan ini?\')">Batal</a>';
+                                            } else {
+                                                echo '<a href="php/fungsi-hapus-riwayat.php?id=' . $id_sewa . '" class="add-alt" onclick="return confirm(\'Apakah Anda yakin ingin menghapus riwayat ini?\')">Hapus</a>'; 
                                             }
+                                            
                                             echo '</h5>';
                                             echo '<hr>';
                                             echo '<p class="p-card">Tanggal Pemesanan: <span>' . $row_sewa['tanggal_sewa'] . '</span></p>';

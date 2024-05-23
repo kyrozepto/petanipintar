@@ -6,10 +6,32 @@
         header("Location: index.php");
        }
 
+    $userId = $_SESSION['id'];
+    $userSql = "SELECT latitude, longitude FROM users WHERE id = '$userId'";
+    $userResult = $con->query($userSql);
+    $userData = $userResult->fetch_assoc();
+
+    $userLatitude = $userData['latitude'];
+    $userLongitude = $userData['longitude'];
+    $adaProgramDekat = false;
+    
+    $sql = "SELECT *, 
+        (6371 * 2 * ASIN(SQRT(POWER(SIN((latitude * PI() / 180) - ($userLatitude * PI() / 180)) / 2, 2) + COS($userLatitude * PI() / 180) * 
+        COS(latitude * PI() / 180) * POWER(SIN((longitude * PI() / 180) - ($userLongitude * PI() / 180)) / 2, 2)))) AS distance
+        FROM program_tanam
+        HAVING distance < 50
+        ORDER BY distance ASC
+        LIMIT 5"; 
+
+    $result = $con->query($sql);
+    
+    if ($result->num_rows > 0) {
+        $adaProgramDekat = true; 
+    }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -37,7 +59,7 @@
         }
         .p-map {
             line-height: 21px;
-            font-size: 15px;
+            font-size: 16px;
         }
         .h3-map {
             font-size: 18px;
@@ -50,7 +72,7 @@
         
         @media (max-width: 575px) {
             #map {
-                height: 300px;
+                height: 350px;
             }
         }
     </style>
@@ -116,32 +138,112 @@
             </section>
             
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-            <section class="default-banner" id="program">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sec-title text-center mb-5">
+                        <h2 class="h2-title mb-0">Program Tanam</h2>
+                        <h2 class="h2-title"><span>PetaniPintar</span></h2>
+                    </div>
+                    <?php 
+                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                        echo '<div class="text-center mb-5">
+                                <a href="edit-program-tanam.php" class="add">
+                                    Edit Program
+                                </a>
+                                <a href="add-program-tanam.php" class="add">
+                                    + Tambah
+                                </a>
+                            </div>';
+                    }
+                    ?>
+                </div>
+            </div>
+            <?php
+            // Tampilkan section rekomendasi hanya jika $adaProgramDekat bernilai true
+            if ($adaProgramDekat) { 
+            ?>
+            <section class="mb-4" id="program">
                 <div class="sec-wp">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="sec-title text-center mb-5">
-                                    <h2 class="h2-title mb-0">Program Tanam</h2>
-                                    <h2 class="h2-title"><span>PetaniPintar</span></h2>
-                                </div>
-                                <?php 
-                                if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
-                                    echo '<div class="text-center mb-5">
-                                            <a href="edit-program-tanam.php" class="add">
-                                                Edit Program
-                                            </a>
-                                            <a href="add-program-tanam.php" class="add">
-                                                + Tambah Program
-                                            </a>
-                                        </div>';
-                                }
-                                ?>
-                            </div>
-                        </div>
+                        <div class="sec-title">
+                            <h5 class="mb-4">Rekomendasi program tanam disekitar Anda</h5>
+                        </div>      
                         <div class="row katalog-tanam-slider">
                             <div class="swiper-wrapper">
+                                <?php
 
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $jarak = $row['distance'];
+                                        $jarakBulat = number_format($jarak, 1, '.', '');
+
+                                        echo '<div class="col-lg-3 swiper-slide">
+                                                <div class="katalog-box">
+                                                <p class="p-katalog mb-1" style="text-align: right;">' . $jarakBulat . ' km</p>
+                                                    <div style="background-image: url(image/tanaman/' . $row["gambar"] . ');" class="katalog-tanam-img back-img"></div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <h3 onclick="window.location.href=\'detail-program-tanam.php?id=' . $row["id"] . '\'" class="h3-title">' . $row["nama"] . '</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <p class="p-katalog">Perkiraan<br>' . $row["waktu"] . ' bulan</p> 
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <p class="p-katalog">' . $row["daerah"] . '</p>
+                                                        </div>
+                                                        <p class="p-katalog">Rp. ' . number_format($row["hasil"], 0, ',', '.') . ' / ton</p>
+                                                    </div>
+                                                    <div>
+                                                        <ul>
+                                                            <li>
+                                                                <button onclick="window.location.href=\'detail-program-tanam.php?id=' . $row["id"] . '\'" class="signin">Lihat Detail</button>';
+
+                                        $sql_user_program = "SELECT * FROM user_program_tanam WHERE id_user = " . $_SESSION['id'] . " AND id_program_tanam = " . $row["id"];
+                                        $result_user_program = $con->query($sql_user_program);
+                                        if ($result_user_program->num_rows > 0) {
+                                            echo '<button onclick="window.location.href=\'kirim-hasil-panen.php.php?id=' . $row["id"] . '\'" class="signup">Kirim</button>';
+                                        } else {
+                                            echo '<button onclick="window.location.href=\'mulai-program-tanam.php?id=' . $row["id"] . '\'" class="signup">Mulai</button>';
+                                        }
+
+                                        echo                    '</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>';
+                                    }
+                                } else {
+                                    echo "Tidak ada program tanam yang tersedia saat ini.";
+                                }
+                                ?>
+                                </div>
+                                <div class="swiper-button-wp">
+                                    <div class="swiper-button-prev swiper-button">
+                                        <i class="uil uil-angle-left"></i>
+                                    </div>
+                                    <div class="swiper-button-next swiper-button">
+                                        <i class="uil uil-angle-right"></i>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <?php
+                } 
+                ?>
+
+                <section class="default-banner" id="program">
+                <div class="sec-wp">
+                    <div class="container">
+                        <div class="sec-title">
+                            <h5 class="mb-4">Semua program tanam</h5>
+                        </div>      
+                        <div class="row katalog-tanam-slider">
+                            <div class="swiper-wrapper">
                             <?php
                             include("php/config.php");
                             $sql = "SELECT * FROM program_tanam";
@@ -206,24 +308,24 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="sec-title mb-5 text-center">
+                                <div class="sec-title mb-4 text-center">
                                     <h3 class="h3-title mb-1"><span>Temukan Peluang Bertani</span></h3>
                                     <h3 class="h3-title">di Wilayah Anda</h3>
                                 </div>
                                 <div id="map"></div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-3">
+                            <div class="col-lg-2">
                             </div>
-                            <div class="col-lg-6">
-                                <div class="banner-text mt-3">
-                                    <p class="p-map">
+                            <div class="col-lg-8">
+                                <div class="banner-text mt-4">
+                                    <p>
                                     Dapatkan informasi tentang potensi pertanian di daerah Anda dan manfaatkan program tanam untuk meningkatkan hasil panen dan
                                     memilih tanaman yang paling cocok di wilayah Anda.
                                     </p> 
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-2">
                             </div>
                         </div>
                     </div>
@@ -262,7 +364,7 @@
                                             <ul class="column-2">
                                                 <li><a href="#about">Tentang Program</a></li>
                                                 <li><a href="#program">Program Tanam</a></li>
-                                                <li><a href="#sdk">Syarat dan Ketentuan</a></li>
+                                                <li><a href="#peta">Peta Rekomendasi</a></li>
                                                 <li><a href="#help">Pusat Bantuan</a></li>
                                             </ul>
                                         </div>

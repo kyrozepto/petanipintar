@@ -15,6 +15,7 @@
        $res_fullname = $result['fullname'];
        $res_age = $result['age'];
        $res_id = $result['id'];
+       $res_alamat = $result['alamat'];
    }
 ?>
 
@@ -91,6 +92,7 @@
                                     <div class="card-body">
                                         <p>Nama Lengkap: <b><?php echo $res_fullname ?></b></p>
                                         <p>Umur: <b><?php echo $res_age ?> tahun</b></p>
+                                        <p>Alamat: <b><?php echo $res_alamat ?></b></p>
                                         <p>Email anda adalah <b><?php echo $res_email ?></b></p>
                                         <p>Status Akun
                                             <b>

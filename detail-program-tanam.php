@@ -132,7 +132,7 @@ function hitungProgressPanen($id_program_tanam, $id_user) {
                                                     </div>
                                                     <div class="col-lg-6">
                                                             <p class="p-detail">Daerah Permintaan:<br><b><?php echo $row['daerah']; ?></b></p>
-                                                            <p class="p-detail">Lokasi Pabrik:<br><b><?php echo $row['koordinat']; ?></b></p>
+                                                            <p class="p-detail">Lokasi Pabrik:<br><b><?php echo $row['latitude'] . ', ' . $row['longitude']; ?></b></p>
                                                     </div>
                                                     <div class="col-lg-12">
                                                             <p class="p-detail">Perkiraan Hasil Panen:<br><b>Rp. <?php echo number_format($row['hasil'], 0, ',', '.'); ?> / ton</b></p>
