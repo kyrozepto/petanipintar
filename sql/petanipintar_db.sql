@@ -8,9 +8,9 @@ CREATE TABLE users(
     role ENUM('admin', 'user') DEFAULT 'user'
 );
 
-INSERT INTO users (id, email, password, username, fullname, age, role) VALUES
-    (1, 'admin@gmail.com', 'admin', 'admin', 'Admin', 20, 'admin'),
-    (2, 'user@gmail.com', 'user', 'user', 'User', 20, 'user');
+INSERT  INTO users (id, email, password, username, fullname, age, role) VALUES 
+    (1,'admin@gmail.com','$2y$10$MENYM/7BSk7YZDR86d1jNO6a2jMps/r6piQOpldogxOPhQdE3Cg/i','admin','Admin',25,'admin'),
+    (2,'user@gmail.com','$2y$10$ani03GQ7R9DhtPUJ2KgrZesLT6Js5cmygFWF5k5z3cW/cYc91Qi6K','user','User',21,'user');
 
 CREATE TABLE program_tanam (
     id INT AUTO_INCREMENT PRIMARY KEY,
