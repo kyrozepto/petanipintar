@@ -3,29 +3,39 @@ session_start();
 include("php/config.php");
 
 if(isset($_POST['submit'])){
-    $email = mysqli_real_escape_string($con,$_POST['email']);
-    $password = mysqli_real_escape_string($con,$_POST['password']);
+    $email = mysqli_real_escape_string($con, filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
+    $password = mysqli_real_escape_string($con, htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8'));
 
-    $result = mysqli_query($con,"SELECT * FROM users WHERE email='$email' AND password='$password' ") or die("Select Error");
-    $row = mysqli_fetch_assoc($result);
-
-    if(is_array($row) && !empty($row)){
-        $_SESSION['valid'] = $row['email'];
-        $_SESSION['username'] = $row['username'];
-        $_SESSION['fullname'] = $row['fullname'];
-        $_SESSION['age'] = $row['age'];
-        $_SESSION['id'] = $row['id'];
-
-        if ($row['role'] == 'admin') {
-            $_SESSION['admin'] = true;
-        } else {
-            $_SESSION['admin'] = false; 
-        }
-
-        header("Location: menu.php");
-        exit();
+    // Validasi format agar wajib email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error_message = "Format email tidak valid!";
     } else {
-        $error_message = "Wrong Username or Password";
+        // Menggunakan prepared statements untuk mencegah SQL injection
+        $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        // Verifikasi password
+        if ($row && password_verify($password, $row['password'])) {
+            $_SESSION['valid'] = $row['email'];
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['fullname'] = $row['fullname'];
+            $_SESSION['age'] = $row['age'];
+            $_SESSION['id'] = $row['id'];
+
+            if ($row['role'] == 'admin') {
+                $_SESSION['admin'] = true;
+            } else {
+                $_SESSION['admin'] = false; 
+            }
+
+            header("Location: menu.php");
+            exit();
+        } else {
+            $error_message = "Wrong Username or Password";
+        }
     }
 }
 ?>
@@ -76,7 +86,7 @@ if(isset($_POST['submit'])){
                                 <form action="" method="post">
                                     <div class="field input">
                                         <label for="email">Email</label>
-                                        <input type="text" name="email" id="email" autocomplete="off" required>
+                                        <input type="email" name="email" id="email" autocomplete="off" required>
                                     </div>
 
                                     <div class="field input">
@@ -90,6 +100,11 @@ if(isset($_POST['submit'])){
                                     <div class="links">
                                         Belum memiliki akun? <a href="register.php">Daftar Sekarang</a>
                                     </div>
+                                    <?php 
+                                    if(isset($error_message)){
+                                        echo "<div class='error-message'>$error_message</div>";
+                                    }
+                                    ?>
                                 </form>
                             </div>
                         </div>
