@@ -7,12 +7,13 @@
        }
 
     $userId = $_SESSION['id'];
-    $userSql = "SELECT latitude, longitude FROM users WHERE id = '$userId'";
+    $userSql = "SELECT latitude, longitude, alamat FROM users WHERE id = '$userId'";
     $userResult = $con->query($userSql);
     $userData = $userResult->fetch_assoc();
 
     $userLatitude = $userData['latitude'];
     $userLongitude = $userData['longitude'];
+    $userAlamat = $userData['alamat'];
     $adaProgramDekat = false;
     
     $sql = "SELECT *, 
@@ -159,7 +160,6 @@
                 </div>
             </div>
             <?php
-            // Tampilkan section rekomendasi hanya jika $adaProgramDekat bernilai true
             if ($adaProgramDekat) { 
             ?>
             <section class="mb-4" id="program">
@@ -403,62 +403,77 @@
     <script src="main.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <script>
-        var map = L.map('map').setView([-7.0, 110.0], 7); 
+        var map = L.map('map');
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        function tampilkanProgramTanam() {
-        $.getJSON("php/api.php", function(data) {
-            data.forEach(function(program) {
-                var lat = parseFloat(program.latitude);
-                var lng = parseFloat(program.longitude);
+        var userLatitude = parseFloat(<?php echo $userLatitude; ?>);
+        var userLongitude = parseFloat(<?php echo $userLongitude; ?>);
 
-                if (!isNaN(lat) && !isNaN(lng)) {
-                    var hasilRupiah = 'Rp. ' + (program.hasil / 1000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + '.000';
+        if (!isNaN(userLatitude) && !isNaN(userLongitude)) {
+            map.setView([userLatitude, userLongitude], 9);
 
-                    var programBoxContent = 
-                        '<div class="katalog-box-popup">'  +
-                            '<div style="background-image: url(image/tanaman/' + program.gambar + ');" class="katalog-tanam-img back-img"></div>' +
-                            '<h3 class="h3-map">' + program.nama + '</h3>' +
-                            '<div>' +
-                                '<div>' +
-                                    '<p class="p-map m-0">Perkiraan ' + program.waktu + ' bulan</p>' + 
-                                    '<p class="p-map m-0">' + program.daerah + '</p>' +
-                                '</div>' +
-                                    '<p class="p-map m-2">' + hasilRupiah + ' / ton</p>' + 
-                            '</div>' +
-                            '<div class="text-center">' +
-                                '<ul>' +
-                                    '<li>' +
-                                        '<button onclick="window.location.href=\'detail-program-tanam.php?id=' + program.id + '\'" class="signin">Lihat Detail</button>' +
-                                    '</li>' +
-                                '</ul>' +
-                            '</div>' +
-                        '</div>';
-
-                        var iconUrl = 'image/icon/default.png';
-                        if (program.nama === 'Padi') {
-                            iconUrl = 'image/icon/padi.png';
-                        } else if (program.nama === 'Jagung') {
-                            iconUrl = 'image/icon/jagung.png';
-                        }
-
-                        var programIcon = L.icon({
-                            iconUrl: iconUrl,
-                            iconSize: [40, 40],
-                            iconAnchor: [15, 40],
-                            popupAnchor: [0, -40]
-                        });
-
-                        var marker = L.marker([lat, lng], {icon: programIcon}).addTo(map);
-                        marker.bindPopup(programBoxContent); 
-                    }
-                });
-            });
+            var userMarker = L.marker([userLatitude, userLongitude]).addTo(map);
+            userMarker.bindPopup('<p class="p-map m-0"><b>Lokasi Anda</b><br><?php echo $userAlamat; ?>').openPopup();
+            userMarker.setZIndexOffset(1000);
+        } else {
+            map.setView([-7.0, 110.0], 7); 
         }
 
+        function tampilkanProgramTanam() {
+            $.getJSON("php/api.php", function(data) {
+                data.forEach(function(program) {
+                    var lat = parseFloat(program.latitude);
+                    var lng = parseFloat(program.longitude);
+
+                    if (!isNaN(lat) && !isNaN(lng)) {
+                        var hasilRupiah = 'Rp. ' + (program.hasil / 1000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + '.000';
+
+                        var programBoxContent = 
+                            '<div class="katalog-box-popup">'  +
+                                '<div style="background-image: url(image/tanaman/' + program.gambar + ');" class="katalog-tanam-img back-img"></div>' +
+                                '<h3 class="h3-map">' + program.nama + '</h3>' +
+                                '<div>' +
+                                    '<div>' +
+                                        '<p class="p-map m-0">Perkiraan ' + program.waktu + ' bulan</p>' + 
+                                        '<p class="p-map m-0">' + program.daerah + '</p>' +
+                                    '</div>' +
+                                        '<p class="p-map m-2">' + hasilRupiah + ' / ton</p>' + 
+                                '</div>' +
+                                '<div class="text-center">' +
+                                    '<ul>' +
+                                        '<li>' +
+                                            '<button onclick="window.location.href=\'detail-program-tanam.php?id=' + program.id + '\'" class="signin">Lihat Detail</button>' +
+                                        '</li>' +
+                                    '</ul>' +
+                                '</div>' +
+                            '</div>';
+
+                            var iconUrl = 'image/icon/default.png';
+                            if (program.nama === 'Padi') {
+                                iconUrl = 'image/icon/padi.png';
+                            } else if (program.nama === 'Jagung') {
+                                iconUrl = 'image/icon/jagung.png';
+                            }
+
+                            var programIcon = L.icon({
+                                iconUrl: iconUrl,
+                                iconSize: [40, 40],
+                                iconAnchor: [15, 40],
+                                popupAnchor: [0, -40],
+                                shadowUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png', 
+                                shadowSize: [40, 40],
+                                shadowAnchor: [15, 40]
+                            });
+
+                            var marker = L.marker([lat, lng], {icon: programIcon}).addTo(map);
+                            marker.bindPopup(programBoxContent); 
+                        }
+                    });
+                });
+            }
 
         tampilkanProgramTanam();
     </script>
