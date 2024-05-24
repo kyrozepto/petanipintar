@@ -11,6 +11,7 @@ CREATE TABLE users(
     role ENUM('admin', 'user') DEFAULT 'user'
 );
 
+/* password == username */
 INSERT INTO users (id, email, password, username, fullname, age, alamat, latitude, longitude, role) VALUES
     (1, 'admin@gmail.com', '$2y$10$HxxVy9VLwVPMz8FYTDgi/.a0/jV4HZLnoIiB5G8riHPA8FHVB1FKq', 'admin', 'Admin', 20, 'Pasirkareumbi', '-6.579202', '107.753517', 'admin'),
     (2, 'company@gmail.com', '$2y$10$MgfioOqXtADRIzWzCnYeCOOYHlPQuFXr7id0Qp941hnPWRmtwa4xC', 'company', 'CV. Mekar Tani', 20, '', '', '', 'user')
