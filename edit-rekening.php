@@ -36,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_rekening'])) {
 
         if ($con->query($update_query) === TRUE) {
             echo "<script>
-                    alert('Rekening berhasil diperbarui!');
                     window.location.href = 'profile.php';
                   </script>";
         } else {

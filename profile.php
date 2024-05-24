@@ -124,6 +124,9 @@
                                                 if ($row_rekening['jenis_rekening'] == 'Bank') {
                                                     echo "<p>Nama Bank: <b>" . $row_rekening['nama_bank'] . "</b></p>";
                                                 }
+                                                if ($row_rekening['jenis_rekening'] == 'E-Wallet') {
+                                                    echo "<p>Nama E-Wallet: <b>" . $row_rekening['nama_bank'] . "</b></p>";
+                                                }
                                                 echo "<p>Nomor Rekening: <b>" . $row_rekening['nomor_rekening'] . "</b></p>";
                                                 echo "<p>Atas Nama: <b>" . $row_rekening['atas_nama'] . "</b></p>";
                                                 echo "<div style='display: flex; justify-content: flex-end;'>";

@@ -16,20 +16,25 @@
     $userAlamat = $userData['alamat'];
     $adaProgramDekat = false;
     
-    $sql = "SELECT *, 
-        (6371 * 2 * ASIN(SQRT(POWER(SIN((latitude * PI() / 180) - ($userLatitude * PI() / 180)) / 2, 2) + COS($userLatitude * PI() / 180) * 
-        COS(latitude * PI() / 180) * POWER(SIN((longitude * PI() / 180) - ($userLongitude * PI() / 180)) / 2, 2)))) AS distance
-        FROM program_tanam
-        HAVING distance < 50
-        ORDER BY distance ASC
-        LIMIT 5"; 
+    if (!empty($userAlamat)) {
+        // Jika alamat tidak kosong, jalankan query SQL untuk mencari program tanam terdekat
+        $sql = "SELECT *, 
+            (6371 * 2 * ASIN(SQRT(POWER(SIN((latitude * PI() / 180) - ($userLatitude * PI() / 180)) / 2, 2) + COS($userLatitude * PI() / 180) * 
+            COS(latitude * PI() / 180) * POWER(SIN((longitude * PI() / 180) - ($userLongitude * PI() / 180)) / 2, 2)))) AS distance
+            FROM program_tanam
+            HAVING distance < 50
+            ORDER BY distance ASC
+            LIMIT 5"; 
 
-    $result = $con->query($sql);
-    
-    if ($result->num_rows > 0) {
-        $adaProgramDekat = true; 
+        $result = $con->query($sql);
+
+        if ($result->num_rows > 0) {
+            $adaProgramDekat = true; 
+        }
+    } else {
     }
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -73,7 +78,7 @@
         
         @media (max-width: 575px) {
             #map {
-                height: 350px;
+                height: 360px;
             }
         }
     </style>
