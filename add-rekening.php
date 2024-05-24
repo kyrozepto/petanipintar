@@ -17,11 +17,11 @@ if (!isset($_SESSION['valid'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetaniPintar - Tambah Rekening</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/login.css"> 
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body class="body-fixed">
-        <header class="site-header">
+    <header class="site-header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
@@ -53,27 +53,27 @@ if (!isset($_SESSION['valid'])) {
                 <div section="main-banner">
                     <div class="sec-wp">
                         <div class="box-container mt-5">
-                        <div class="box form-box">
-                            <?php
+                            <div class="box form-box">
+                                <?php
                                 if (isset($_POST['submit'])) {
-                                    $id_user = $_SESSION['id']; 
+                                    $id_user = $_SESSION['id'];
                                     $jenis_rekening = $_POST['jenis_rekening'];
                                     $nama_bank = $_POST['nama_bank'];
                                     $nomor_rekening = $_POST['nomor_rekening'];
                                     $atas_nama = $_POST['atas_nama'];
 
                                     $insert_query = mysqli_query($con, "INSERT INTO rekening_pemilik (id_user, jenis_rekening, nama_bank, nomor_rekening, atas_nama) 
-                                                                            VALUES ('$id_user', '$jenis_rekening', '$nama_bank', '$nomor_rekening', '$atas_nama')")
-                                                                            or die("Error occurred");
+                                                                        VALUES ('$id_user', '$jenis_rekening', '$nama_bank', '$nomor_rekening', '$atas_nama')")
+                                                    or die("Error occurred");
 
                                     if ($insert_query) {
                                         echo "<div class='message'>
                                                 <h5>Rekening berhasil ditambahkan!</h5>
                                               </div> <br>";
                                         echo "<a href='profile.php'><center><button class='signin'>Kembali ke Profil</button></center>";
-                                    } 
-                                } else { 
-                                    ?>
+                                    }
+                                } else {
+                                ?>
                                     <header>Tambah Rekening</header>
                                     <form action="" method="post">
                                         <div class="field input">
@@ -103,9 +103,9 @@ if (!isset($_SESSION['valid'])) {
                                             <input type="submit" class="btn" name="submit" value="Tambah" autocomplete="off" required>
                                         </div>
                                     </form>
-                                    <?php
-                                } 
-                            ?>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>

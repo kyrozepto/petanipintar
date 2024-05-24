@@ -1,38 +1,38 @@
 <?php
-   session_start();
+session_start();
 
-   include("php/config.php");
-   if(!isset($_SESSION['valid'])){
-        header("Location: index.php");
-       }
+include("php/config.php");
+if (!isset($_SESSION['valid'])) {
+    header("Location: index.php");
+}
 
-    $userId = $_SESSION['id'];
-    $userSql = "SELECT latitude, longitude, alamat FROM users WHERE id = '$userId'";
-    $userResult = $con->query($userSql);
-    $userData = $userResult->fetch_assoc();
+$userId = $_SESSION['id'];
+$userSql = "SELECT latitude, longitude, alamat FROM users WHERE id = '$userId'";
+$userResult = $con->query($userSql);
+$userData = $userResult->fetch_assoc();
 
-    $userLatitude = $userData['latitude'];
-    $userLongitude = $userData['longitude'];
-    $userAlamat = $userData['alamat'];
-    $adaProgramDekat = false;
-    
-    if (!empty($userAlamat)) {
-        // Jika alamat tidak kosong, jalankan query SQL untuk mencari program tanam terdekat
-        $sql = "SELECT *, 
+$userLatitude = $userData['latitude'];
+$userLongitude = $userData['longitude'];
+$userAlamat = $userData['alamat'];
+$adaProgramDekat = false;
+
+if (!empty($userAlamat)) {
+    // Jika alamat tidak kosong, jalankan query SQL untuk mencari program tanam terdekat
+    $sql = "SELECT *, 
             (6371 * 2 * ASIN(SQRT(POWER(SIN((latitude * PI() / 180) - ($userLatitude * PI() / 180)) / 2, 2) + COS($userLatitude * PI() / 180) * 
             COS(latitude * PI() / 180) * POWER(SIN((longitude * PI() / 180) - ($userLongitude * PI() / 180)) / 2, 2)))) AS distance
             FROM program_tanam
             HAVING distance < 50
             ORDER BY distance ASC
-            LIMIT 5"; 
+            LIMIT 5";
 
-        $result = $con->query($sql);
+    $result = $con->query($sql);
 
-        if ($result->num_rows > 0) {
-            $adaProgramDekat = true; 
-        }
-    } else {
+    if ($result->num_rows > 0) {
+        $adaProgramDekat = true;
     }
+} else {
+}
 ?>
 
 
@@ -49,33 +49,38 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
     <style>
-        #map { 
+        #map {
             height: 550px;
             border-radius: 15px;
         }
+
         .katalog-box-popup {
-            height:300px; 
+            height: 300px;
         }
 
         .katalog-box-popup .katalog-tanam-img {
             max-height: 150px;
         }
+
         .leaflet-popup-close-button {
             display: none !important;
         }
+
         .p-map {
             line-height: 21px;
             font-size: 16px;
         }
+
         .h3-map {
             font-size: 18px;
             font-weight: 600;
             font-family: 'Poppins';
         }
+
         .signin {
             font-family: 'Poppins';
         }
-        
+
         @media (max-width: 575px) {
             #map {
                 height: 360px;
@@ -127,7 +132,7 @@
                                 <div class="banner-text">
                                     <h2 class="h2-title">Mulai Program Tanam dengan <span>PetaniPintar</span></h2>
                                     <p>
-                                        Memberdayakan petani dengan memberikan program tanam dan akses sumber daya yang sesuai dengan wilayah mereka.                                    </p>
+                                        Memberdayakan petani dengan memberikan program tanam dan akses sumber daya yang sesuai dengan wilayah mereka. </p>
                                     <div class="banner-btn mt-4">
                                         <a href="#program" class="sec-btn">Mulai Program Tanam</a>
                                     </div>
@@ -142,17 +147,17 @@
                     </div>
                 </div>
             </section>
-            
+
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="sec-title text-center mb-5">
-                        <h2 class="h2-title mb-0">Program Tanam</h2>
-                        <h2 class="h2-title"><span>PetaniPintar</span></h2>
-                    </div>
-                    <?php 
-                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
-                        echo '<div class="text-center mb-5">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="sec-title text-center mb-5">
+                            <h2 class="h2-title mb-0">Program Tanam</h2>
+                            <h2 class="h2-title"><span>PetaniPintar</span></h2>
+                        </div>
+                        <?php
+                        if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                            echo '<div class="text-center mb-5">
                                 <a href="edit-program-tanam.php" class="add">
                                     Edit Program
                                 </a>
@@ -160,29 +165,29 @@
                                     + Tambah
                                 </a>
                             </div>';
-                    }
-                    ?>
+                        }
+                        ?>
+                    </div>
                 </div>
-            </div>
-            <?php
-            if ($adaProgramDekat) { 
-            ?>
-            <section class="mb-4" id="program">
-                <div class="sec-wp">
-                    <div class="container">
-                        <div class="sec-title">
-                            <h5 class="mb-4">Rekomendasi program tanam disekitar Anda</h5>
-                        </div>      
-                        <div class="row katalog-tanam-slider">
-                            <div class="swiper-wrapper">
-                                <?php
+                <?php
+                if ($adaProgramDekat) {
+                ?>
+                    <section class="mb-4" id="program">
+                        <div class="sec-wp">
+                            <div class="container">
+                                <div class="sec-title">
+                                    <h5 class="mb-4">Rekomendasi program tanam disekitar Anda</h5>
+                                </div>
+                                <div class="row katalog-tanam-slider">
+                                    <div class="swiper-wrapper">
+                                        <?php
 
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        $jarak = $row['distance'];
-                                        $jarakBulat = number_format($jarak, 1, '.', '');
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                $jarak = $row['distance'];
+                                                $jarakBulat = number_format($jarak, 1, '.', '');
 
-                                        echo '<div class="col-lg-3 swiper-slide">
+                                                echo '<div class="col-lg-3 swiper-slide">
                                                 <div class="katalog-box">
                                                 <p class="p-katalog mb-1" style="text-align: right;">' . $jarakBulat . ' km</p>
                                                     <div style="background-image: url(image/tanaman/' . $row["gambar"] . ');" class="katalog-tanam-img back-img"></div>
@@ -205,61 +210,61 @@
                                                             <li>
                                                                 <button onclick="window.location.href=\'detail-program-tanam.php?id=' . $row["id"] . '\'" class="signin">Lihat Detail</button>';
 
-                                        $sql_user_program = "SELECT * FROM user_program_tanam WHERE id_user = " . $_SESSION['id'] . " AND id_program_tanam = " . $row["id"];
-                                        $result_user_program = $con->query($sql_user_program);
-                                        if ($result_user_program->num_rows > 0) {
-                                            echo '<button onclick="window.location.href=\'kirim-hasil-panen.php.php?id=' . $row["id"] . '\'" class="signup">Kirim</button>';
-                                        } else {
-                                            echo '<button onclick="window.location.href=\'mulai-program-tanam.php?id=' . $row["id"] . '\'" class="signup">Mulai</button>';
-                                        }
+                                                $sql_user_program = "SELECT * FROM user_program_tanam WHERE id_user = " . $_SESSION['id'] . " AND id_program_tanam = " . $row["id"];
+                                                $result_user_program = $con->query($sql_user_program);
+                                                if ($result_user_program->num_rows > 0) {
+                                                    echo '<button onclick="window.location.href=\'kirim-hasil-panen.php.php?id=' . $row["id"] . '\'" class="signup">Kirim</button>';
+                                                } else {
+                                                    echo '<button onclick="window.location.href=\'mulai-program-tanam.php?id=' . $row["id"] . '\'" class="signup">Mulai</button>';
+                                                }
 
-                                        echo                    '</li>
+                                                echo                    '</li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>';
-                                    }
-                                } else {
-                                    echo "Tidak ada program tanam yang tersedia saat ini.";
-                                }
-                                ?>
-                                </div>
-                                <div class="swiper-button-wp">
-                                    <div class="swiper-button-prev swiper-button">
-                                        <i class="uil uil-angle-left"></i>
+                                            }
+                                        } else {
+                                            echo "Tidak ada program tanam yang tersedia saat ini.";
+                                        }
+                                        ?>
                                     </div>
-                                    <div class="swiper-button-next swiper-button">
-                                        <i class="uil uil-angle-right"></i>
+                                    <div class="swiper-button-wp">
+                                        <div class="swiper-button-prev swiper-button">
+                                            <i class="uil uil-angle-left"></i>
+                                        </div>
+                                        <div class="swiper-button-next swiper-button">
+                                            <i class="uil uil-angle-right"></i>
+                                        </div>
                                     </div>
+                                    <div class="swiper-pagination"></div>
                                 </div>
-                                <div class="swiper-pagination"></div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
                 <?php
-                } 
+                }
                 ?>
 
                 <section class="default-banner" id="program">
-                <div class="sec-wp">
-                    <div class="container">
-                        <div class="sec-title">
-                            <h5 class="mb-4">Semua program tanam</h5>
-                        </div>      
-                        <div class="row katalog-tanam-slider">
-                            <div class="swiper-wrapper">
-                            <?php
-                            include("php/config.php");
-                            $sql = "SELECT * FROM program_tanam";
-                            $result = $con->query($sql);
+                    <div class="sec-wp">
+                        <div class="container">
+                            <div class="sec-title">
+                                <h5 class="mb-4">Semua program tanam</h5>
+                            </div>
+                            <div class="row katalog-tanam-slider">
+                                <div class="swiper-wrapper">
+                                    <?php
+                                    include("php/config.php");
+                                    $sql = "SELECT * FROM program_tanam";
+                                    $result = $con->query($sql);
 
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    $sql_user_program = "SELECT * FROM user_program_tanam WHERE id_user = " . $_SESSION['id'] . " AND id_program_tanam = " . $row["id"];
-                                    $result_user_program = $con->query($sql_user_program);
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $sql_user_program = "SELECT * FROM user_program_tanam WHERE id_user = " . $_SESSION['id'] . " AND id_program_tanam = " . $row["id"];
+                                            $result_user_program = $con->query($sql_user_program);
 
-                                    echo '<div class="col-lg-3 swiper-slide">
+                                            echo '<div class="col-lg-3 swiper-slide">
                                             <div class="katalog-box">
                                                 <div style="background-image: url(image/tanaman/' . $row["gambar"] . ');" class="katalog-tanam-img back-img"></div>
                                                 <h3 onclick="window.location.href=\'detail-program-tanam.php?id=' . $row["id"] . '\'" class="h3-title">' . $row["nama"] . '</h3>
@@ -277,69 +282,69 @@
                                                         <li>
                                                             <button onclick="window.location.href=\'detail-program-tanam.php?id=' . $row["id"] . '\'" class="signin">Lihat Detail</button>';
 
-                                                            if ($result_user_program->num_rows > 0) {
-                                                                echo '<button onclick="window.location.href=\'kirim-hasil-panen.php.php?id=' . $row["id"] . '\'" class="signup">Kirim</button>';
-                                                            } else {
-                                                                echo '<button onclick="window.location.href=\'mulai-program-tanam.php?id=' . $row["id"] . '\'" class="signup">Mulai</button>';
-                                                            }
+                                            if ($result_user_program->num_rows > 0) {
+                                                echo '<button onclick="window.location.href=\'kirim-hasil-panen.php.php?id=' . $row["id"] . '\'" class="signup">Kirim</button>';
+                                            } else {
+                                                echo '<button onclick="window.location.href=\'mulai-program-tanam.php?id=' . $row["id"] . '\'" class="signup">Mulai</button>';
+                                            }
 
-                                                        echo '</li>
+                                            echo '</li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>';
-                                }
-                            } else {
-                                echo "Tidak ada program tanam yang tersedia saat ini.";
-                            }
-                            ?>
-                            </div>
-                            <div class="swiper-button-wp">
-                                <div class="swiper-button-prev swiper-button">
-                                    <i class="uil uil-angle-left"></i>
+                                        }
+                                    } else {
+                                        echo "Tidak ada program tanam yang tersedia saat ini.";
+                                    }
+                                    ?>
                                 </div>
-                                <div class="swiper-button-next swiper-button">
-                                    <i class="uil uil-angle-right"></i>
+                                <div class="swiper-button-wp">
+                                    <div class="swiper-button-prev swiper-button">
+                                        <i class="uil uil-angle-left"></i>
+                                    </div>
+                                    <div class="swiper-button-next swiper-button">
+                                        <i class="uil uil-angle-right"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="default-banner" id="peta">
-                <div class="sec-wp">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="sec-title mb-4 text-center">
-                                    <h3 class="h3-title mb-1"><span>Temukan Peluang Bertani</span></h3>
-                                    <h3 class="h3-title">di Wilayah Anda</h3>
-                                </div>
-                                <div id="map"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-2">
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="banner-text mt-4">
-                                    <p>
-                                    Dapatkan informasi tentang potensi pertanian di daerah Anda dan manfaatkan program tanam untuk meningkatkan hasil panen dan
-                                    memilih tanaman yang paling cocok di wilayah Anda.
-                                    </p> 
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
+                                <div class="swiper-pagination"></div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+
+                <section class="default-banner" id="peta">
+                    <div class="sec-wp">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="sec-title mb-4 text-center">
+                                        <h3 class="h3-title mb-1"><span>Temukan Peluang Bertani</span></h3>
+                                        <h3 class="h3-title">di Wilayah Anda</h3>
+                                    </div>
+                                    <div id="map"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="banner-text mt-4">
+                                            <p>
+                                                Dapatkan informasi tentang potensi pertanian di daerah Anda dan manfaatkan program tanam untuk meningkatkan hasil panen dan
+                                                memilih tanaman yang paling cocok di wilayah Anda.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </section>
 
 
-        </div>
-        <footer class="site-footer" id="help">
+            </div>
+            <footer class="site-footer" id="help">
                 <div class="top-footer section">
                     <div class="sec-wp">
                         <div class="container">
@@ -396,7 +401,7 @@
                         </div>
                     </div>
                 </div>
-                </footer>
+            </footer>
         </div>
     </div>
     <script src="js/bootstrap.min.js"></script>
@@ -424,7 +429,7 @@
             userMarker.bindPopup('<p class="p-map m-0"><b>Lokasi Anda</b><br><?php echo $userAlamat; ?>').openPopup();
             userMarker.setZIndexOffset(1000);
         } else {
-            map.setView([-7.0, 110.0], 7); 
+            map.setView([-7.0, 110.0], 7);
         }
 
         function tampilkanProgramTanam() {
@@ -436,49 +441,51 @@
                     if (!isNaN(lat) && !isNaN(lng)) {
                         var hasilRupiah = 'Rp. ' + (program.hasil / 1000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + '.000';
 
-                        var programBoxContent = 
-                            '<div class="katalog-box-popup">'  +
-                                '<div style="background-image: url(image/tanaman/' + program.gambar + ');" class="katalog-tanam-img back-img"></div>' +
-                                '<h3 class="h3-map">' + program.nama + '</h3>' +
-                                '<div>' +
-                                    '<div>' +
-                                        '<p class="p-map m-0">Perkiraan ' + program.waktu + ' bulan</p>' + 
-                                        '<p class="p-map m-0">' + program.daerah + '</p>' +
-                                    '</div>' +
-                                        '<p class="p-map m-2">' + hasilRupiah + ' / ton</p>' + 
-                                '</div>' +
-                                '<div class="text-center">' +
-                                    '<ul>' +
-                                        '<li>' +
-                                            '<button onclick="window.location.href=\'detail-program-tanam.php?id=' + program.id + '\'" class="signin">Lihat Detail</button>' +
-                                        '</li>' +
-                                    '</ul>' +
-                                '</div>' +
+                        var programBoxContent =
+                            '<div class="katalog-box-popup">' +
+                            '<div style="background-image: url(image/tanaman/' + program.gambar + ');" class="katalog-tanam-img back-img"></div>' +
+                            '<h3 class="h3-map">' + program.nama + '</h3>' +
+                            '<div>' +
+                            '<div>' +
+                            '<p class="p-map m-0">Perkiraan ' + program.waktu + ' bulan</p>' +
+                            '<p class="p-map m-0">' + program.daerah + '</p>' +
+                            '</div>' +
+                            '<p class="p-map m-2">' + hasilRupiah + ' / ton</p>' +
+                            '</div>' +
+                            '<div class="text-center">' +
+                            '<ul>' +
+                            '<li>' +
+                            '<button onclick="window.location.href=\'detail-program-tanam.php?id=' + program.id + '\'" class="signin">Lihat Detail</button>' +
+                            '</li>' +
+                            '</ul>' +
+                            '</div>' +
                             '</div>';
 
-                            var iconUrl = 'image/icon/default.png';
-                            if (program.nama === 'Padi') {
-                                iconUrl = 'image/icon/padi.png';
-                            } else if (program.nama === 'Jagung') {
-                                iconUrl = 'image/icon/jagung.png';
-                            }
-
-                            var programIcon = L.icon({
-                                iconUrl: iconUrl,
-                                iconSize: [40, 40],
-                                iconAnchor: [15, 40],
-                                popupAnchor: [0, -40],
-                                shadowUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png', 
-                                shadowSize: [40, 40],
-                                shadowAnchor: [15, 40]
-                            });
-
-                            var marker = L.marker([lat, lng], {icon: programIcon}).addTo(map);
-                            marker.bindPopup(programBoxContent); 
+                        var iconUrl = 'image/icon/default.png';
+                        if (program.nama === 'Padi') {
+                            iconUrl = 'image/icon/padi.png';
+                        } else if (program.nama === 'Jagung') {
+                            iconUrl = 'image/icon/jagung.png';
                         }
-                    });
+
+                        var programIcon = L.icon({
+                            iconUrl: iconUrl,
+                            iconSize: [40, 40],
+                            iconAnchor: [15, 40],
+                            popupAnchor: [0, -40],
+                            shadowUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png',
+                            shadowSize: [40, 40],
+                            shadowAnchor: [15, 40]
+                        });
+
+                        var marker = L.marker([lat, lng], {
+                            icon: programIcon
+                        }).addTo(map);
+                        marker.bindPopup(programBoxContent);
+                    }
                 });
-            }
+            });
+        }
 
         tampilkanProgramTanam();
     </script>

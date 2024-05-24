@@ -1,7 +1,7 @@
 <?php
-   session_start();
+session_start();
 
-   include("php/config.php");
+include("php/config.php");
 ?>
 
 <!DOCTYPE html>
@@ -72,9 +72,11 @@
                             </div>
                         </div>
             </section>
-        
+
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-                <h2 class="h2-title"><center><span>Lebih Lanjut</span><br>Mengenai Program Kami</center></h2>
+                <h2 class="h2-title">
+                    <center><span>Lebih Lanjut</span><br>Mengenai Program Kami</center>
+                </h2>
                 <section class="main-banner" id="about">
                     <div class="sec-wp">
                         <div class="container">
@@ -86,19 +88,19 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="banner-text">
-                                        <h2 class="h2-title">Apa itu   <span>PetaniPintar</span> dan bagaimana cara kerjanya</h2>
+                                        <h2 class="h2-title">Apa itu <span>PetaniPintar</span> dan bagaimana cara kerjanya</h2>
                                         <p>
                                             Petani Pintar adalah sebuah konsep yang menggabungkan teknologi dan kecerdasan buatan untuk meningkatkan
                                             produktivitas dan efisiensi di bidang pertanian.
                                         </p>
                                         <p>
-                                            Melalui penerapan berbagai solusi teknologi seperti sensor, analisis data, dan perangkat lunak pintar, 
-                                            Petani Pintar memungkinkan petani memantau kondisi tanaman, mengelola sumber daya dengan lebih efisien, 
+                                            Melalui penerapan berbagai solusi teknologi seperti sensor, analisis data, dan perangkat lunak pintar,
+                                            Petani Pintar memungkinkan petani memantau kondisi tanaman, mengelola sumber daya dengan lebih efisien,
                                             dan mengoptimalkan proses pertanian secara keseluruhan.
                                         </p>
                                         <p>
-                                            Dengan demikian, Petani Pintar dapat membantu meningkatkan hasil panen, 
-                                            menurunkan biaya produksi, dan menjaga kelestarian lingkungan dalam industri pertanian    
+                                            Dengan demikian, Petani Pintar dapat membantu meningkatkan hasil panen,
+                                            menurunkan biaya produksi, dan menjaga kelestarian lingkungan dalam industri pertanian
                                         </p>
                                         <h5>Tertarik untuk bergabung?<button onclick="window.location.href='register.php'" class="signup">Daftarkan saya</button></h5>
                                     </div>
@@ -121,8 +123,7 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="programs-box">
-                                        <div class="programs-img back-img"
-                                            style="background-image: url(image/program_tanam.jpg);"></div>
+                                        <div class="programs-img back-img" style="background-image: url(image/program_tanam.jpg);"></div>
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Program Tanam berdasarkan Wilayah</h4>
                                             <p>Memberdayakan petani dengan memberikan program tanam dan akses sumber daya yang sesuai dengan wilayah mereka.</p>
@@ -132,8 +133,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="programs-box">
-                                        <div class="programs-img back-img"
-                                            style="background-image: url(image/program_pupuk.jpg);"></div>
+                                        <div class="programs-img back-img" style="background-image: url(image/program_pupuk.jpg);"></div>
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Bantuan pengajuan untuk Pupuk Bersubsidi</h4>
                                             <p>Mempercepat proses pengajuan permohonan untuk mendapatkan subsidi pupuk dan menerima laporan masalah yang dihadapi petani.</p>
@@ -143,8 +143,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="programs-box">
-                                        <div class="programs-img back-img"
-                                            style="background-image: url(image/program_sewa.jpg);"></div>
+                                        <div class="programs-img back-img" style="background-image: url(image/program_sewa.jpg);"></div>
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Peminjaman Alat Pertanian</h4>
                                             <p>Mempermudah petani untuk berkomunikasi dengan pihak terkait dalam sektor pertanian untuk dapat menyewa alat pertanian yang dibutuhkan.</p>
@@ -163,7 +162,9 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="sec-title text-center mb-5">
-                                        <h2 class="h2-title"><center>Mulai <span>PetaniPintar</span> dengan 3 langkah</center></h2>
+                                        <h2 class="h2-title">
+                                            <center>Mulai <span>PetaniPintar</span> dengan 3 langkah</center>
+                                        </h2>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

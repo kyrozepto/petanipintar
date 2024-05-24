@@ -1,10 +1,10 @@
 <?php
-   session_start();
+session_start();
 
-   include("php/config.php");
-   if(!isset($_SESSION['valid'])){
-        header("Location: index.php");
-       }
+include("php/config.php");
+if (!isset($_SESSION['valid'])) {
+    header("Location: index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -79,20 +79,20 @@
                     </div>
                 </div>
             </section>
-            
+
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-            <section class="default-banner" id="program">
-                <div class="sec-wp">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="sec-title text-center mb-5">
-                                    <h2 class="h2-title mb-0">Peralatan Pertanian</h2>
-                                    <h2 class="h2-title"><span>PetaniPintar</span></h2>
-                                </div>
-                                <?php 
-                                if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
-                                    echo '<div class="text-center mb-5">
+                <section class="default-banner" id="program">
+                    <div class="sec-wp">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="sec-title text-center mb-5">
+                                        <h2 class="h2-title mb-0">Peralatan Pertanian</h2>
+                                        <h2 class="h2-title"><span>PetaniPintar</span></h2>
+                                    </div>
+                                    <?php
+                                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                                        echo '<div class="text-center mb-5">
                                             <a href="edit-katalog.php" class="add">
                                                 Edit Alat
                                             </a>
@@ -100,65 +100,65 @@
                                                 + Tambah Alat
                                             </a>
                                         </div>';
-                                }
-                                ?>
+                                    }
+                                    ?>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row katalog-slider">
-                            <div class="swiper-wrapper">
+                            <div class="row katalog-slider">
+                                <div class="swiper-wrapper">
 
-                            <?php
-                            include("php/config.php");
-                            $sql = "SELECT * FROM alat";
-                            $result = $con->query($sql);
+                                    <?php
+                                    include("php/config.php");
+                                    $sql = "SELECT * FROM alat";
+                                    $result = $con->query($sql);
 
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo '<div class="col-lg-4 swiper-slide">
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo '<div class="col-lg-4 swiper-slide">
                                             <div class="katalog-box">
-                                                <div style="background-image: url(image/alat/'.$row["gambar"].');" class="katalog-img back-img"></div>
-                                                <h3 class="h3-title">'.$row["nama"].'</h3>
+                                                <div style="background-image: url(image/alat/' . $row["gambar"] . ');" class="katalog-img back-img"></div>
+                                                <h3 class="h3-title">' . $row["nama"] . '</h3>
                                                 <div>
                                                     <ul>
                                                         <li>
-                                                            <p class="p-katalog">'.$row["deskripsi"].'</p> 
+                                                            <p class="p-katalog">' . $row["deskripsi"] . '</p> 
                                                         </li>
                                                         <li>
                                                             <p class="p-katalog">Rp. ' . number_format($row["harga"], 0, ',', '.') . ' / musim</p>
                                                         </li>
                                                         <li>
-                                                            <button onclick="window.location.href=\'detail-sewa-alat.php?id='.$row["id"].'\'" class="signin">Lihat Detail</button>
-                                                            <button onclick="window.location.href=\'mulai-sewa-alat.php?id='.$row["id"].'\'" class="signup">Sewa</button>
+                                                            <button onclick="window.location.href=\'detail-sewa-alat.php?id=' . $row["id"] . '\'" class="signin">Lihat Detail</button>
+                                                            <button onclick="window.location.href=\'mulai-sewa-alat.php?id=' . $row["id"] . '\'" class="signup">Sewa</button>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>';
-                                }
-                            } else {
-                                echo "Tidak ada data alat.";
-                            }
-                            ?>
-                            </div>
-                            <div class="swiper-button-wp">
-                                <div class="swiper-button-prev swiper-button">
-                                    <i class="uil uil-angle-left"></i>
+                                        }
+                                    } else {
+                                        echo "Tidak ada data alat.";
+                                    }
+                                    ?>
                                 </div>
-                                <div class="swiper-button-next swiper-button">
-                                    <i class="uil uil-angle-right"></i>
+                                <div class="swiper-button-wp">
+                                    <div class="swiper-button-prev swiper-button">
+                                        <i class="uil uil-angle-left"></i>
+                                    </div>
+                                    <div class="swiper-button-next swiper-button">
+                                        <i class="uil uil-angle-right"></i>
+                                    </div>
                                 </div>
+                                <div class="swiper-pagination"></div>
                             </div>
-                            <div class="swiper-pagination"></div>
+
+
                         </div>
-
-
                     </div>
-                </div>
-            </section>
+                </section>
 
 
-        </div>
-        <footer class="site-footer" id="help">
+            </div>
+            <footer class="site-footer" id="help">
                 <div class="top-footer section">
                     <div class="sec-wp">
                         <div class="container">
@@ -215,7 +215,7 @@
                         </div>
                     </div>
                 </div>
-                </footer>
+            </footer>
         </div>
     </div>
     <script src="js/bootstrap.min.js"></script>
