@@ -15,6 +15,7 @@
        $res_fullname = $result['fullname'];
        $res_age = $result['age'];
        $res_id = $result['id'];
+       $res_alamat = $result['alamat'];
    }
 ?>
 
@@ -91,6 +92,7 @@
                                     <div class="card-body">
                                         <p>Nama Lengkap: <b><?php echo $res_fullname ?></b></p>
                                         <p>Umur: <b><?php echo $res_age ?> tahun</b></p>
+                                        <p>Alamat: <b><?php echo $res_alamat ?></b></p>
                                         <p>Email anda adalah <b><?php echo $res_email ?></b></p>
                                         <p>Status Akun
                                             <b>
@@ -121,6 +123,9 @@
                                                 echo "<p>Jenis Rekening: <b>" . $row_rekening['jenis_rekening'] . "</b></p>";
                                                 if ($row_rekening['jenis_rekening'] == 'Bank') {
                                                     echo "<p>Nama Bank: <b>" . $row_rekening['nama_bank'] . "</b></p>";
+                                                }
+                                                if ($row_rekening['jenis_rekening'] == 'E-Wallet') {
+                                                    echo "<p>Nama E-Wallet: <b>" . $row_rekening['nama_bank'] . "</b></p>";
                                                 }
                                                 echo "<p>Nomor Rekening: <b>" . $row_rekening['nomor_rekening'] . "</b></p>";
                                                 echo "<p>Atas Nama: <b>" . $row_rekening['atas_nama'] . "</b></p>";

@@ -3,5 +3,7 @@
 
 **Setting Database**<br>
 ![image](https://github.com/kyrozepto/petanipintar/assets/108352285/38f43acf-d2ba-4d6a-becc-abef9b055dd8)
+*contoh
 
-Buka localhost/phpmyadmin -> buat database 'petanipintar_db' -> input SQL query sql/petanipintar_db.sql untuk buat tabel users.
+
+Buka localhost/phpmyadmin -> buat database 'petanipintar_db' -> input satu per satu semua SQL query di sql/petanipintar_db.sql
