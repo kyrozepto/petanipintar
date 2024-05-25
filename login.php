@@ -123,6 +123,7 @@ if (isset($_POST['submit'])) {
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="main.js"></script>
+    <?php session_destroy();?>
 </body>
 
 </html>
