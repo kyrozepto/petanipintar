@@ -1,0 +1,110 @@
+body {font-family: "Lato", sans-serif;}
+
+/* -------------sidebar----------------- */
+.sidebar {
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f1f1f1;
+  overflow-x: hidden;
+  padding-top: 16px;
+  border-right: 1px solid #000;
+}
+
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+}
+
+.sidebar a:hover {
+    color: #08875D;
+}
+.side-header{
+    margin-left: calc(100% / 4);
+}
+
+.sidebar .pressed{
+    color: #08875D;
+    background-color: #EDFDF8;
+}
+
+/* -----------main----------------------- */
+.main {
+    width: 80%;
+    margin-left: 20%; /* Same as the width of the sidenav */
+  /* padding: 0px 10px; */
+}
+
+.head-main {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    background-color: #86A789;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.head-main h1{
+    text-align: center;
+    font-weight: 600;
+    color: #fff;
+}
+
+.main1 {
+    margin-top: 100px;
+    padding: 0 10px;
+}
+
+.box {
+    max-width: 350px;
+    height: 250px;
+    background-color: #86A789;
+    padding: 20px;
+    margin: 30px;
+    text-align: center;
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column; 
+    justify-content: space-between;
+}
+
+.box i {
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 140px;
+    display: block;
+    margin: 0 auto;
+    cursor:pointer; 
+}
+
+.box p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff; 
+}
+
+.box p.count {
+    color: darkgreen;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
