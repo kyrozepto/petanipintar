@@ -60,12 +60,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Program Tanam</title>
+    <title>Tambah Program Tanam</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Add New Program Tanam</h2>
+        <h2>Tambah Program Tanam</h2>
         <form action="add-programtanam.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nama">Nama</label>

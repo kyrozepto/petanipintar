@@ -48,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Ubah Akun</title>
+    <link rel="icon" href="../image/icon64.png" type="image/png">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>

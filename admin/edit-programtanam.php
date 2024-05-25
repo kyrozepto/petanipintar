@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $daerah = $_POST['daerah'];
     $hasil = $_POST['hasil'];
     $jumlah = $_POST['jumlah'];
-    $koordinat = $_POST['koordinat'];
+    $deskripsi = $_POST['deskripsi'];
     $latitude = $_POST['latitude'];
     $longitude = $_POST['longitude'];
 
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dest_path = $uploadFileDir . $newFileName;
 
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                $query = "UPDATE program_tanam SET nama='$nama', waktu=$waktu, daerah='$daerah', hasil=$hasil, jumlah=$jumlah, koordinat='$koordinat', latitude=$latitude, longitude=$longitude, gambar='$newFileName' WHERE id=$id";
+                $query = "UPDATE program_tanam SET nama='$nama', waktu=$waktu, daerah='$daerah', hasil=$hasil, jumlah=$jumlah, deskripsi='$deskripsi', latitude=$latitude, longitude=$longitude, gambar='$newFileName' WHERE id=$id";
                 if (mysqli_query($con, $query)) {
                     echo '<script>alert("Berhasil Update");
                     window.location.href = "dashboard-2.php";
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error = 'Invalid file type or size';
         }
     } else {
-        $query = "UPDATE program_tanam SET nama='$nama', waktu=$waktu, daerah='$daerah', hasil=$hasil, jumlah=$jumlah, koordinat='$koordinat', latitude=$latitude, longitude=$longitude WHERE id=$id";
+        $query = "UPDATE program_tanam SET nama='$nama', waktu=$waktu, daerah='$daerah', hasil=$hasil, jumlah=$jumlah, deskripsi='$deskripsi', latitude=$latitude, longitude=$longitude WHERE id=$id";
         if (mysqli_query($con, $query)) {
             echo '<script>alert("Berhasil Update");
                     window.location.href = "dashboard-2.php";
@@ -77,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Ubah Program Tanam</title>
+    <link rel="icon" href="../image/icon64.png" type="image/png">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
@@ -105,8 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="number" class="form-control" id="jumlah" name="jumlah" value="<?php echo $program['jumlah']; ?>" required>
             </div>
             <div class="form-group">
-                <label for="koordinat">Koordinat</label>
-                <input type="text" class="form-control" id="koordinat" name="koordinat" value="<?php echo $program['koordinat']; ?>">
+                <label for="deskripsi">Deskripsi</label>
+                <input type="text" class="form-control" id="deskripsi" name="deskripsi" value="<?php echo $program['deskripsi']; ?>">
             </div>
             <div class="form-group">
                 <label for="latitude">Latitude</label>
