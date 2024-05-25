@@ -46,7 +46,8 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Login</title>
+    <title>Masuk</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -68,8 +69,8 @@ if (isset($_POST['submit'])) {
                         <nav class="header-menu">
                             <ul class="menu">
                                 <li>
-                                    <button onclick="window.location.href='register.php'" class="signin">Sign Up</button>
-                                    <button onclick="window.location.href='index.php'" class="signup">Home</button>
+                                    <button onclick="window.location.href='register.php'" class="signin">Buat Akun</button>
+                                    <button onclick="window.location.href='index.php'" class="signup">Kembali</button>
                                 </li>
                             </ul>
                         </nav>
@@ -85,7 +86,7 @@ if (isset($_POST['submit'])) {
                     <div class="sec-wp">
                         <div class="box-container">
                             <div class="box form-box">
-                                <header>Login</header>
+                                <header>Masuk</header>
                                 <form action="" method="post">
                                     <div class="field input">
                                         <label for="email">Email</label>

@@ -10,7 +10,8 @@ include("php/config.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petani Pintar</title>
+    <title>PetaniPintar</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -37,8 +38,8 @@ include("php/config.php");
                                 <li><a href="#tutorial">Petunjuk</a></li>
                                 <li><a href="#help">Pusat Bantuan</a></li>
                                 <li>
-                                    <button onclick="window.location.href='login.php'" class="signin">Sign In</button>
-                                    <button onclick="window.location.href='register.php'" class="signup">Sign Up</button>
+                                    <button onclick="window.location.href='login.php'" class="signin">Masuk</button>
+                                    <button onclick="window.location.href='register.php'" class="signup">Daftar</button>
                                 </li>
                             </ul>
                         </nav>
@@ -61,7 +62,7 @@ include("php/config.php");
                                         Kamu bisa jadi wajah baru pertanian modern yang mandiri, produktif, dan berkelanjutan.
                                     </p>
                                     <div class="banner-btn mt-4">
-                                        <a href="#program" class="sec-btn">Lihat Program</a>
+                                        <a href="#about" class="sec-btn">Lebih Lanjut</a>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +128,6 @@ include("php/config.php");
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Program Tanam berdasarkan Wilayah</h4>
                                             <p>Memberdayakan petani dengan memberikan program tanam dan akses sumber daya yang sesuai dengan wilayah mereka.</p>
-                                            <a href="#" class="sec-btn">Lebih Lanjut</a>
                                         </div>
                                     </div>
                                 </div>
@@ -137,7 +137,6 @@ include("php/config.php");
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Bantuan pengajuan untuk Pupuk Bersubsidi</h4>
                                             <p>Mempercepat proses pengajuan permohonan untuk mendapatkan subsidi pupuk dan menerima laporan masalah yang dihadapi petani.</p>
-                                            <a href="#" class="sec-btn">Lebih Lanjut</a>
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +146,6 @@ include("php/config.php");
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Peminjaman Alat Pertanian</h4>
                                             <p>Mempermudah petani untuk berkomunikasi dengan pihak terkait dalam sektor pertanian untuk dapat menyewa alat pertanian yang dibutuhkan.</p>
-                                            <a href="#" class="sec-btn">Lebih Lanjut</a>
                                         </div>
                                     </div>
                                 </div>
@@ -162,7 +160,7 @@ include("php/config.php");
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="sec-title text-center mb-5">
-                                        <h2 class="h2-title">
+                                        <h2 class="h2-title mt-4">
                                             <center>Mulai <span>PetaniPintar</span> dengan 3 langkah</center>
                                         </h2>
                                     </div>

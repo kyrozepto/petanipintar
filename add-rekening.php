@@ -15,7 +15,8 @@ if (!isset($_SESSION['valid'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Tambah Rekening</title>
+    <title>Tambah Rekening</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -85,7 +86,7 @@ if (!isset($_SESSION['valid'])) {
                                         </div>
 
                                         <div class="field input">
-                                            <label for="nama_bank">Nama Bank (jika bank)</label>
+                                            <label for="nama_bank">Nama Bank / E-Wallet</label>
                                             <input type="text" name="nama_bank" id="nama_bank" autocomplete="off">
                                         </div>
 

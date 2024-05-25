@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $daerah = $_POST['daerah'];
         $hasil = $_POST['hasil'];
         $jumlah = $_POST['jumlah'];
-        $koordinat = $_POST['koordinat'];
+        $deskripsi = $_POST['deskripsi'];
 
         $sql = "SELECT * FROM program_tanam WHERE id = $id_program_tanam";
         $result = $con->query($sql);
@@ -82,8 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $gambar = $program['gambar'];
         }
 
-        $stmt = $con->prepare("UPDATE alat SET nama = ?, waktu = ?, daerah = ?, hasil = ?, gambar = ?, jumlah = ?, koordinat = ?, WHERE id = ?");
-        $stmt->bind_param("ssdsi", $nama, $waktu, $daerah, $hasil, $gambar, $jumlah, $koordinat, $id_program_tanam);
+        $stmt = $con->prepare("UPDATE alat SET nama = ?, waktu = ?, daerah = ?, hasil = ?, gambar = ?, jumlah = ?, deskripsi = ?, WHERE id = ?");
+        $stmt->bind_param("ssdsi", $nama, $waktu, $daerah, $hasil, $gambar, $jumlah, $deskripsi, $id_program_tanam);
 
         if ($stmt->execute()) {
             echo "Program Tanam berhasil diperbarui.";
@@ -105,7 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Edit Program Tanam</title>
+    <title>Ubah Program Tanam</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -144,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="sec-wp">
                         <div class="box-container mt-5">
                             <div class="box form-box">
-                                <header>Edit Informasi Program</header>
+                                <header>Ubah Informasi Program</header>
 
                                 <form method="post" enctype="multipart/form-data">
                                     <div class="field input">
@@ -187,8 +188,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </div>
 
                                         <div class="field input">
-                                            <label for="koordinat">Titik Lokasi Pabrik</label>
-                                            <input type="text" id="koordinat" name="koordinat" value="<?php echo $program['koordinat']; ?>" autocomplete="off" required>
+                                            <label for="deskripsi">Deskripsi Program</label>
+                                            <input type="text" id="deskripsi" name="deskripsi" value="<?php echo $program['deskripsi']; ?>" autocomplete="off" required>
                                         </div>
 
                                         <div class="field input">

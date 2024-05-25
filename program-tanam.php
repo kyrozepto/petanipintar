@@ -42,7 +42,8 @@ if (!empty($userAlamat)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petani Pintar - Program Tanam</title>
+    <title>Program Tanam</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
@@ -112,7 +113,7 @@ if (!empty($userAlamat)) {
                                 <li><a href="#">Forum</a></li>
                                 <li>
                                     <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
-                                    <button onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}" class="signup">Sign Out</button>
+                                    <button onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}" class="signup">Keluar</button>
                                 </li>
                             </ul>
                         </nav>
@@ -159,7 +160,7 @@ if (!empty($userAlamat)) {
                         if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
                             echo '<div class="text-center mb-5">
                                 <a href="edit-program-tanam.php" class="add">
-                                    Edit Program
+                                    Ubah Program
                                 </a>
                                 <a href="add-program-tanam.php" class="add">
                                     + Tambah
@@ -322,7 +323,8 @@ if (!empty($userAlamat)) {
                                         <h3 class="h3-title mb-1"><span>Temukan Peluang Bertani</span></h3>
                                         <h3 class="h3-title">di Wilayah Anda</h3>
                                     </div>
-                                    <div id="map"></div>
+                                    <div id="map" class="mb-4"></div>
+                                    <div id="weather-info"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-2">
@@ -413,6 +415,44 @@ if (!empty($userAlamat)) {
     <script src="main.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <script>
+        // API Key OpenWeatherMap
+        const apiKey = 'KEY';
+
+        function getWeather(latitude, longitude) {
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&lang=id&units=metric`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherInfo = document.getElementById('weather-info');
+                    weatherInfo.innerHTML = `
+                    <div class="row">
+                        <div class="col-lg-2">
+                            
+                        </div>
+                        <div class="col-lg-3">
+                            <h5 class="mb-2">Cuaca di Wilayah Anda</h5>
+                            <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Cuaca saat ini">
+                            <p class="p-map mb-2">${data.weather[0].main}</p>
+                            <p class="p-map">Suhu: ${data.main.temp}°C<br>Kondisi: ${data.weather[0].description}<br>Kecepatan Angin: ${data.wind.speed} m/s
+                            <br>Kelembaban: ${data.main.humidity}%</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <h5 class="mb-3">Informasi Lainnya</h5>
+                            <p class="p-map">Indeks UV: ${data.uvi}<br>Tekanan: ${data.main.pressure} hPa<br>Visibilitas: ${data.visibility} meter
+                                <br>Matahari Terbit: ${new Date(data.sys.sunrise * 1000).toLocaleTimeString()}\
+                                <br>Matahari Terbenam: ${new Date(data.sys.sunset * 1000).toLocaleTimeString()}
+                                
+                            </p>
+                        </div>
+                    </div>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Error fetching weather data:', error);
+                });
+        }
+
         var map = L.map('map');
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -422,12 +462,14 @@ if (!empty($userAlamat)) {
         var userLatitude = parseFloat(<?php echo $userLatitude; ?>);
         var userLongitude = parseFloat(<?php echo $userLongitude; ?>);
 
-        if (!isNaN(userLatitude) && !isNaN(userLongitude)) {
+        if (!isNaN(userLatitude) && !isNaN(userLongitude) && (userLatitude !== 0 || userLongitude !== 0)) {
             map.setView([userLatitude, userLongitude], 9);
 
             var userMarker = L.marker([userLatitude, userLongitude]).addTo(map);
             userMarker.bindPopup('<p class="p-map m-0"><b>Lokasi Anda</b><br><?php echo $userAlamat; ?>').openPopup();
             userMarker.setZIndexOffset(1000);
+
+            getWeather(userLatitude, userLongitude);
         } else {
             map.setView([-7.0, 110.0], 7);
         }
@@ -447,8 +489,8 @@ if (!empty($userAlamat)) {
                             '<h3 class="h3-map">' + program.nama + '</h3>' +
                             '<div>' +
                             '<div>' +
-                            '<p class="p-map m-0">Perkiraan ' + program.waktu + ' bulan</p>' +
                             '<p class="p-map m-0">' + program.daerah + '</p>' +
+                            '<p class="p-map m-0">Perkiraan ' + program.waktu + ' bulan</p>' +
                             '</div>' +
                             '<p class="p-map m-2">' + hasilRupiah + ' / ton</p>' +
                             '</div>' +

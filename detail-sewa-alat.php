@@ -30,7 +30,8 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petani Pintar - Detail Alat</title>
+    <title>Detail Alat</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
@@ -94,7 +95,7 @@ if (isset($_GET['id'])) {
                                             <div class="col-lg-6">
                                                 <p class="p-detail">Deskripsi:<br><b><?php echo $row['deskripsi']; ?></b>
                                                 <p>
-                                                <p class="p-detail">Lokasi Penyimpanan:<br><b><?php echo $row['lokasi']; ?></b></p>
+                                                <p class="p-detail">Daerah Penyimpanan:<br><b><?php echo $row['lokasi']; ?></b></p>
 
                                             </div>
                                             <div class="col-lg-6">

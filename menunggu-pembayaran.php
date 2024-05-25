@@ -48,7 +48,8 @@ if ($result_rekening->num_rows > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Menunggu Pembayaran</title>
+    <title>Menunggu Pembayaran</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -128,7 +129,7 @@ if ($result_rekening->num_rows > 0) {
                                                                 ($data_sewa['metode_pembayaran'] == 'e_wallet' && $rekening['jenis_rekening'] == 'E-Wallet')
                                                             ) : ?>
                                                                 <li>
-                                                                    <?php echo $rekening['jenis_rekening'] . ' - ' . ($rekening['jenis_rekening'] == 'Bank' ? $rekening['nama_bank'] . ' ' : ''); ?>
+                                                                    <?php echo $rekening['jenis_rekening'] . ' - ' . $rekening['nama_bank']; ?>
                                                                     No.
                                                                     <?php echo $rekening['nomor_rekening']; ?> a.n
                                                                     <?php echo $rekening['atas_nama']; ?>

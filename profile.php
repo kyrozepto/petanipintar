@@ -25,7 +25,8 @@ while ($result = mysqli_fetch_assoc($query)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Profil</title>
+    <title>Profil Akun</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -87,7 +88,7 @@ while ($result = mysqli_fetch_assoc($query)) {
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <p class="p-halo mb-0">Halo <b><?php echo $res_username ?></b>!</p>
-                                        <?php echo "<a href='edit-profile.php?Id=$res_id' class='add-alt'>Edit Profil</a>"; ?>
+                                        <?php echo "<a href='edit-profile.php?Id=$res_id' class='add-alt'>Ubah Profil</a>"; ?>
                                     </div>
 
                                     <div class="card mb-3">
@@ -134,7 +135,7 @@ while ($result = mysqli_fetch_assoc($query)) {
                                                     echo "<div style='display: flex; justify-content: flex-end;'>";
                                                     echo "<form action='edit-rekening.php' method='POST' style='display: inline; margin-right: 10px;'>
                                                             <input type='hidden' name='id_rekening' value='" . $row_rekening['id'] . "'>
-                                                            <button type='submit' class='add-alt'>Edit</button>
+                                                            <button type='submit' class='add-alt'>Ubah</button>
                                                         </form>";
 
                                                     echo "<form action='php/fungsi-hapus-rekening.php' method='POST' style='display: inline;'>

@@ -8,7 +8,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Register</title>
+    <title>Buat Akun</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -30,8 +31,8 @@
                         <nav class="header-menu">
                             <ul class="menu">
                                 <li>
-                                    <button onclick="window.location.href='login.php'" class="signin">Sign In</button>
-                                    <button onclick="window.location.href='index.php'" class="signup">Home</button>
+                                    <button onclick="window.location.href='login.php'" class="signin">Masuk</button>
+                                    <button onclick="window.location.href='index.php'" class="signup">Kembali</button>
                                 </li>
                             </ul>
                         </nav>
@@ -83,7 +84,7 @@
                                                 echo "<div class='message'>
                                                         <p>Registrasi berhasil!</p>
                                                     </div> <br>";
-                                                echo "<a href='login.php'><button class='btn'>Login Sekarang</button>";
+                                                echo "<a href='login.php'><button class='btn'>Masuk Sekarang</button>";
                                             } else {
                                                 echo "<div class='message'>
                                                         <p>Error terjadi, coba lagi!</p>
@@ -95,7 +96,7 @@
                                 } else {
                                 ?>
 
-                                    <header>Sign Up</header>
+                                    <header>Buat Akun</header>
                                     <form action="" method="post">
                                         <div class="field input">
                                             <label for="email">Email</label>
@@ -127,7 +128,7 @@
                                             <input type="submit" class="btn" name="submit" value="Register" required>
                                         </div>
                                         <div class="links">
-                                            Sudah memiliki akun? <a href="login.php">Sign In</a>
+                                            Sudah memiliki akun? <a href="login.php">Masuk</a>
                                         </div>
                                     </form>
                                 </div>

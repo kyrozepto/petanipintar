@@ -25,12 +25,12 @@ CREATE TABLE program_tanam (
     hasil DECIMAL(10, 2) NOT NULL,
     gambar VARCHAR(255),
     jumlah INT NOT NULL,
-    koordinat VARCHAR(255),
+    deskripsi TEXT,
     latitude DECIMAL(9,6),
     longitude DECIMAL(9,6)
 );
 
-INSERT INTO program_tanam (id, nama, waktu, daerah, hasil, gambar, jumlah, koordinat, latitude, longitude) VALUES
+INSERT INTO program_tanam (id, nama, waktu, daerah, hasil, gambar, jumlah, deskripsi, latitude, longitude) VALUES
     (1, 'Padi', 4, 'Subang, Jawa Barat', 7500000.00, '1.jpg', 10, '-', '-6.547082', '107.742275'),
     (2, 'Jagung', 3, 'Garut, Jawa Barat', 6000000.00, '2.jpg', 5, '-', '-7.210950', '107.886832');
 

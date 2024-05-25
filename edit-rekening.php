@@ -50,7 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_rekening'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>PetaniPintar - Edit Rekening</title>
+        <title>Ubah Rekening</title>
+        <link rel="icon" href="image/icon64.png" type="image/png">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/login.css">
     </head>
@@ -89,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_rekening'])) {
                         <div class="sec-wp">
                             <div class="box-container mt-5">
                                 <div class="box form-box">
-                                    <header>Edit Rekening</header>
+                                    <header>Ubah Rekening</header>
                                     <form action="" method="post">
                                         <input type="hidden" name="id_rekening" value="<?php echo $row_rekening['id']; ?>">
                                         <div class="field input">

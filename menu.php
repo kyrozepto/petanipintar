@@ -13,7 +13,8 @@ if (!isset($_SESSION['valid'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petani Pintar</title>
+    <title>PetaniPintar</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -41,7 +42,7 @@ if (!isset($_SESSION['valid'])) {
                                 <li><a href="#">Forum</a></li>
                                 <li>
                                     <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
-                                    <button onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}" class="signup">Sign Out</button>
+                                    <button onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}" class="signup">Keluar</button>
                                 </li>
                             </ul>
                         </nav>
@@ -198,8 +199,8 @@ if (!isset($_SESSION['valid'])) {
                                         <div class="footer-menu food-nav-menu">
                                             <h4 class="h4-title">Menu</h4>
                                             <ul class="column-2">
+                                                <li><a href="#home">Halaman Utama</a></li>
                                                 <li><a href="#about">Tentang Program</a></li>
-                                                <li><a href="#sdk">Syarat dan Ketentuan</a></li>
                                                 <li><a href="#program">Pilihan Program</a></li>
                                                 <li><a href="#help">Pusat Bantuan</a></li>
                                             </ul>

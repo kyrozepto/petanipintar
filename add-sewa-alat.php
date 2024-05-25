@@ -68,7 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Tambah Alat</title>
+    <title>Tambah Alat</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -126,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </div>
 
                                         <div class="field input">
-                                            <label for="lokasi">Lokasi Penyimpanan</label>
+                                            <label for="lokasi">Daerah Penyimpanan</label>
                                             <input type="text" id="lokasi" name="lokasi" autocomplete="off" required>
                                         </div>
 
@@ -150,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </div>
 
                                         <div class="links">
-                                            Edit item yang sudah ada? <a href="edit-katalog.php">Edit Katalog</a>
+                                            Ubah item yang sudah ada? <a href="edit-sewa-alat.php">Ubah Katalog</a>
                                         </div>
                                     </form>
                                 </div>

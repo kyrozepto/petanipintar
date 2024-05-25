@@ -13,7 +13,8 @@ if (!isset($_SESSION['valid'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petani Pintar - Pupuk Subsidi</title>
+    <title>Pupuk Subsidi</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/form.css">
@@ -42,7 +43,7 @@ if (!isset($_SESSION['valid'])) {
                                 <li><a href="#">Forum</a></li>
                                 <li>
                                     <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
-                                    <button onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}" class="signup">Sign Out</button>
+                                    <button onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}" class="signup">Keluar</button>
                                 </li>
                             </ul>
                         </nav>

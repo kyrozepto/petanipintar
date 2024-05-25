@@ -14,7 +14,8 @@ if (!isset($_SESSION['valid'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Edit Profil</title>
+    <title>Ubah Profil</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -143,7 +144,7 @@ if (!isset($_SESSION['valid'])) {
                                     }
 
                                 ?>
-                                    <header>Change Profile</header>
+                                    <header>Ubah Profile</header>
                                     <form action="" method="post">
                                         <div class="field input">
                                             <label for="email">Email</label>

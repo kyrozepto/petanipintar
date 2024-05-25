@@ -66,7 +66,8 @@ function hitungProgressPanen($id_program_tanam, $id_user)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petani Pintar - Detail Program Tanam</title>
+    <title>Detail Program Tanam</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
@@ -96,7 +97,7 @@ function hitungProgressPanen($id_program_tanam, $id_user)
                                 <li><a href="#">Forum</a></li>
                                 <li>
                                     <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
-                                    <button onclick="history.back()" class="signup">Kembali</button>
+                                    <button onclick="window.location.href='program-tanam.php'" class="signup">Kembali</button>
                                 </li>
                             </ul>
                         </nav>

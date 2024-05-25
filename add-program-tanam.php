@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $daerah = $_POST['daerah'];
     $hasil = $_POST['hasil'];
     $jumlah = $_POST['jumlah'];
-    $koordinat = $_POST['koordinat'];
+    $deskripsi = $_POST['deskripsi'];
 
     $target_dir = "image/tanaman/";
     $target_file = $target_dir . basename($_FILES["gambar"]["name"]);
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($uploadOk == 1) {
         if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file)) {
-            $sql = "INSERT INTO program_tanam (nama, waktu, daerah, hasil, gambar, jumlah, koordinat) VALUES ('$nama', '$waktu', '$daerah', '$hasil', 'jumlah', 'koordinat,'" . basename($_FILES["gambar"]["name"]) . "')";
+            $sql = "INSERT INTO program_tanam (nama, waktu, daerah, hasil, gambar, jumlah, deskripsi) VALUES ('$nama', '$waktu', '$daerah', '$hasil', 'jumlah', 'deskripsi,'" . basename($_FILES["gambar"]["name"]) . "')";
 
             if ($con->query($sql) === TRUE) {
                 echo "Data program berhasil ditambahkan.";
@@ -68,7 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Tambah Program</title>
+    <title>Tambah Program</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -127,8 +128,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </div>
 
                                         <div class="field input">
-                                            <label for="koordinat">Titik Lokasi Pabrik</label>
-                                            <input type="text" id="koordinat" name="koordinat" autocomplete="off" required>
+                                            <label for="deskripsi">Deskripsi Program</label>
+                                            <input type="text" id="deskripsi" name="deskripsi" autocomplete="off" required>
                                         </div>
 
                                         <div class="field input">
@@ -151,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </div>
 
                                         <div class="links">
-                                            Edit program yang sudah ada? <a href="edit-program-tanam.php">Edit Program</a>
+                                            Ubah program yang sudah ada? <a href="edit-program-tanam.php">Ubah Program</a>
                                         </div>
 
                                     </form>
