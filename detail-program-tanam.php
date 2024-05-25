@@ -95,8 +95,11 @@ function hitungProgressPanen($id_program_tanam, $id_user)
                                 <li><a href="program-pupuk-subsidi.php">Pupuk Subsidi</a></li>
                                 <li><a href="program-sewa-alat.php">Sewa Alat</a></li>
                                 <li><a href="#">Forum</a></li>
+                                <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                                    echo '<li><a href="admin/dashboard-1.php">Kelola</a></li>';
+                                }?>
                                 <li>
-                                    <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
+                                    <button onclick="window.location.href='profile.php'" class="signin">Profil</button>
                                     <button onclick="window.location.href='program-tanam.php'" class="signup">Kembali</button>
                                 </li>
                             </ul>

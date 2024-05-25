@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Garamound:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+body {
+  background-color: white;
+  font-family: "Poppins", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+/* -------------sidebar----------------- */
+.sidebar {
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f1f1f1;
+  overflow-x: hidden;
+  padding-top: 80px;
+  padding-left: 15px;
+}
+
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+}
+
+.sidebar a:hover {
+    color: #08875D;
+}
+.side-header{
+    margin-left: calc(100% / 4);
+}
+
+.sidebar .pressed{
+    color:  #08875D;
+    background-color: #EDFDF8;
+}
+
+/* -----------main----------------------- */
+.main {
+    width: 80%;
+    margin-left: 20%; /* Same as the width of the sidenav */
+  /* padding: 0px 10px; */
+}
+
+.head-main {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 10px #d4d4d4;
+}
+
+.head-main h1{
+    text-align: center;
+    font-size: 38px;
+    font-weight: 600;
+    padding-top: 10px;
+    color: #08875D;
+}
+
+.main1 {
+    margin-top: 80px;
+}
+
+.box {
+    max-width: 350px;
+    height: 300px;
+    padding: 20px;
+    margin: 30px;
+    text-align: center;
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column; 
+    justify-content: space-between;
+    transition: 0.2s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+}
+
+.box:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+
+.box i {
+    display: block;
+    margin: 20px 0 30px;
+    cursor:pointer; 
+}
+
+.box p {
+    margin: 10px;
+    font-weight: 500;
+    font-size: 18px;
+    color: black; 
+}
+
+.box p.count {
+    color: #08875D;
+    font-weight: bold;
+}
+
+
+
+
+
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
