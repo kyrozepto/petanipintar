@@ -30,7 +30,8 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petani Pintar - Detail Alat</title>
+    <title>Detail Alat</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
@@ -58,8 +59,11 @@ if (isset($_GET['id'])) {
                                 <li><a href="program-pupuk-subsidi.php">Pupuk Subsidi</a></li>
                                 <li><a href="program-sewa-alat.php">Sewa Alat</a></li>
                                 <li><a href="#">Forum</a></li>
+                                <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                                    echo '<li><a href="admin/dashboard-1.php">Kelola</a></li>';
+                                }?>
                                 <li>
-                                    <button onclick="window.location.href='profile.php'" class="signin">Profil Akun
+                                    <button onclick="window.location.href='profile.php'" class="signin">Profil
                                     </button>
                                     <button onclick="history.back()" class="signup">Kembali</button>
                                 </li>
@@ -85,33 +89,33 @@ if (isset($_GET['id'])) {
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="detail-program-img-wp">
-                                        <img class="img-rounded" src="image/alat/<?php echo $row['gambar']; ?>"
-                                            alt="<?php echo $row['nama']; ?>">
+                                        <img class="img-rounded" src="image/alat/<?php echo $row['gambar']; ?>" alt="<?php echo $row['nama']; ?>">
                                     </div>
                                 </div>
                                 <div class="col-lg-8 detail-box">
-                                        <div class="detail-info mt-4">
-                                                <div class="row">
-                                                <div class="col-lg-6">
-                                                        <p class="p-detail">Deskripsi:<br><b><?php echo $row['deskripsi']; ?></b><p>
-                                                        <p class="p-detail">Lokasi Penyimpanan:<br><b><?php echo $row['lokasi']; ?></b></p>
-                                                        
-                                                </div>
-                                                <div class="col-lg-6">
-                                                        <p class="p-detail">Spesifikasi:<br><b><?php echo $row['spesifikasi']; ?></b></p>
-                                                        <p class="p-detail">Pemilik:<br><b><?php echo $row['pemilik']; ?></b></p>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                        <p class="p-detail">Harga Sewa:<br><b>Rp.
-                                                            <?php echo number_format($row['harga'], 0, ',', '.'); ?> / musim</b>
-                                                        </p>
-                                                </div>
+                                    <div class="detail-info mt-4">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <p class="p-detail">Deskripsi:<br><b><?php echo $row['deskripsi']; ?></b>
+                                                <p>
+                                                <p class="p-detail">Daerah Penyimpanan:<br><b><?php echo $row['lokasi']; ?></b></p>
+
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <p class="p-detail">Spesifikasi:<br><b><?php echo $row['spesifikasi']; ?></b></p>
+                                                <p class="p-detail">Pemilik:<br><b><?php echo $row['pemilik']; ?></b></p>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <p class="p-detail">Harga Sewa:<br><b>Rp.
+                                                        <?php echo number_format($row['harga'], 0, ',', '.'); ?> / musim</b>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mt-5 text-center">
-                                        <a href="simpan-alat.php?id=<?php echo $row['id']; ?>" class="add-alt uil-bookmark"></a>
-                                        <a href="mulai-sewa-alat.php?id=<?php echo $row['id']; ?>" class="add">Sewa Alat</a>
+                                    <a href="simpan-alat.php?id=<?php echo $row['id']; ?>" class="add-alt uil-bookmark"></a>
+                                    <a href="mulai-sewa-alat.php?id=<?php echo $row['id']; ?>" class="add">Sewa Alat</a>
                                 </div>
                             </div>
                         </div>
@@ -119,61 +123,61 @@ if (isset($_GET['id'])) {
             </div>
         </div>
         <footer class="site-footer" id="help">
-                <div class="top-footer section">
-                    <div class="sec-wp">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="footer-info">
-                                        <div class="footer-logo">
-                                            <a href="index.php">
-                                                <img src="image/petanipintar_logo80.png" alt="Logo">
-                                            </a>
-                                        </div>
-                                        <h5>Butuh Bantuan?</h5>
-                                        <a>Hubungi kami untuk informasi lebih lanjut.</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8">
-                                    <div class="footer-flex-box">
-                                        <div class="footer-menu">
-                                            <h4 class="h4-title">Kontak</h4>
-                                            <ul>
-                                                <li><a href="#">petanipintar@gmail.com</a></li>
-                                                <li><a href="#">+62 1234567890</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="footer-menu food-nav-menu">
-                                            <h4 class="h4-title">Menu</h4>
-                                            <ul class="column-2">
-                                                <li><a href="#program">Alat Pertanian</a></li>
-                                                <li><a href="#sdk">Syarat dan Ketentuan</a></li>
-                                                <li><a href="#help">Pusat Bantuan</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="footer-menu">
-                                            <h4 class="h4-title">Informasi Lain</h4>
-                                            <ul>
-                                                <li><a href="#">FAQ</a></li>
-                                                <li><a href="#">Kebijakan Privasi</a></li>
-                                                <li><a href="#">Syarat dan Ketentuan</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="end-footer">
+            <div class="top-footer section">
+                <div class="sec-wp">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-12 text-center mb-3">
-                                <a>kamipetanipintar.com</a>
+                            <div class="col-lg-4">
+                                <div class="footer-info">
+                                    <div class="footer-logo">
+                                        <a href="index.php">
+                                            <img src="image/petanipintar_logo80.png" alt="Logo">
+                                        </a>
+                                    </div>
+                                    <h5>Butuh Bantuan?</h5>
+                                    <a>Hubungi kami untuk informasi lebih lanjut.</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="footer-flex-box">
+                                    <div class="footer-menu">
+                                        <h4 class="h4-title">Kontak</h4>
+                                        <ul>
+                                            <li><a href="#">petanipintar@gmail.com</a></li>
+                                            <li><a href="#">+62 1234567890</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="footer-menu food-nav-menu">
+                                        <h4 class="h4-title">Menu</h4>
+                                        <ul class="column-2">
+                                            <li><a href="#program">Alat Pertanian</a></li>
+                                            <li><a href="#sdk">Syarat dan Ketentuan</a></li>
+                                            <li><a href="#help">Pusat Bantuan</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="footer-menu">
+                                        <h4 class="h4-title">Informasi Lain</h4>
+                                        <ul>
+                                            <li><a href="#">FAQ</a></li>
+                                            <li><a href="#">Kebijakan Privasi</a></li>
+                                            <li><a href="#">Syarat dan Ketentuan</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="end-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center mb-3">
+                            <a>kamipetanipintar.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 

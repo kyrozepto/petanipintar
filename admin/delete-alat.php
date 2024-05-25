@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
     $sql = "DELETE FROM alat WHERE id = $id";
 
     if ($con->query($sql) === TRUE) {
-        echo '<script>alert("Berhasil Delete");
+        echo '<script>alert("Berhasil Hapus");
                     window.location.href = "dashboard-4.php";
                     </script>';
     } else {

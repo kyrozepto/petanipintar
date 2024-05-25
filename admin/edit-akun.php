@@ -47,12 +47,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Akun</title>
+    <title>Ubah Akun</title>
+    <link rel="icon" href="../image/icon64.png" type="image/png">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Edit Akun</h2>
+        <h2>Ubah Akun</h2>
         <form action="edit-akun.php?id=<?php echo $user['id']; ?>" method="post">
             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
             <div class="form-group">

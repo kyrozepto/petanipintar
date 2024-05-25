@@ -2,7 +2,6 @@
         box-sizing: border-box;
 }
 
-
 /* CONTENT LOGIN*/
 
 .message {
@@ -73,7 +72,6 @@ main {
         display: flex;
         margin-bottom: 10px;
         flex-direction: column;
-
 }
 
 .form-box form .input input {
@@ -93,7 +91,7 @@ main {
         color: #fff;
         font-size: 15px;
         cursor: pointer;
-        transition: all .3s;
+        transition: all 0.3s;
         margin-top: 10px;
         padding: 0px 10px;
         border-radius: 60px;
@@ -127,4 +125,4 @@ main {
         .form-box {
                 width: 500px;
         }
-}       
+}

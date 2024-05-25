@@ -77,12 +77,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Alat</title>
+    <title>Ubah Alat</title>
+    <link rel="icon" href="../image/icon64.png" type="image/png">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Edit Alat</h2>
+        <h2>Ubah Alat</h2>
         <form action="edit-alat.php?id=<?php echo $alat['id']; ?>" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $alat['id']; ?>">
             <div class="form-group">

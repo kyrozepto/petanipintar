@@ -12,6 +12,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DashBoard Admin</title>
+    <link rel="icon" href="../image/icon64.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/dashstyle.css">
@@ -20,8 +21,8 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="side-header">
-            <img src="../image/logo-admin.png" width="120" height="120"> 
-            <h5 style="margin-top:10px;">Hello, Admin</h5>
+            <img src="../image/admin.png" width="120" height="120"> 
+            <h5 style="margin-top:10px;">Halo, Admin</h5>
         </div>
         <br>
         <a href="dashboard-1.php" ><i class="fa-solid fa-house"></i>&nbsp Dashboard</a>
@@ -30,19 +31,21 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
         <a href="dashboard-4.php" ><i class="fa-solid fa-tractor"></i>&nbsp&nbspAlat</a>
         <a href="dashboard-5.php" class="pressed"><i class="fa-solid fa-users-gear"></i>&nbsp Users</a>
         <br><br><br><br><br><br><br>
-        <a href="../menu.php"><i class="fa-solid fa-earth-americas"></i> Page Menu</a>
-        <a href="../login.php" onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}"><i class="fa-solid fa-power-off"></i> Log Out</a>
+        <a href="../menu.php"><i class="fa-solid fa-earth-americas"></i> Halaman Utama</a>
+        <a href="../login.php" onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin keluar?')){ window.location.href = '../login.php'; }"><i class="fa-solid fa-power-off"></i> Keluar</a>
       </div>
   
   <!-- Page Content -->
   <div class="main">
-    <div class="head-main">
+    <!-- <div class="head-main">
         <h1>Manage Users</h1>
-    </div>
+    </div> -->
     <div class="main1">
         <div class="container">
-            <h1 class="mt-5">Akun</h1>
-            <a href="add-akun.php" class="btn btn-success mb-3">Tambah Akun Baru</a>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Daftar Akun</h2>
+                <a href="add-akun.php" class="btn btn-success">Tambah Akun</a>
+            </div>
             <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
@@ -81,8 +84,8 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
                                     <td>{$row['longitude']}</td>
                                     <td>{$row['role']}</td>
                                     <td>
-                                        <a href='edit-akun.php?id={$row['id']}' class='btn btn-primary btn-sm'>Edit</a>
-                                        <a href='delete-akun.php?id={$row['id']}' class='btn btn-danger btn-sm'>Delete</a>
+                                        <a href='edit-akun.php?id={$row['id']}' class='btn btn-primary btn-sm'>Ubah</a>
+                                        <a href='delete-akun.php?id={$row['id']}' class='btn btn-danger btn-sm'>Hapus</a>
                                     </td>
                                   </tr>";
                         }

@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
     $sql = "DELETE FROM users WHERE id = $id";
 
     if ($con->query($sql) === TRUE) {
-        echo '<script>alert("Akun Berhasil diDelete");
+        echo '<script>alert("Akun Berhasil diHapus");
                     window.location.href = "dashboard-5.php";
                     </script>';
     } else {

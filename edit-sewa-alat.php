@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $gambar = $alat['gambar'];
             }
         } else {
-            $gambar = $alat['gambar']; 
+            $gambar = $alat['gambar'];
         }
 
         $stmt = $con->prepare("UPDATE alat SET nama = ?, deskripsi = ?, spesifikasi = ?, lokasi = ?, pemilik = ?, harga = ?, gambar = ? WHERE id = ?");
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             echo "Data alat berhasil diperbarui.";
             header("Location: program-sewa-alat.php");
-            exit(); 
+            exit();
         } else {
             echo "Error: " . $stmt->error;
         }
@@ -101,39 +101,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Edit Informasi Alat</title>
+    <title>Ubah Informasi Alat</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
+
 <body class="body-fixed">
-        <header class="site-header">
-                <div class="container">
-                        <div class="row">
-                        <div class="col-lg-2">
-                                <div class="header-logo">
-                                <a href="menu.php">
-                                        <img src="image/logo_petanipintar.png" width="40" height="40" alt="Logo">
-                                </a>
-                                </div>
-                        </div>
-                        <div class="col-lg-10">
-                                <div class="main-navigation">
-                                <button class="menu-toggle"><span></span><span></span></button>
-                                <nav class="header-menu">
-                                        <ul class="menu">
-                                        <li>
-                                                <button onclick="window.location.href='program-sewa-alat.php'" class="signup">Kembali</button>
-                                        </li>
-                                        </ul>
-                                </nav>
-                                </div>
-                        </div>
-                        </div>
+    <header class="site-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header-logo">
+                        <a href="menu.php">
+                            <img src="image/logo_petanipintar.png" width="40" height="40" alt="Logo">
+                        </a>
+                    </div>
                 </div>
-        </header>
+                <div class="col-lg-10">
+                    <div class="main-navigation">
+                        <button class="menu-toggle"><span></span><span></span></button>
+                        <nav class="header-menu">
+                            <ul class="menu">
+                                <li>
+                                    <button onclick="window.location.href='program-sewa-alat.php'" class="signup">Kembali</button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <div id="viewport">
         <div id="js-scroll-content">
@@ -142,8 +145,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="sec-wp">
                         <div class="box-container mt-5">
                             <div class="box form-box">
-                                <header>Edit Informasi Alat</header>
-                                
+                                <header>Ubah Informasi Alat</header>
+
                                 <form method="post" enctype="multipart/form-data">
                                     <div class="field input">
                                         <label for="id_alat">Pilih Item</label>
@@ -154,8 +157,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                             $result = $con->query($sql);
 
                                             if ($result->num_rows > 0) {
-                                                while($row = $result->fetch_assoc()) {
-                                                    echo '<option value="'.$row['id'].'"'.($alat['id'] == $row['id'] ? ' selected' : '').'>'.$row['nama'].'</option>';
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo '<option value="' . $row['id'] . '"' . ($alat['id'] == $row['id'] ? ' selected' : '') . '>' . $row['nama'] . '</option>';
                                                 }
                                             } else {
                                                 echo '<option value="">Tidak ada alat</option>';
@@ -165,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     </div>
                                 </form>
 
-                                <?php if (!empty($alat)): ?>
+                                <?php if (!empty($alat)) : ?>
                                     <form method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="id_alat" value="<?php echo $alat['id']; ?>">
 
@@ -185,7 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </div>
 
                                         <div class="field input">
-                                            <label for="lokasi">Lokasi Penyimanan</label>
+                                            <label for="lokasi">Daerah Penyimanan</label>
                                             <input type="text" id="lokasi" name="lokasi" value="<?php echo $alat['lokasi']; ?>" autocomplete="off" required>
                                         </div>
 
@@ -210,9 +213,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         </div>
 
                                         <div class="links">
-                                                Tambah item baru? <a href="add-katalog.php">Tambah Katalog</a>
+                                            Tambah item baru? <a href="add-sewa-alat.php">Tambah Katalog</a>
                                         </div>
-                                        
+
                                     </form>
                                 <?php endif; ?>
 
@@ -230,4 +233,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="js/gsap.min.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>

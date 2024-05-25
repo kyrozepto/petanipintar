@@ -1,10 +1,10 @@
 <?php
-   session_start();
+session_start();
 
-   include("php/config.php");
-   if(!isset($_SESSION['valid'])){
-        header("Location: index.php");
-       }
+include("php/config.php");
+if (!isset($_SESSION['valid'])) {
+    header("Location: index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petani Pintar - Pupuk Subsidi</title>
+    <title>Pupuk Subsidi</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/form.css">
@@ -39,14 +40,13 @@
                                 <li><a href="program-tanam.php">Program Tanam</a></li>
                                 <li><a href="program-pupuk-subsidi.php">Pupuk Subsidi</a></li>
                                 <li><a href="program-sewa-alat.php">Sewa Alat</a></li>
+                                <li><a href="#">Forum</a></li>
                                 <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
-                                    echo '<li><a href="admin/dashboard-1.php">Manage</a></li>';
-                                }else{    
-                                    echo "<li><a href='#'>Forum</a></li>";
+                                    echo '<li><a href="admin/dashboard-1.php">Kelola</a></li>';
                                 }?>
                                 <li>
-                                    <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
-                                    <button onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}" class="signup">Sign Out</button>
+                                    <button onclick="window.location.href='profile.php'" class="signin">Profil</button>
+                                    <button onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}" class="signup">Keluar</button>
                                 </li>
                             </ul>
                         </nav>
@@ -82,10 +82,8 @@
                     </div>
                 </div>
             </section>
-            
+
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-                <!-- <h2 class="h2-title"><center><span>Learn More</span><br>About our Program</center></h2> -->
-                
                 <section class="default-banner" id="program">
                     <div class="sec-wp">
                         <div class="container">
@@ -99,42 +97,39 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="programs-box">
-                                        <div class="programs-img back-img"
-                                        style="background-image: url(image/program_tanam.jpg);"></div>
+                                        <div class="programs-img back-img" style="background-image: url(image/program_tanam.jpg);"></div>
                                         <div class="programs-text">
                                             <h4><b>1.</b> Buat Formulir Permohonan</h4>
                                             <p>Buat dan isi formulir permohonan dengan lengkap dan benar, termasuk data diri, lahan pertanian, dan kebutuhan pupuk.
                                                 Upload dokumen yang diperlukan, seperti KTP dan KK.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="programs-box">
-                                            <div class="programs-img back-img"
-                                            style="background-image: url(image/program_pupuk.jpg);"></div>
-                                            <div class="programs-text">
-                                                <h4><b>2.</b> Proses Verifikasi Berkas</h4>
-                                                <p>Tim verifikator akan memeriksa kelengkapan dan keabsahan data dan dokumen yang Anda upload.
-                                                    Proses verifikasi dapat memakan waktu beberapa hari.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="programs-box">
-                                                <div class="programs-img back-img"
-                                                style="background-image: url(image/program_sewa.jpg);"></div>
-                                                <div class="programs-text">
-                                                    <h4><b>3.</b> Notifikasi Persetujuan</h4>
-                                                    <p>Jika verifikasi berkas berhasil, Anda akan menerima notifikasi persetujuan program melalui email.
-                                                        Cetak Kartu Tani dan gunakan untuk membeli pupuk bersubsidi di toko resmi.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-4">
+                                    <div class="programs-box">
+                                        <div class="programs-img back-img" style="background-image: url(image/program_pupuk.jpg);"></div>
+                                        <div class="programs-text">
+                                            <h4><b>2.</b> Proses Verifikasi Berkas</h4>
+                                            <p>Tim verifikator akan memeriksa kelengkapan dan keabsahan data dan dokumen yang Anda upload.
+                                                Proses verifikasi dapat memakan waktu beberapa hari.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="programs-box">
+                                        <div class="programs-img back-img" style="background-image: url(image/program_sewa.jpg);"></div>
+                                        <div class="programs-text">
+                                            <h4><b>3.</b> Notifikasi Persetujuan</h4>
+                                            <p>Jika verifikasi berkas berhasil, Anda akan menerima notifikasi persetujuan program melalui email.
+                                                Cetak Kartu Tani dan gunakan untuk membeli pupuk bersubsidi di toko resmi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
-                
+
                 <section class="main-banner" id="sdk">
                     <div class="sec-wp">
                         <div class="container">
@@ -148,7 +143,7 @@
                                     <div class="banner-text">
                                         <h2 class="h2-title"><span>Syarat dan Ketentuan</span> Program Pupuk</h2>
                                         <p>
-                                        Program yang dirancang untuk membantu petani dalam meningkatkan produksi pertanian melalui akses pupuk bersubsidi yang mudah, tepat, dan akuntabel.
+                                            Program yang dirancang untuk membantu petani dalam meningkatkan produksi pertanian melalui akses pupuk bersubsidi yang mudah, tepat, dan akuntabel.
                                         </p>
                                     </div>
                                 </div>
@@ -156,7 +151,7 @@
                         </div>
                     </div>
                 </section>
-                
+
                 <section class="default-banner mb-5" id="form">
                     <div class="sec-wp">
                         <div class="box-container">
@@ -164,96 +159,100 @@
                                 <?php
                                 $id = $_SESSION['id'];
                                 $query = mysqli_query($con, "SELECT * FROM users WHERE Id=$id");
-                                
+
                                 while ($result = mysqli_fetch_assoc($query)) {
                                     $res_email = $result['email'];
-                                $res_username = $result['username'];
-                                $res_fullname = $result['fullname'];
-                                $res_age = $result['age'];
+                                    $res_username = $result['username'];
+                                    $res_fullname = $result['fullname'];
+                                    $res_age = $result['age'];
                                 }
                                 ?>
-                            <header>Formulir Permohonan</header>
-                            <form action="" method="post">
-                                <div class="field input">
-                                    <label for="email">Email</label>
-                                    <input type="text" name="email" id="email" value="<?php echo $res_email; ?>" autocomplete="off" required>
-                                </div>
-                                
-                                <div class="field input">
-                                    <label for="username">Username</label>
-                                    <input type="text" name="username" id="username" value="<?php echo $res_username; ?>" autocomplete="off" required>
-                                </div>
+                                <header>Formulir Permohonan</header>
+                                <form action="" method="post">
+                                    <div class="field input">
+                                        <label for="email">Email</label>
+                                        <input type="text" name="email" id="email" value="<?php echo $res_email; ?>" autocomplete="off" required>
+                                    </div>
 
-                                <div class="field input">
-                                    <label for="fullname">Nama Lengkap</label>
-                                    <input type="text" name="fullname" id="fullname" value="<?php echo $res_fullname; ?>" autocomplete="off" required>
-                                </div>
+                                    <div class="field input">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" id="username" value="<?php echo $res_username; ?>" autocomplete="off" required>
+                                    </div>
 
-                                <div class="field input">
-                                    <label for="age">Umur</label>
-                                    <input type="number" name="age" id="age" value="<?php echo $res_age; ?>" autocomplete="off" required>
-                                </div>
-                                
-                                <div class="field input">
-                                    <label for="alamat">Alamat Lengkap</label>
-                                    <input type="text" name="alamat" id="alamat" autocomplete="off" required>
-                                </div>
+                                    <div class="field input">
+                                        <label for="fullname">Nama Lengkap</label>
+                                        <input type="text" name="fullname" id="fullname" value="<?php echo $res_fullname; ?>" autocomplete="off" required>
+                                    </div>
 
-                                <div class="field input">
-                                    <label for="nik">NIK</label>
-                                    <input type="number" name="nik" id="nik" value="<?php echo $res_Nik; ?>" autocomplete="off" required>
-                                </div>
+                                    <div class="field input">
+                                        <label for="age">Umur</label>
+                                        <input type="number" name="age" id="age" value="<?php echo $res_age; ?>" autocomplete="off" required>
+                                    </div>
 
-                                <div class="mb-2">
-                                    <label for="foto_ktp">Foto KTP</label>
-                                    <input <?php if(!isset($_GET['ubah'])){echo "required";} ?> class="form-control" type="file" name="foto_ktp" id="foto_ktp" accept="image/*" >
-                                </div>
+                                    <div class="field input">
+                                        <label for="alamat">Alamat Lengkap</label>
+                                        <input type="text" name="alamat" id="alamat" autocomplete="off" required>
+                                    </div>
 
-                                <div class="mb-2">
-                                    <label for="foto_kk">Foto KK</label>
-                                    <input <?php if(!isset($_GET['ubah'])){echo "required";} ?> class="form-control" type="file" name="foto_kk" id="foto_kk" accept="image/*" >
-                                </div>
+                                    <div class="field input">
+                                        <label for="nik">NIK</label>
+                                        <input type="number" name="nik" id="nik" value="<?php echo $res_Nik; ?>" autocomplete="off" required>
+                                    </div>
 
-                                <div class="field input">
-                                    <label for="luas_lahan">Luas Lahan</label>
-                                    <input type="number" name="luas_lahan" id="luas_lahan" autocomplete="off" required>
-                                </div>
+                                    <div class="mb-2">
+                                        <label for="foto_ktp">Foto KTP</label>
+                                        <input <?php if (!isset($_GET['ubah'])) {
+                                                    echo "required";
+                                                } ?> class="form-control" type="file" name="foto_ktp" id="foto_ktp" accept="image/*">
+                                    </div>
 
-                                <div class="field input">
-                                    <label for="koordinat">Titik Koordinat Lahan</label>
-                                    <input type="text" name="koordinat" id="koordinat" autocomplete="off" required>
-                                </div>
+                                    <div class="mb-2">
+                                        <label for="foto_kk">Foto KK</label>
+                                        <input <?php if (!isset($_GET['ubah'])) {
+                                                    echo "required";
+                                                } ?> class="form-control" type="file" name="foto_kk" id="foto_kk" accept="image/*">
+                                    </div>
 
-                                <div class="field input">
+                                    <div class="field input">
+                                        <label for="luas_lahan">Luas Lahan</label>
+                                        <input type="number" name="luas_lahan" id="luas_lahan" autocomplete="off" required>
+                                    </div>
+
+                                    <div class="field input">
+                                        <label for="koordinat">Titik Koordinat Lahan</label>
+                                        <input type="text" name="koordinat" id="koordinat" autocomplete="off" required>
+                                    </div>
+
+                                    <div class="field input">
                                         <div class="row">
-                                                <div class="col-6">
-                                                        <label for="jenis_pupuk">Jenis Pupuk</label>
-                                                        <div>
-                                                                <select name="jenis_pupuk" id="jenis_pupuk" class="form-control" required>
-                                                                <option value=""></option>
-                                                                <option value="urea">Urea</option>
-                                                                <option value="NPK">NPK</option>
-                                                                <option value="TSP">TSP</option>
-                                                                </select>
-                                                        </div>
+                                            <div class="col-6">
+                                                <label for="jenis_pupuk">Jenis Pupuk</label>
+                                                <div>
+                                                    <select name="jenis_pupuk" id="jenis_pupuk" class="form-control" required>
+                                                        <option value=""></option>
+                                                        <option value="urea">Urea</option>
+                                                        <option value="NPK">NPK</option>
+                                                        <option value="TSP">TSP</option>
+                                                    </select>
                                                 </div>
+                                            </div>
 
-                                                <div class="col-6">
-                                                        <label for="jumlah_pupuk">Jumlah Pupuk</label>
-                                                        <input type="number" name="jumlah_pupuk" id="jumlah_pupuk" min="1" required>
-                                                </div>
+                                            <div class="col-6">
+                                                <label for="jumlah_pupuk">Jumlah Pupuk</label>
+                                                <input type="number" name="jumlah_pupuk" id="jumlah_pupuk" min="1" required>
+                                            </div>
                                         </div>
-                                </div>
-                                <div class="field">
-                                    <input type="submit" class="btn" name="submit" value="Submit" required>
-                                </div>
-                                
-                            </form>
+                                    </div>
+                                    <div class="field">
+                                        <input type="submit" class="btn" name="submit" value="Submit" required>
+                                    </div>
+
+                                </form>
+                            </div>
                         </div>
-                    </div>
                 </section>
-        </div>
-        <footer class="site-footer" id="help">
+            </div>
+            <footer class="site-footer" id="help">
                 <div class="top-footer section">
                     <div class="sec-wp">
                         <div class="container">
@@ -310,7 +309,7 @@
                         </div>
                     </div>
                 </div>
-                </footer>
+            </footer>
         </div>
     </div>
     <script src="js/bootstrap.min.js"></script>

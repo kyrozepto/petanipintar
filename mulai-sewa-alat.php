@@ -1,12 +1,12 @@
-<?php 
-   session_start();
+<?php
+session_start();
 
-   include("php/config.php");
-   if(!isset($_SESSION['valid'])){
-        header("Location: index.php");
-       }
+include("php/config.php");
+if (!isset($_SESSION['valid'])) {
+    header("Location: index.php");
+}
 
-   if (isset($_GET['id'])) {
+if (isset($_GET['id'])) {
     $id_alat = $_GET['id'];
 
     $sql_alat = "SELECT * FROM alat WHERE id = $id_alat";
@@ -20,10 +20,12 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Sewa Alat</title>
+    <title>Sewa Alat</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -65,12 +67,18 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-lg-12 mt-2">
-                                                <h3><center><b>Konfirmasi Persetujuan dan Pembayaran</b></center></h3>
-                                                <p><center>Alat: <?php echo $row_alat['nama']; ?></center></p>
-                                                <p><center>Harga Sewa: Rp. <?php echo number_format($row_alat['harga'], 0, ',', '.'); ?> / musim</center></p>
-                                                <p>Dengan melakukan pemesanan, Anda menyetujui syarat dan ketentuan yang berlaku. 
-                                                Silahkan pilih metode pembayaran dan selesaikan proses pembayaran.</p>
-                                                <form action="php/fungsi-mulai-sewa.php" method="post"> 
+                                                <h3>
+                                                    <center><b>Konfirmasi Persetujuan dan Pembayaran</b></center>
+                                                </h3>
+                                                <p>
+                                                    <center>Alat: <?php echo $row_alat['nama']; ?></center>
+                                                </p>
+                                                <p>
+                                                    <center>Harga Sewa: Rp. <?php echo number_format($row_alat['harga'], 0, ',', '.'); ?> / musim</center>
+                                                </p>
+                                                <p>Dengan melakukan pemesanan, Anda menyetujui syarat dan ketentuan yang berlaku.
+                                                    Silahkan pilih metode pembayaran dan selesaikan proses pembayaran.</p>
+                                                <form action="php/fungsi-mulai-sewa.php" method="post">
                                                     <input type="hidden" name="id_alat" value="<?php echo $id_alat; ?>">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" name="setuju_syarat" id="setuju_syarat" required>
@@ -84,7 +92,7 @@
                                                             <option value="">Pilih Metode Pembayaran</option>
                                                             <option value="transfer_bank">Transfer Bank</option>
                                                             <option value="e_wallet">E-Wallet</option>
-                                                            </select>
+                                                        </select>
                                                     </div>
                                                     <div class="field mt-3">
                                                         <button type="submit" class="btn">Sewa Sekarang</button>
@@ -100,11 +108,12 @@
                 </div>
             </div>
         </div>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="js/jquery.mixitup.min.js"></script>
-    <script src="js/swiper-bundle.min.js"></script>
-    <script src="js/gsap.min.js"></script>
-    <script src="main.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery-3.7.1.min.js"></script>
+        <script src="js/jquery.mixitup.min.js"></script>
+        <script src="js/swiper-bundle.min.js"></script>
+        <script src="js/gsap.min.js"></script>
+        <script src="main.js"></script>
 </body>
+
 </html>

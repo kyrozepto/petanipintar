@@ -1,8 +1,8 @@
-<?php 
+<?php
 session_start();
 include("php/config.php");
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($con, filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
     $password = mysqli_real_escape_string($con, htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8'));
 
@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
             if ($row['role'] == 'admin') {
                 $_SESSION['admin'] = true;
             } else {
-                $_SESSION['admin'] = false; 
+                $_SESSION['admin'] = false;
             }
 
             header("Location: menu.php");
@@ -39,15 +39,19 @@ if(isset($_POST['submit'])){
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Login</title>
+    <title>Masuk</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
+
 <body class="body-fixed">
     <header class="site-header">
         <div class="container">
@@ -65,8 +69,8 @@ if(isset($_POST['submit'])){
                         <nav class="header-menu">
                             <ul class="menu">
                                 <li>
-                                    <button onclick="window.location.href='register.php'" class="signin">Sign Up</button>
-                                    <button onclick="window.location.href='index.php'" class="signup">Home</button>
+                                    <button onclick="window.location.href='register.php'" class="signin">Buat Akun</button>
+                                    <button onclick="window.location.href='index.php'" class="signup">Kembali</button>
                                 </li>
                             </ul>
                         </nav>
@@ -82,7 +86,7 @@ if(isset($_POST['submit'])){
                     <div class="sec-wp">
                         <div class="box-container">
                             <div class="box form-box">
-                                <header>Login</header>
+                                <header>Masuk</header>
                                 <form action="" method="post">
                                     <div class="field input">
                                         <label for="email">Email</label>
@@ -100,8 +104,8 @@ if(isset($_POST['submit'])){
                                     <div class="links">
                                         Belum memiliki akun? <a href="register.php">Daftar Sekarang</a>
                                     </div>
-                                    <?php 
-                                    if(isset($error_message)){
+                                    <?php
+                                    if (isset($error_message)) {
                                         echo "<div class='error-message'>$error_message</div>";
                                     }
                                     ?>
@@ -121,4 +125,5 @@ if(isset($_POST['submit'])){
     <script src="main.js"></script>
     <?php session_destroy();?>
 </body>
+
 </html>

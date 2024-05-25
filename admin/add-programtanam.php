@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $daerah = $_POST['daerah'];
     $hasil = $_POST['hasil'];
     $jumlah = $_POST['jumlah'];
-    $koordinat = $_POST['koordinat'];
+    $deskripsi = $_POST['deskripsi'];
     $latitude = $_POST['latitude'];
     $longitude = $_POST['longitude'];
 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $dest_path = $uploadFileDir . $newFileName;
 
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                $query = "INSERT INTO program_tanam (nama, waktu, daerah, hasil, jumlah, koordinat, latitude, longitude, gambar) VALUES ('$nama', $waktu, '$daerah', $hasil, $jumlah, '$koordinat', $latitude, $longitude, '$newFileName')";
+                $query = "INSERT INTO program_tanam (nama, waktu, daerah, hasil, jumlah, deskripsi, latitude, longitude, gambar) VALUES ('$nama', $waktu, '$daerah', $hasil, $jumlah, '$deskripsi', $latitude, $longitude, '$newFileName')";
                 if (mysqli_query($con, $query)) {
                     echo '<script>alert("Berhasil Update");
                     window.location.href = "dashboard-2.php";
@@ -60,12 +60,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Program Tanam</title>
+    <title>Tambah Program Tanam</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Add New Program Tanam</h2>
+        <h2>Tambah Program Tanam</h2>
         <form action="add-programtanam.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nama">Nama</label>
@@ -88,8 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="number" class="form-control" id="jumlah" name="jumlah" required>
             </div>
             <div class="form-group">
-                <label for="koordinat">Koordinat</label>
-                <input type="text" class="form-control" id="koordinat" name="koordinat">
+                <label for="deskripsi">Deskripsi</label>
+                <input type="text" class="form-control" id="deskripsi" name="deskripsi">
             </div>
             <div class="form-group">
                 <label for="latitude">Latitude</label>

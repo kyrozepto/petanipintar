@@ -1,22 +1,22 @@
-<?php 
-   session_start();
+<?php
+session_start();
 
-   include("php/config.php");
-   if(!isset($_SESSION['valid'])){
+include("php/config.php");
+if (!isset($_SESSION['valid'])) {
     header("Location: index.php");
-   }
+}
 
-   $id = $_SESSION['id'];
-   $query = mysqli_query($con,"SELECT*FROM users WHERE Id=$id");
+$id = $_SESSION['id'];
+$query = mysqli_query($con, "SELECT*FROM users WHERE Id=$id");
 
-   while($result = mysqli_fetch_assoc($query)){
-       $res_email = $result['email'];
-       $res_username = $result['username'];
-       $res_fullname = $result['fullname'];
-       $res_age = $result['age'];
-       $res_id = $result['id'];
-       $res_alamat = $result['alamat'];
-   }
+while ($result = mysqli_fetch_assoc($query)) {
+    $res_email = $result['email'];
+    $res_username = $result['username'];
+    $res_fullname = $result['fullname'];
+    $res_age = $result['age'];
+    $res_id = $result['id'];
+    $res_alamat = $result['alamat'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +25,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetaniPintar - Profil</title>
+    <title>Profil Akun</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -33,9 +34,11 @@
             font-size: 16px;
             margin: 15px 0;
         }
+
         .p-halo {
             padding-left: 30px;
         }
+
         .add-alt {
             font-size: 14px;
         }
@@ -75,64 +78,64 @@
     <div id="viewport">
         <div id="js-scroll-content">
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-            <section class="main-banner">
-                <div class="sec-wp">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 mb-5">
-                                <div class="text-center mb-4">
+                <section class="main-banner">
+                    <div class="sec-wp">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 mb-5">
+                                    <div class="text-center mb-4">
                                         <h3 class="h3-title">Profil<br><span>Pengguna</span></b></h3>
                                     </div>
-                                <div class="d-flex justify-content-between align-items-center mb-4"> 
-                                    <p class="p-halo mb-0">Halo <b><?php echo $res_username ?></b>!</p>
-                                    <?php echo "<a href='edit-profile.php?Id=$res_id' class='add-alt'>Edit Profil</a>"; ?> 
-                                </div>
-
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <p>Nama Lengkap: <b><?php echo $res_fullname ?></b></p>
-                                        <p>Umur: <b><?php echo $res_age ?> tahun</b></p>
-                                        <p>Alamat: <b><?php echo $res_alamat ?></b></p>
-                                        <p>Email anda adalah <b><?php echo $res_email ?></b></p>
-                                        <p>Status Akun
-                                            <b>
-                                                <?php
-                                                if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
-                                                    echo "Admin";
-                                                } else {
-                                                    echo "Belum Diverifikasi";
-                                                }
-                                                ?>
-                                            </b>
-                                        </p>
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <p class="p-halo mb-0">Halo <b><?php echo $res_username ?></b>!</p>
+                                        <?php echo "<a href='edit-profile.php?Id=$res_id' class='add-alt'>Ubah Profil</a>"; ?>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <p class="p-halo">Informasi Rekening</p>
-                                    <a href="add-rekening.php" class="add-alt">Tambahkan</a>
-                                </div>
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <?php
-                                        $sql_rekening = "SELECT * FROM rekening_pemilik WHERE id_user = $id";
-                                        $result_rekening = $con->query($sql_rekening);
 
-                                        if ($result_rekening->num_rows > 0) {
-                                            while ($row_rekening = $result_rekening->fetch_assoc()) {
-                                                echo "<div>";
-                                                echo "<p>Jenis Rekening: <b>" . $row_rekening['jenis_rekening'] . "</b></p>";
-                                                if ($row_rekening['jenis_rekening'] == 'Bank') {
-                                                    echo "<p>Nama Bank: <b>" . $row_rekening['nama_bank'] . "</b></p>";
-                                                }
-                                                if ($row_rekening['jenis_rekening'] == 'E-Wallet') {
-                                                    echo "<p>Nama E-Wallet: <b>" . $row_rekening['nama_bank'] . "</b></p>";
-                                                }
-                                                echo "<p>Nomor Rekening: <b>" . $row_rekening['nomor_rekening'] . "</b></p>";
-                                                echo "<p>Atas Nama: <b>" . $row_rekening['atas_nama'] . "</b></p>";
-                                                echo "<div style='display: flex; justify-content: flex-end;'>";
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <p>Nama Lengkap: <b><?php echo $res_fullname ?></b></p>
+                                            <p>Umur: <b><?php echo $res_age ?> tahun</b></p>
+                                            <p>Alamat: <b><?php echo $res_alamat ?></b></p>
+                                            <p>Email anda adalah <b><?php echo $res_email ?></b></p>
+                                            <p>Status Akun
+                                                <b>
+                                                    <?php
+                                                    if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+                                                        echo "Admin";
+                                                    } else {
+                                                        echo "Belum Diverifikasi";
+                                                    }
+                                                    ?>
+                                                </b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <p class="p-halo">Informasi Rekening</p>
+                                        <a href="add-rekening.php" class="add-alt">Tambahkan</a>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <?php
+                                            $sql_rekening = "SELECT * FROM rekening_pemilik WHERE id_user = $id";
+                                            $result_rekening = $con->query($sql_rekening);
+
+                                            if ($result_rekening->num_rows > 0) {
+                                                while ($row_rekening = $result_rekening->fetch_assoc()) {
+                                                    echo "<div>";
+                                                    echo "<p>Jenis Rekening: <b>" . $row_rekening['jenis_rekening'] . "</b></p>";
+                                                    if ($row_rekening['jenis_rekening'] == 'Bank') {
+                                                        echo "<p>Nama Bank: <b>" . $row_rekening['nama_bank'] . "</b></p>";
+                                                    }
+                                                    if ($row_rekening['jenis_rekening'] == 'E-Wallet') {
+                                                        echo "<p>Nama E-Wallet: <b>" . $row_rekening['nama_bank'] . "</b></p>";
+                                                    }
+                                                    echo "<p>Nomor Rekening: <b>" . $row_rekening['nomor_rekening'] . "</b></p>";
+                                                    echo "<p>Atas Nama: <b>" . $row_rekening['atas_nama'] . "</b></p>";
+                                                    echo "<div style='display: flex; justify-content: flex-end;'>";
                                                     echo "<form action='edit-rekening.php' method='POST' style='display: inline; margin-right: 10px;'>
                                                             <input type='hidden' name='id_rekening' value='" . $row_rekening['id'] . "'>
-                                                            <button type='submit' class='add-alt'>Edit</button>
+                                                            <button type='submit' class='add-alt'>Ubah</button>
                                                         </form>";
 
                                                     echo "<form action='php/fungsi-hapus-rekening.php' method='POST' style='display: inline;'>
@@ -140,66 +143,66 @@
                                                             <button type='submit' class='add-alt' onclick='return confirm(\"Apakah Anda yakin ingin menghapus rekening ini?\")'>Hapus</button>
                                                         </form>";
 
-                                                echo "</div>";
+                                                    echo "</div>";
 
-                                                echo "<hr>"; 
+                                                    echo "<hr>";
+                                                }
+                                            } else {
+                                                echo "<p>Belum ada rekening yang ditambahkan.</p>";
                                             }
-                                        } else {
-                                            echo "<p>Belum ada rekening yang ditambahkan.</p>";
-                                        }
-                                        ?>
+                                            ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
             </div>
             <footer class="site-footer" id="help">
                 <div class="top-footer section">
-                <div class="sec-wp">
+                    <div class="sec-wp">
                         <div class="container">
-                        <div class="row">
+                            <div class="row">
                                 <div class="col-lg-4">
-                                <div class="footer-info">
+                                    <div class="footer-info">
                                         <div class="footer-logo">
-                                        <a href="index.php">
+                                            <a href="index.php">
                                                 <img src="image/petanipintar_logo80.png" alt="Logo">
-                                        </a>
+                                            </a>
                                         </div>
                                         <h5>Butuh Bantuan?</h5>
                                         <a>Hubungi kami untuk informasi lebih lanjut.</a>
-                                </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-8">
-                                <div class="footer-flex-box">
+                                    <div class="footer-flex-box">
                                         <div class="footer-menu">
-                                        <h4 class="h4-title">Kontak</h4>
-                                        <ul>
+                                            <h4 class="h4-title">Kontak</h4>
+                                            <ul>
                                                 <li><a href="#">petanipintar@gmail.com</a></li>
                                                 <li><a href="#">+62 1234567890</a></li>
-                                        </ul>
+                                            </ul>
                                         </div>
                                         <div class="footer-menu food-nav-menu">
-                                        <h4 class="h4-title">Menu</h4>
-                                        <ul class="column-2">
-                                            <li><a href="#">Profil Akun</a></li>
-                                            <li><a href="#">Riwayat Panen</a></li>
-                                            <li><a href="riwayat-pembayaran.php">Riwayat Pembayaran</a></li>
-                                            <li><a href="#">Pengaturan Lainnya</a></li>
-                                            <li><a href="#help">Pusat Bantuan</a></li>
-                                        </ul>
+                                            <h4 class="h4-title">Menu</h4>
+                                            <ul class="column-2">
+                                                <li><a href="#">Profil Akun</a></li>
+                                                <li><a href="#">Riwayat Panen</a></li>
+                                                <li><a href="riwayat-pembayaran.php">Riwayat Pembayaran</a></li>
+                                                <li><a href="#">Pengaturan Lainnya</a></li>
+                                                <li><a href="#help">Pusat Bantuan</a></li>
+                                            </ul>
                                         </div>
                                         <div class="footer-menu">
-                                        <h4 class="h4-title">Informasi Lain</h4>
-                                        <ul>
+                                            <h4 class="h4-title">Informasi Lain</h4>
+                                            <ul>
                                                 <li><a href="#">FAQ</a></li>
                                                 <li><a href="#">Kebijakan Privasi</a></li>
                                                 <li><a href="#">Syarat dan Ketentuan</a></li>
-                                        </ul>
+                                            </ul>
                                         </div>
-                                </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -207,11 +210,11 @@
                 </div>
                 <div class="end-footer">
                     <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12 text-center mb-3">
-                                        <a>kamipetanipintar.com</a>
-                                </div>
+                        <div class="row">
+                            <div class="col-lg-12 text-center mb-3">
+                                <a>kamipetanipintar.com</a>
                             </div>
+                        </div>
                     </div>
                 </div>
             </footer>
@@ -225,4 +228,5 @@
     <script src="js/gsap.min.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>

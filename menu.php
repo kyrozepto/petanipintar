@@ -1,10 +1,10 @@
 <?php
-   session_start();
+session_start();
 
-   include("php/config.php");
-   if(!isset($_SESSION['valid'])){
-        header("Location: index.php");
-       }
+include("php/config.php");
+if (!isset($_SESSION['valid'])) {
+    header("Location: index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petani Pintar</title>
+    <title>PetaniPintar</title>
+    <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -38,14 +39,13 @@
                                 <li><a href="program-tanam.php">Program Tanam</a></li>
                                 <li><a href="program-pupuk-subsidi.php">Pupuk Subsidi</a></li>
                                 <li><a href="program-sewa-alat.php">Sewa Alat</a></li>
+                                <li><a href="#">Forum</a></li>
                                 <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
-                                    echo '<li><a href="admin/dashboard-1.php">Manage</a></li>';
-                                }else{    
-                                    echo "<li><a href='#'>Forum</a></li>";
+                                    echo '<li><a href="admin/dashboard-1.php">Kelola</a></li>';
                                 }?>
                                 <li>
-                                    <button onclick="window.location.href='profile.php'" class="signin">Profil Akun</button>
-                                    <button onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}" class="signup">Sign Out</button>
+                                    <button onclick="window.location.href='profile.php'" class="signin">Profil</button>
+                                    <button onclick="if(confirm('Apakah Anda yakin ingin keluar?')){window.location.href='login.php';}" class="signup">Keluar</button>
                                 </li>
                             </ul>
                         </nav>
@@ -62,13 +62,13 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6">
-                                <?php 
-                                
-                                $id = $_SESSION['id'];
-                                $query = mysqli_query($con,"SELECT*FROM users WHERE Id=$id");
+                                <?php
 
-                                while($result = mysqli_fetch_assoc($query)){
-                                        $res_username = $result['username'];
+                                $id = $_SESSION['id'];
+                                $query = mysqli_query($con, "SELECT*FROM users WHERE Id=$id");
+
+                                while ($result = mysqli_fetch_assoc($query)) {
+                                    $res_username = $result['username'];
                                 }
                                 ?>
                                 <div class="banner-text">
@@ -91,9 +91,11 @@
                     </div>
                 </div>
             </section>
-            
+
             <div class="repeat-img" style="background-image: url(image/pattern1_background.png);">
-            <h2 class="h2-title"><center><span>Lebih Lanjut</span><br>Mengenai Program Kami</center></h2>
+                <h2 class="h2-title">
+                    <center><span>Lebih Lanjut</span><br>Mengenai Program Kami</center>
+                </h2>
                 <section class="main-banner" id="about">
                     <div class="sec-wp">
                         <div class="container">
@@ -105,19 +107,19 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="banner-text">
-                                        <h2 class="h2-title">Apa itu   <span>PetaniPintar</span> dan bagaimana cara kerjanya</h2>
+                                        <h2 class="h2-title">Apa itu <span>PetaniPintar</span> dan bagaimana cara kerjanya</h2>
                                         <p>
                                             Petani Pintar adalah sebuah konsep yang menggabungkan teknologi dan kecerdasan buatan untuk meningkatkan
                                             produktivitas dan efisiensi di bidang pertanian.
                                         </p>
                                         <p>
-                                            Melalui penerapan berbagai solusi teknologi seperti sensor, analisis data, dan perangkat lunak pintar, 
-                                            Petani Pintar memungkinkan petani memantau kondisi tanaman, mengelola sumber daya dengan lebih efisien, 
+                                            Melalui penerapan berbagai solusi teknologi seperti sensor, analisis data, dan perangkat lunak pintar,
+                                            Petani Pintar memungkinkan petani memantau kondisi tanaman, mengelola sumber daya dengan lebih efisien,
                                             dan mengoptimalkan proses pertanian secara keseluruhan.
                                         </p>
                                         <p>
-                                            Dengan demikian, Petani Pintar dapat membantu meningkatkan hasil panen, 
-                                            menurunkan biaya produksi, dan menjaga kelestarian lingkungan dalam industri pertanian    
+                                            Dengan demikian, Petani Pintar dapat membantu meningkatkan hasil panen,
+                                            menurunkan biaya produksi, dan menjaga kelestarian lingkungan dalam industri pertanian
                                         </p>
                                     </div>
                                 </div>
@@ -139,8 +141,7 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="programs-box">
-                                        <div class="programs-img back-img"
-                                            style="background-image: url(image/program_tanam.jpg);"></div>
+                                        <div class="programs-img back-img" style="background-image: url(image/program_tanam.jpg);"></div>
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Program Tanam berdasarkan Wilayah</h4>
                                             <p>Memberdayakan petani dengan memberikan program tanam dan akses sumber daya yang sesuai dengan wilayah mereka.</p>
@@ -150,8 +151,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="programs-box">
-                                        <div class="programs-img back-img"
-                                            style="background-image: url(image/program_pupuk.jpg);"></div>
+                                        <div class="programs-img back-img" style="background-image: url(image/program_pupuk.jpg);"></div>
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Bantuan pengajuan untuk Pupuk Bersubsidi</h4>
                                             <p>Mempercepat proses pengajuan permohonan untuk mendapatkan subsidi pupuk dan menerima laporan masalah yang dihadapi petani.</p>
@@ -161,8 +161,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="programs-box">
-                                        <div class="programs-img back-img"
-                                            style="background-image: url(image/program_sewa.jpg);"></div>
+                                        <div class="programs-img back-img" style="background-image: url(image/program_sewa.jpg);"></div>
                                         <div class="programs-text">
                                             <h4 href="#" class="h4-title">Peminjaman Alat Pertanian</h4>
                                             <p>Mempermudah petani untuk berkomunikasi dengan pihak terkait dalam sektor pertanian untuk dapat menyewa alat pertanian yang dibutuhkan.</p>
@@ -203,8 +202,8 @@
                                         <div class="footer-menu food-nav-menu">
                                             <h4 class="h4-title">Menu</h4>
                                             <ul class="column-2">
+                                                <li><a href="#home">Halaman Utama</a></li>
                                                 <li><a href="#about">Tentang Program</a></li>
-                                                <li><a href="#sdk">Syarat dan Ketentuan</a></li>
                                                 <li><a href="#program">Pilihan Program</a></li>
                                                 <li><a href="#help">Pusat Bantuan</a></li>
                                             </ul>
@@ -232,10 +231,10 @@
                         </div>
                     </div>
                 </div>
-                </footer>
-            </div>
-            
+            </footer>
         </div>
+
+    </div>
     </div>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
