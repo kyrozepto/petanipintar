@@ -418,13 +418,9 @@ if (!empty($userAlamat)) {
     <script src="main.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <script>
-        <?php 
-            include "php/config.php";
-            echo "const apiKey = '" . $apiKey . "';"; 
-        ?>
         function getWeather(latitude, longitude) {
-            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&lang=id&units=metric`;
-
+            const apiUrl = `php/get-weather.php?lat=${latitude}&lon=${longitude}`;
+    
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
@@ -432,7 +428,6 @@ if (!empty($userAlamat)) {
                     weatherInfo.innerHTML = `
                     <div class="row">
                         <div class="col-lg-2">
-                            
                         </div>
                         <div class="col-lg-3">
                             <h5 class="mb-2">Cuaca di Wilayah Anda</h5>
@@ -456,37 +451,37 @@ if (!empty($userAlamat)) {
                     console.error('Error fetching weather data:', error);
                 });
         }
-
+    
         var map = L.map('map');
-
+    
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
+    
         var userLatitude = parseFloat(<?php echo $userLatitude; ?>);
         var userLongitude = parseFloat(<?php echo $userLongitude; ?>);
-
+    
         if (!isNaN(userLatitude) && !isNaN(userLongitude) && (userLatitude !== 0 || userLongitude !== 0)) {
             map.setView([userLatitude, userLongitude], 9);
-
+    
             var userMarker = L.marker([userLatitude, userLongitude]).addTo(map);
             userMarker.bindPopup('<p class="p-map m-0"><b>Lokasi Anda</b><br><?php echo $userAlamat; ?>').openPopup();
             userMarker.setZIndexOffset(1000);
-
+    
             getWeather(userLatitude, userLongitude);
         } else {
             map.setView([-7.0, 110.0], 7);
         }
-
+    
         function tampilkanProgramTanam() {
             $.getJSON("php/api.php", function(data) {
                 data.forEach(function(program) {
                     var lat = parseFloat(program.latitude);
                     var lng = parseFloat(program.longitude);
-
+    
                     if (!isNaN(lat) && !isNaN(lng)) {
                         var hasilRupiah = 'Rp. ' + (program.hasil / 1000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + '.000';
-
+    
                         var programBoxContent =
                             '<div class="katalog-box-popup">' +
                             '<div style="background-image: url(image/tanaman/' + program.gambar + ');" class="katalog-tanam-img back-img"></div>' +
@@ -506,14 +501,14 @@ if (!empty($userAlamat)) {
                             '</ul>' +
                             '</div>' +
                             '</div>';
-
+    
                         var iconUrl = 'image/icon/default.png';
                         if (program.nama === 'Padi') {
                             iconUrl = 'image/icon/padi.png';
                         } else if (program.nama === 'Jagung') {
                             iconUrl = 'image/icon/jagung.png';
                         }
-
+    
                         var programIcon = L.icon({
                             iconUrl: iconUrl,
                             iconSize: [40, 40],
@@ -523,7 +518,7 @@ if (!empty($userAlamat)) {
                             shadowSize: [40, 40],
                             shadowAnchor: [15, 40]
                         });
-
+    
                         var marker = L.marker([lat, lng], {
                             icon: programIcon
                         }).addTo(map);
@@ -532,7 +527,7 @@ if (!empty($userAlamat)) {
                 });
             });
         }
-
+    
         tampilkanProgramTanam();
     </script>
 </body>
