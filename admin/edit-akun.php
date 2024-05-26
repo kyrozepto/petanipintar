@@ -47,56 +47,104 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ubah Akun</title>
     <link rel="icon" href="../image/icon64.png" type="image/png">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
-<body>
-    <div class="container mt-5">
-        <h2>Ubah Akun</h2>
-        <form action="edit-akun.php?id=<?php echo $user['id']; ?>" method="post">
-            <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="<?php echo $user['email']; ?>" required>
+<body class="body-fixed">
+    <header class="site-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header-logo">
+                        <a href="../menu.php">
+                            <img src="../image/logo_petanipintar.png" width="40" height="40" alt="Logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="main-navigation">
+                        <button class="menu-toggle"><span></span><span></span></button>
+                        <nav class="header-menu">
+                            <ul class="menu">
+                                <li>
+                                    <button onclick="window.location.href='dashboard-5.php'" class="signup">Kembali</button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">Password </label>
-                <input type="password" class="form-control" id="password" name="password" value="<?php echo $user['password']; ?>" required>
+        </div>
+    </header>
+
+    <div id="viewport">
+        <div id="js-scroll-content">
+            <div class="repeat-img" style="background-image: url('../image/pattern1_background.png');">
+                <div section="main-banner">
+                    <div class="sec-wp">
+                        <div class="box-container mt-5">
+                            <div class="box form-box">
+                                <header>Ubah Akun</header>
+                                <form action="edit-akun.php?id=<?php echo $user['id']; ?>" method="post">
+                                    <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+                                    <div class="field input">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" value="<?php echo $user['email']; ?>" required>
+                                    </div>
+                                    <div class="field input">
+                                        <label for="password">Password </label>
+                                        <input type="password" class="form-control" id="password" name="password" value="<?php echo $user['password']; ?>" required>
+                                    </div>
+                                    <div class="field input">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" id="username" name="username" value="<?php echo $user['username']; ?>" required>
+                                    </div>
+                                    <div class="field input">
+                                        <label for="fullname">Full Name</label>
+                                        <input type="text" class="form-control" id="fullname" name="fullname" value="<?php echo $user['fullname']; ?>" required>
+                                    </div>
+                                    <div class="field input">
+                                        <label for="age">Age</label>
+                                        <input type="number" class="form-control" id="age" name="age" value="<?php echo $user['age']; ?>">
+                                    </div>
+                                    <div class="field input">
+                                        <label for="alamat">Alamat</label>
+                                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $user['alamat']; ?>">
+                                    </div>
+                                    <div class="field input">
+                                        <label for="latitude">Latitude</label>
+                                        <input type="number" step="0.000001" class="form-control" id="latitude" name="latitude" value="<?php echo $user['latitude']; ?>">
+                                    </div>
+                                    <div class="field input">
+                                        <label for="longitude">Longitude</label>
+                                        <input type="number" step="0.000001" class="form-control" id="longitude" name="longitude" value="<?php echo $user['longitude']; ?>">
+                                    </div>
+                                    <div class="field input">
+                                        <label for="role">Role</label>
+                                        <select class="form-control" id="role" name="role">
+                                            <option value="admin" <?php if ($user['role'] == 'admin') echo 'selected'; ?>>Admin</option>
+                                            <option value="user" <?php if ($user['role'] == 'user') echo 'selected'; ?>>User</option>
+                                        </select>
+                                    </div>
+                                    <div class="field">
+                                        <button type="submit" class="btn">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" value="<?php echo $user['username']; ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="fullname">Full Name</label>
-                <input type="text" class="form-control" id="fullname" name="fullname" value="<?php echo $user['fullname']; ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="age">Age</label>
-                <input type="number" class="form-control" id="age" name="age" value="<?php echo $user['age']; ?>">
-            </div>
-            <div class="form-group">
-                <label for="alamat">Alamat</label>
-                <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo $user['alamat']; ?>">
-            </div>
-            <div class="form-group">
-                <label for="latitude">Latitude</label>
-                <input type="number" step="0.000001" class="form-control" id="latitude" name="latitude" value="<?php echo $user['latitude']; ?>">
-            </div>
-            <div class="form-group">
-                <label for="longitude">Longitude</label>
-                <input type="number" step="0.000001" class="form-control" id="longitude" name="longitude" value="<?php echo $user['longitude']; ?>">
-            </div>
-            <div class="form-group">
-                <label for="role">Role</label>
-                <select class="form-control" id="role" name="role">
-                    <option value="admin" <?php if ($user['role'] == 'admin') echo 'selected'; ?>>Admin</option>
-                    <option value="user" <?php if ($user['role'] == 'user') echo 'selected'; ?>>User</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Update</button>
-        </form>
+        </div>
     </div>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/jquery.mixitup.min.js"></script>
+    <script src="../js/swiper-bundle.min.js"></script>
+    <script src="../js/gsap.min.js"></script>
+    <script src="../main.js"></script>
 </body>
 </html>
