@@ -6,6 +6,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.btn {
+    border-radius: 20px;
+}
 /* -------------sidebar----------------- */
 .sidebar {
   height: 100%;
@@ -17,15 +20,19 @@ body {
   background-color: #f1f1f1;
   overflow-x: hidden;
   padding-top: 80px;
-  padding-left: 15px;
+  padding-left: 5px;
 }
 
 .sidebar a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 20px;
-    color: #818181;
+    font-size: 18px;
+    color: #1e1e1e;
     display: block;
+}
+
+.sidebar-toggle-btn:hover {
+    color: #08875D;
 }
 
 .sidebar a:hover {
@@ -38,6 +45,7 @@ body {
 .sidebar .pressed{
     color:  #08875D;
     background-color: #EDFDF8;
+    font-weight: 500;
 }
 
 /* -----------main----------------------- */
@@ -105,12 +113,97 @@ body {
     font-weight: bold;
 }
 
+.icon-style {
+    color: #08875D;
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #f8f9fa;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+.sidebar-hidden {
+    transform: translateX(-100%);
+}
+.sidebar-toggle-btn {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    top: 15px;
+    left: 15px;
+    z-index: 9999;
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: inset 6px 6px 7px #dadada, -6px -6px 10px #ffffff;
+}
+.main {
+    margin-left: 250px; /* Adjust based on the width of the sidebar */
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+.content-expanded {
+    margin-left: 0;
+    width: 100%;
+}
+.main1 {
+    padding-top: 20px;
+}
 
+.admin-img {
+    width: 120px;
+    height: 120px;
+}
 
-
-
+.table-responsive {
+    overflow-x: auto;
+}
 
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
+}
+
+@media (max-width: 425px) {
+    .box {
+        margin-left: 9vh;
+    }
+    .sidebar a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 16px;
+        color: #818181;
+        display: block;
+    }
+    .admin-img {
+        width: 80px;
+        height: 80px;
+    }
+    .side-header {
+        margin-left: 60px;
+    }
+    .admin-img {
+        margin-left: 15px;
+    }
+    .box {
+        max-width: 250px;
+    }
+    .main1 {
+        margin-top: 40px;
+    }
+    .table th {
+        font-size: 14px;
+    }
+    .table td {
+        font-size: 14px;
+    }
+    .btn {
+        font-size: 14px;
+        padding: 5px;
+    }
 }

@@ -63,56 +63,104 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Alat</title>
     <link rel="icon" href="../image/icon64.png" type="image/png">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
-<body>
-    <div class="container mt-5">
-        <h2>Tambah Alat Baru</h2>
-        <form action="add-alat.php" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="nama">Nama</label>
-                <input type="text" class="form-control" id="nama" name="nama" required>
+<body class="body-fixed">
+    <header class="site-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header-logo">
+                        <a href="../menu.php">
+                            <img src="../image/logo_petanipintar.png" width="40" height="40" alt="Logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="main-navigation">
+                        <button class="menu-toggle"><span></span><span></span></button>
+                        <nav class="header-menu">
+                            <ul class="menu">
+                                <li>
+                                    <button onclick="window.location.href='dashboard-4.php'" class="signup">Kembali</button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="deskripsi">Deskripsi</label>
-                <textarea class="form-control" id="deskripsi" name="deskripsi" required></textarea>
+        </div>
+    </header>
+
+    <div id="viewport">
+        <div id="js-scroll-content">
+            <div class="repeat-img" style="background-image: url('../image/pattern1_background.png');">
+                <div section="main-banner">
+                    <div class="sec-wp">
+                        <div class="box-container mt-5">
+                            <div class="box form-box">
+                                <header>Tambah Alat Baru</header>
+                                <form action="add-alat.php" method="post" enctype="multipart/form-data">
+                                    <div class="field input">
+                                        <label for="nama">Nama</label>
+                                        <input type="text" class="form-control" id="nama" name="nama" required>
+                                    </div>
+                                    <div class="field input">
+                                        <label for="deskripsi">Deskripsi</label>
+                                        <textarea class="form-control" id="deskripsi" name="deskripsi" required></textarea>
+                                    </div>
+                                    <div class="field input">
+                                        <label for="spesifikasi">Spesifikasi</label>
+                                        <textarea class="form-control" id="spesifikasi" name="spesifikasi" required></textarea>
+                                    </div>
+                                    <div class="field input">
+                                        <label for="id_pemilik">ID Pemilik</label>
+                                        <input type="number" class="form-control" id="id_pemilik" name="id_pemilik" required>
+                                    </div>
+                                    <div class="field input">
+                                        <label for="pemilik">Pemilik</label>
+                                        <input type="text" class="form-control" id="pemilik" name="pemilik" required>
+                                    </div>
+                                    <div class="field input">
+                                        <label for="harga">Harga</label>
+                                        <input type="number" step="0.01" class="form-control" id="harga" name="harga" required>
+                                    </div>
+                                    <div class="field input">
+                                        <label for="lokasi">Lokasi</label>
+                                        <input type="text" class="form-control" id="lokasi" name="lokasi" required>
+                                    </div>
+                                    <div class="field input">
+                                        <label for="latitude">Latitude</label>
+                                        <input type="number" step="0.000001" class="form-control" id="latitude" name="latitude">
+                                    </div>
+                                    <div class="field input">
+                                        <label for="longitude">Longitude</label>
+                                        <input type="number" step="0.000001" class="form-control" id="longitude" name="longitude">
+                                    </div>
+                                    <div class="field">
+                                        <label for="gambar">Gambar</label>
+                                        <input type="file" class="form-control" id="gambar" name="gambar" required>
+                                    </div>
+                                    <div class="field">
+                                        <button type="submit" class="btn">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="spesifikasi">Spesifikasi</label>
-                <textarea class="form-control" id="spesifikasi" name="spesifikasi" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="id_pemilik">ID Pemilik</label>
-                <input type="number" class="form-control" id="id_pemilik" name="id_pemilik" required>
-            </div>
-            <div class="form-group">
-                <label for="pemilik">Pemilik</label>
-                <input type="text" class="form-control" id="pemilik" name="pemilik" required>
-            </div>
-            <div class="form-group">
-                <label for="harga">Harga</label>
-                <input type="number" step="0.01" class="form-control" id="harga" name="harga" required>
-            </div>
-            <div class="form-group">
-                <label for="lokasi">Lokasi</label>
-                <input type="text" class="form-control" id="lokasi" name="lokasi" required>
-            </div>
-            <div class="form-group">
-                <label for="latitude">Latitude</label>
-                <input type="number" step="0.000001" class="form-control" id="latitude" name="latitude">
-            </div>
-            <div class="form-group">
-                <label for="longitude">Longitude</label>
-                <input type="number" step="0.000001" class="form-control" id="longitude" name="longitude">
-            </div>
-            <div class="form-group">
-                <label for="gambar">Gambar</label>
-                <input type="file" class="form-control" id="gambar" name="gambar" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </div>
     </div>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/jquery.mixitup.min.js"></script>
+    <script src="../js/swiper-bundle.min.js"></script>
+    <script src="../js/gsap.min.js"></script>
+    <script src="../main.js"></script>
 </body>
 </html>
