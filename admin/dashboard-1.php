@@ -75,7 +75,7 @@ foreach ($tables as $table => $label) {
                     <div class="col-lg-2 box">
                         <a href="dashboard-2.php">
                             <i class="fa-solid fa-wheat-awn fa-6x icon-style"></i>
-                            <p>Total Jenis Program Tanam</p>
+                            <p>Total Program Tanam</p>
                             <p class="count"><?php echo $row_counts['program_tanam']; ?></p>
                         </a>
                     </div>

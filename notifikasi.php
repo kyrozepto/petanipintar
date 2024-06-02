@@ -72,7 +72,7 @@ $result_notifikasi = $con->query($sql_notifikasi);
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="text-center mb-4">
-                                        <h3 class="h3-title">Notifikasi</b></h3>
+                                        <h3 class="h3-title">Notifikasi<br><span>Program</span></h3>
                                     </div>
 
                                     <?php
@@ -100,8 +100,8 @@ $result_notifikasi = $con->query($sql_notifikasi);
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </section>
+                </div>
                 <footer class="site-footer" id="help">
                     <div class="top-footer section">
                         <div class="sec-wp">

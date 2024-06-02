@@ -115,9 +115,8 @@ $result_riwayat = $con->query($sql_riwayat);
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-
+                    </section>
+                </div>
                 <footer class="site-footer" id="help">
                     <div class="top-footer section">
                         <div class="sec-wp">

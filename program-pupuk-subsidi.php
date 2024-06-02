@@ -138,6 +138,12 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/form.css">
+    <style>
+        ul {
+            list-style-type: disc;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 
 <body class="body-fixed">
@@ -263,8 +269,17 @@ if (isset($_POST['submit'])) {
                                     <div class="banner-text">
                                         <h2 class="h2-title"><span>Syarat dan Ketentuan</span> Program Pupuk</h2>
                                         <p>
-                                            Program yang dirancang untuk membantu petani dalam meningkatkan produksi pertanian melalui akses pupuk bersubsidi yang mudah, tepat, dan akuntabel.
+                                            Berikut adalah syarat dan ketentuan yang harus dipenuhi untuk mengikuti program pupuk bersubsidi:
                                         </p>
+                                        <ul>
+                                            <li>Adalah petani aktif dan memiliki lahan pertanian.</li>
+                                            <li>Memiliki Izin Tani yang berlaku.</li>
+                                            <li>Memiliki dokumen identitas yang sah dan melampirkan foto KTP dan KK yang jelas dan valid.</li>
+                                            <li>Mengisi formulir permohonan dengan benar dan lengkap.</li>
+                                            <li>Menyertakan data lahan pertanian yang akurat, termasuk luas lahan dan koordinat.</li>
+                                            <li>Menggunakan pupuk yang dibeli melalui program pupuk bersubsidi untuk keperluan pertanian.</li>
+                                        </ul>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
