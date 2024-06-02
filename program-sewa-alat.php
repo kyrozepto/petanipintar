@@ -106,6 +106,34 @@ if (!isset($_SESSION['valid'])) {
                                         </div>';
                                     }
                                     ?>
+
+<div class="container">
+                            <!-- Form Filter dan Search -->
+                            <div class="filter-search-container">
+                                <form action="#" method="GET" class="filter-search-form">
+                                    <div class="form-group">
+                                        <input type="text" name="search" class="form-control" placeholder="Cari berdasarkan nama" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <select name="lokasi" class="form-control">
+                                            <option value="">Semua Lokasi</option>
+                                            <?php
+                                            $lokasi_query = "SELECT DISTINCT lokasi FROM alat";
+                                            $lokasi_result = $con->query($lokasi_query);
+                                            while ($lokasi_row = $lokasi_result->fetch_assoc()) {
+                                                $selected = (isset($_GET['lokasi']) && $_GET['lokasi'] == $lokasi_row['lokasi']) ? 'selected' : '';
+                                                echo '<option value="' . $lokasi_row['lokasi'] . '" ' . $selected . '>' . $lokasi_row['lokasi'] . '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Filter</button>
+                                    </div>
+                                </form>
+                            </div>
+                                    
+
                                 </div>
                             </div>
                             <div class="row katalog-slider">
@@ -113,7 +141,23 @@ if (!isset($_SESSION['valid'])) {
 
                                     <?php
                                     include("php/config.php");
-                                    $sql = "SELECT * FROM alat";
+
+                                    // Handle filter dan search
+                                    $where_clauses = [];
+                                    if (isset($_GET['search']) && !empty($_GET['search'])) {
+                                        $search = $con->real_escape_string($_GET['search']);
+                                        $where_clauses[] = "nama LIKE '%$search%'";
+                                    }
+                                    if (isset($_GET['lokasi']) && !empty($_GET['lokasi'])) {
+                                        $lokasi = $con->real_escape_string($_GET['lokasi']);
+                                        $where_clauses[] = "lokasi = '$lokasi'";
+                                    }
+                                    $where_sql = "";
+                                    if (count($where_clauses) > 0) {
+                                        $where_sql = "WHERE " . implode(" AND ", $where_clauses);
+                                    }
+
+                                    $sql = "SELECT * FROM alat $where_sql";
                                     $result = $con->query($sql);
 
                                     if ($result->num_rows > 0) {
@@ -159,8 +203,6 @@ if (!isset($_SESSION['valid'])) {
                         </div>
                     </div>
                 </section>
-
-
             </div>
             <footer class="site-footer" id="help">
                 <div class="top-footer section">
