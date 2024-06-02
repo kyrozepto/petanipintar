@@ -5,6 +5,126 @@ include("php/config.php");
 if (!isset($_SESSION['valid'])) {
     header("Location: index.php");
 }
+
+if (isset($_POST['submit'])) {
+    $id_user = $_SESSION['id'];
+    $alamat = $_POST['alamat'];
+    $nik = $_POST['nik'];
+    $luas_lahan = $_POST['luas_lahan'];
+    $koordinat = $_POST['koordinat'];
+    $jenis_pupuk = $_POST['jenis_pupuk'];
+    $jumlah_pupuk = $_POST['jumlah_pupuk'];
+
+    // Upload foto KTP
+    $target_dir_ktp = "image/berkas_permohonan/ktp/";
+    $foto_ktp = $target_dir_ktp . basename($_FILES["foto_ktp"]["name"]);
+    $uploadOk = 1;
+    $imageFileType_ktp = strtolower(pathinfo($foto_ktp, PATHINFO_EXTENSION));
+
+    // Cek apakah gambar benar atau tidak
+    if (isset($_POST["submit"])) {
+        $check_ktp = getimagesize($_FILES["foto_ktp"]["tmp_name"]);
+        if ($check_ktp !== false) {
+            $uploadOk = 1;
+        } else {
+            echo "File yang diupload bukan gambar.";
+            $uploadOk = 0;
+        }
+    }
+
+    // Cek apakah file sudah ada
+    if (file_exists($foto_ktp)) {
+        echo "Maaf, file sudah ada.";
+        $uploadOk = 0;
+    }
+
+    // Cek ukuran file
+    if ($_FILES["foto_ktp"]["size"] > 500000) {
+        echo "Maaf, ukuran file terlalu besar.";
+        $uploadOk = 0;
+    }
+
+    // Format file yang diperbolehkan
+    if (
+        $imageFileType_ktp != "jpg" && $imageFileType_ktp != "png" && $imageFileType_ktp != "jpeg"
+        && $imageFileType_ktp != "gif"
+    ) {
+        echo "Maaf, hanya file JPG, JPEG, PNG & GIF yang diperbolehkan.";
+        $uploadOk = 0;
+    }
+
+    // Jika $uploadOk = 0 maka upload gagal
+    if ($uploadOk == 0) {
+        echo "Maaf, file anda gagal diupload.";
+        // Jika berhasil, upload file
+    } else {
+        if (move_uploaded_file($_FILES["foto_ktp"]["tmp_name"], $foto_ktp)) {
+            // echo "File " . htmlspecialchars(basename($_FILES["foto_ktp"]["name"])) . " berhasil diupload.";
+        } else {
+            echo "Maaf, terjadi kesalahan saat mengupload file anda.";
+        }
+    }
+
+    // Upload foto KK
+    $target_dir_kk = "image/berkas_permohonan/kk/";
+    $foto_kk = $target_dir_kk . basename($_FILES["foto_kk"]["name"]);
+    $uploadOk = 1;
+    $imageFileType_kk = strtolower(pathinfo($foto_kk, PATHINFO_EXTENSION));
+
+    // Cek apakah gambar benar atau tidak
+    if (isset($_POST["submit"])) {
+        $check_kk = getimagesize($_FILES["foto_kk"]["tmp_name"]);
+        if ($check_kk !== false) {
+            $uploadOk = 1;
+        } else {
+            echo "File yang diupload bukan gambar.";
+            $uploadOk = 0;
+        }
+    }
+
+    // Cek apakah file sudah ada
+    if (file_exists($foto_kk)) {
+        echo "Maaf, file sudah ada.";
+        $uploadOk = 0;
+    }
+
+    // Cek ukuran file
+    if ($_FILES["foto_kk"]["size"] > 500000) {
+        echo "Maaf, ukuran file terlalu besar.";
+        $uploadOk = 0;
+    }
+
+    // Format file yang diperbolehkan
+    if (
+        $imageFileType_kk != "jpg" && $imageFileType_kk != "png" && $imageFileType_kk != "jpeg"
+        && $imageFileType_kk != "gif"
+    ) {
+        echo "Maaf, hanya file JPG, JPEG, PNG & GIF yang diperbolehkan.";
+        $uploadOk = 0;
+    }
+
+    // Jika $uploadOk = 0 maka upload gagal
+    if ($uploadOk == 0) {
+        echo "Maaf, file anda gagal diupload.";
+        // Jika berhasil, upload file
+    } else {
+        if (move_uploaded_file($_FILES["foto_kk"]["tmp_name"], $foto_kk)) {
+            // echo "File " . htmlspecialchars(basename($_FILES["foto_kk"]["name"])) . " berhasil diupload.";
+        } else {
+            echo "Maaf, terjadi kesalahan saat mengupload file anda.";
+        }
+    }
+
+    // Simpan data ke database
+    $sql = "INSERT INTO permohonan_pupuk (id_user, alamat, nik, foto_ktp, foto_kk, luas_lahan, koordinat, jenis_pupuk, jumlah_pupuk) 
+            VALUES ('$id_user', '$alamat', '$nik', '$foto_ktp', '$foto_kk', '$luas_lahan', '$koordinat', '$jenis_pupuk', '$jumlah_pupuk')";
+
+    if ($con->query($sql) === TRUE) {
+        echo "<script>alert('Permohonan pupuk berhasil diajukan!'); window.location.href='program-pupuk-subsidi.php';</script>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $con->error;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -168,25 +288,25 @@ if (!isset($_SESSION['valid'])) {
                                 }
                                 ?>
                                 <header>Formulir Permohonan</header>
-                                <form action="" method="post">
+                                <form action="" method="post" enctype="multipart/form-data">
                                     <div class="field input">
                                         <label for="email">Email</label>
-                                        <input type="text" name="email" id="email" value="<?php echo $res_email; ?>" autocomplete="off" required>
+                                        <input type="text" name="email" id="email" value="<?php echo $res_email; ?>" autocomplete="off" readonly>
                                     </div>
 
                                     <div class="field input">
                                         <label for="username">Username</label>
-                                        <input type="text" name="username" id="username" value="<?php echo $res_username; ?>" autocomplete="off" required>
+                                        <input type="text" name="username" id="username" value="<?php echo $res_username; ?>" autocomplete="off" readonly>
                                     </div>
 
                                     <div class="field input">
                                         <label for="fullname">Nama Lengkap</label>
-                                        <input type="text" name="fullname" id="fullname" value="<?php echo $res_fullname; ?>" autocomplete="off" required>
+                                        <input type="text" name="fullname" id="fullname" value="<?php echo $res_fullname; ?>" autocomplete="off" readonly>
                                     </div>
 
                                     <div class="field input">
                                         <label for="age">Umur</label>
-                                        <input type="number" name="age" id="age" value="<?php echo $res_age; ?>" autocomplete="off" required>
+                                        <input type="number" name="age" id="age" value="<?php echo $res_age; ?>" autocomplete="off" readonly>
                                     </div>
 
                                     <div class="field input">
@@ -196,7 +316,7 @@ if (!isset($_SESSION['valid'])) {
 
                                     <div class="field input">
                                         <label for="nik">NIK</label>
-                                        <input type="number" name="nik" id="nik" value="<?php echo $res_Nik; ?>" autocomplete="off" required>
+                                        <input type="number" name="nik" id="nik" autocomplete="off" required>
                                     </div>
 
                                     <div class="mb-2">
@@ -250,6 +370,7 @@ if (!isset($_SESSION['valid'])) {
                                 </form>
                             </div>
                         </div>
+                    </div>
                 </section>
             </div>
             <footer class="site-footer" id="help">

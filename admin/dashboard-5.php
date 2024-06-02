@@ -28,7 +28,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
         <br>
         <a href="dashboard-1.php" ><i class="fa fa-house"></i>&nbsp Dashboard</a>
         <a href="dashboard-2.php" ><i class="fa fa-wheat-awn"></i>&nbsp&nbsp Program Tanam</a>
-        <!-- <a href="dashboard-3.php" ><i class="fa fa-pagelines"></i> &nbsp&nbsp Pupuk Subsidi</a> -->
+        <a href="dashboard-3.php" ><i class="fa fa-pagelines"></i> &nbsp&nbsp Pupuk Subsidi</a>
         <a href="dashboard-4.php" ><i class="fa fa-tractor"></i>&nbsp&nbspAlat</a>
         <a href="dashboard-5.php" class="pressed"><i class="fa fa-users-gear"></i>&nbsp Users</a>
         <br><br><br>

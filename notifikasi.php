@@ -7,8 +7,8 @@ if (!isset($_SESSION['valid'])) {
 }
 
 $id_user = $_SESSION['id'];
-$sql_riwayat = "SELECT * FROM sewa_alat WHERE id_user = $id_user ORDER BY tanggal_sewa DESC";
-$result_riwayat = $con->query($sql_riwayat);
+$sql_notifikasi = "SELECT p.*, u.fullname FROM permohonan_pupuk p JOIN users u ON p.id_user = u.id WHERE p.id_user = $id_user ORDER BY p.tanggal_permohonan DESC";
+$result_notifikasi = $con->query($sql_notifikasi);
 
 ?>
 
@@ -18,7 +18,7 @@ $result_riwayat = $con->query($sql_riwayat);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riwayat Sewa</title>
+    <title>Notifikasi</title>
     <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
@@ -27,10 +27,6 @@ $result_riwayat = $con->query($sql_riwayat);
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .add-alt {
-            font-size: 16px;
         }
     </style>
 </head>
@@ -76,40 +72,29 @@ $result_riwayat = $con->query($sql_riwayat);
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="text-center mb-4">
-                                        <h3 class="h3-title">Riwayat<br><span>Pembayaran</span></b></h3>
+                                        <h3 class="h3-title">Notifikasi</b></h3>
                                     </div>
 
                                     <?php
-                                    if ($result_riwayat->num_rows > 0) {
-                                        while ($row_sewa = $result_riwayat->fetch_assoc()) {
-                                            $id_alat = $row_sewa['id_alat'];
-                                            $id_sewa = $row_sewa['id'];
-                                            $sql_alat = "SELECT * FROM alat WHERE id = $id_alat";
-                                            $result_alat = $con->query($sql_alat);
-                                            $row_alat = $result_alat->fetch_assoc();
-
+                                    if ($result_notifikasi->num_rows > 0) {
+                                        while ($row = $result_notifikasi->fetch_assoc()) {
                                             echo '<div class="card mb-4">';
                                             echo '<div class="card-body">';
                                             echo '<h5 class="card-title">';
-                                            echo '<span>' . $row_alat['nama'] . '</span>';
-
-                                            if ($row_sewa['status_pembayaran'] == 'Belum Dibayar' || $row_sewa['status_pembayaran'] == 'Menunggu Konfirmasi') {
-                                                echo '<a href="php/fungsi-batal-sewa.php?id=' . $id_sewa . '" class="add-alt" onclick="return confirm(\'Apakah Anda yakin ingin membatalkan pemesanan ini?\')">Batal</a>';
-                                            } else {
-                                                echo '<a href="php/fungsi-hapus-riwayat.php?id=' . $id_sewa . '" class="add-alt" onclick="return confirm(\'Apakah Anda yakin ingin menghapus riwayat ini?\')">Hapus</a>';
-                                            }
-
+                                            echo '<span>Permohonan Pupuk: ' . $row['jenis_pupuk'] . ' (' . $row['jumlah_pupuk'] . ' Kg)</span>';
                                             echo '</h5>';
                                             echo '<hr>';
-                                            echo '<p class="p-card">Tanggal Pemesanan: <span>' . $row_sewa['tanggal_sewa'] . '</span></p>';
-                                            echo '<p class="p-card">Metode Pembayaran: <span>' . $row_sewa['metode_pembayaran'] . '</span></p>';
-                                            echo '<p class="p-card">Status Pembayaran: <span>' . $row_sewa['status_pembayaran'] . '</span></p>';
-                                            echo '<p class="p-card">Status Distribusi: <span>' . $row_sewa['status_distribusi'] . '</span></p>';
+                                            echo '<p class="p-card">Tanggal Permohonan: <span>' . $row['tanggal_permohonan'] . '</span></p>';
+                                            echo '<p class="p-card">Status: <span' . ($row['status'] == 'Ditolak' ? ' style="color: red;"' : '') . '>' . $row['status'] . '</span></p>';
+                                             // Menampilkan alasan penolakan jika ada
+                                             if ($row['status'] == 'Ditolak' && !empty($row['alasan_penolakan'])) {
+                                                echo '<p class="p-card">Alasan Penolakan: <span>' . $row['alasan_penolakan'] . '</span></p>';
+                                            } 
                                             echo '</div>';
                                             echo '</div>';
                                         }
                                     } else {
-                                        echo '<p>Tidak ada riwayat sewa.</p>';
+                                        echo '<p>Tidak ada notifikasi.</p>';
                                     }
                                     ?>
                                 </div>
@@ -117,7 +102,6 @@ $result_riwayat = $con->query($sql_riwayat);
                         </div>
                     </div>
                 </section>
-
                 <footer class="site-footer" id="help">
                     <div class="top-footer section">
                         <div class="sec-wp">
@@ -177,9 +161,9 @@ $result_riwayat = $con->query($sql_riwayat);
                         </div>
                     </div>
                 </footer>
+                </div>
             </div>
         </div>
-    </div>
     </div>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>

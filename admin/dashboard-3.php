@@ -7,6 +7,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
     exit;
 }
 ?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -47,52 +48,54 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
         <div class="main1">
             <div class="container-fluid">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2>Program Tanam</h2>
-                    <a href="add-programtanam.php" class="btn btn-success">+ Tambah Program</a>
+                    <h2>Daftar Permohonan Pupuk</h2>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr>
                                 <th>ID</th>
-                                <th>Nama</th>
-                                <th>Waktu</th>
-                                <th>Daerah</th>
-                                <th>Hasil</th>
-                                <th>Gambar</th>
-                                <th>Jumlah</th>
-                                <th>Deskripsi</th>
-                                <th>Latitude</th>
-                                <th>Longitude</th>
+                                <th>Nama Pemohon</th>
+                                <th>Tanggal Permohonan</th>
+                                <th>Alamat</th>
+                                <th>NIK</th>
+                                <th>Foto KTP</th>
+                                <th>Foto KK</th>
+                                <th>Luas Lahan</th>
+                                <th>Koordinat</th>
+                                <th>Jenis Pupuk</th>
+                                <th>Jumlah Pupuk</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * FROM program_tanam";
+                            $sql = "SELECT p.*, u.fullname FROM permohonan_pupuk p JOIN users u ON p.id_user = u.id";
                             $result = $con->query($sql);
 
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
                                     echo "<tr>
-                                    <td>{$row['id']}</td>
-                                    <td>{$row['nama']}</td>
-                                    <td>{$row['waktu']}</td>
-                                    <td>{$row['daerah']}</td>
-                                    <td>" . number_format($row['hasil'], 0, '.', '.') . "</td>
-                                    <td><img src='../image/tanaman/{$row['gambar']}' alt='Gambar' width='120'></td>
-                                    <td>{$row['jumlah']}</td>
-                                    <td>{$row['deskripsi']}</td>
-                                    <td>{$row['latitude']}</td>
-                                    <td>{$row['longitude']}</td>
-                                    <td>
-                                        <a href='edit-programtanam.php?id={$row['id']}' class='btn btn-primary btn-sm'>Ubah</a>
-                                        <a href='delete-programtanam?id={$row['id']}' class='btn btn-danger btn-sm'>Hapus</a>
-                                    </td>
-                                  </tr>";
+                                        <td>{$row['id']}</td>
+                                        <td>{$row['fullname']}</td>
+                                        <td>{$row['tanggal_permohonan']}</td>
+                                        <td>{$row['alamat']}</td>
+                                        <td>{$row['nik']}</td>
+                                        <td><img src='../{$row['foto_ktp']}' alt='Foto KTP' width='80'></td>
+                                        <td><img src='../{$row['foto_kk']}' alt='Foto KK' width='80'></td>
+                                        <td>{$row['luas_lahan']} Ha</td>
+                                        <td>{$row['koordinat']}</td>
+                                        <td>{$row['jenis_pupuk']}</td>
+                                        <td>{$row['jumlah_pupuk']} Kg</td>
+                                        <td>{$row['status']}</td>
+                                        <td>
+                                            <a href='edit-permohonan-pupuk.php?id={$row['id']}' class='btn btn-primary btn-sm'>Ubah Status</a>
+                                        </td>
+                                    </tr>";
                                 }
                             } else {
-                                echo "<tr><td colspan='11' class='text-center'>No records found</td></tr>";
+                                echo "<tr><td colspan='13' class='text-center'>No records found</td></tr>";
                             }
 
                             $con->close();
@@ -110,7 +113,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
         const sidebar = document.getElementById('sidebar');
         const content = document.getElementById('content');
         const sidebarToggle = document.getElementById('sidebarToggle');
-        
+
         function toggleSidebar() {
             sidebar.classList.toggle('sidebar-hidden');
             content.classList.toggle('content-expanded');

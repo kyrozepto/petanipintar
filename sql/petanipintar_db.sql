@@ -100,3 +100,20 @@ CREATE TABLE rekening_pemilik (
 INSERT INTO rekening_pemilik (id, id_user, jenis_rekening, nama_bank, nomor_rekening, atas_nama) VALUES
     (1, 2, 'Bank', 'BCA', 8290329013, 'CV. Mekar Tani'),
     (2, 2, 'E-Wallet', 'Gopay', 082909890822, 'CV. Mekar Tani');
+
+CREATE TABLE permohonan_pupuk (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_user INT NOT NULL,
+    tanggal_permohonan TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    alamat VARCHAR(255) NOT NULL,
+    nik VARCHAR(16) NOT NULL,
+    foto_ktp VARCHAR(255) NOT NULL,
+    foto_kk VARCHAR(255) NOT NULL,
+    luas_lahan DECIMAL(10,2) NOT NULL,
+    koordinat VARCHAR(255) NOT NULL,
+    jenis_pupuk ENUM('UREA', 'NPK', 'TSP') NOT NULL,
+    jumlah_pupuk INT NOT NULL,
+    status ENUM('Menunggu Konfirmasi', 'Diproses', 'Disetujui', 'Ditolak') DEFAULT 'Menunggu Konfirmasi',
+    alasan_penolakan TEXT NULL,
+    FOREIGN KEY (id_user) REFERENCES users(id)
+);
