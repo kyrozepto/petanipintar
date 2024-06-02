@@ -334,7 +334,7 @@ if (isset($_POST['submit'])) {
                                     </div>
 
                                     <div class="field input">
-                                        <label for="luas_lahan">Luas Lahan</label>
+                                        <label for="luas_lahan">Luas Lahan (hektar)</label>
                                         <input type="number" name="luas_lahan" id="luas_lahan" autocomplete="off" required>
                                     </div>
 
@@ -358,7 +358,7 @@ if (isset($_POST['submit'])) {
                                             </div>
 
                                             <div class="col-6">
-                                                <label for="jumlah_pupuk">Jumlah Pupuk</label>
+                                                <label for="jumlah_pupuk">Jumlah Pupuk (kg)</label>
                                                 <input type="number" name="jumlah_pupuk" id="jumlah_pupuk" min="1" required>
                                             </div>
                                         </div>

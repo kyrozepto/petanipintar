@@ -507,6 +507,12 @@ if (!empty($userAlamat)) {
                             iconUrl = 'image/icon/padi.png';
                         } else if (program.nama === 'Jagung') {
                             iconUrl = 'image/icon/jagung.png';
+                        } else if (program.nama === 'Kentang') {
+                            iconUrl = 'image/icon/kentang.png';
+                        } else if (program.nama === 'Kedelai') {
+                            iconUrl = 'image/icon/kedelai.png';
+                        } else if (program.nama === 'Teh') {
+                            iconUrl = 'image/icon/teh.png';
                         }
     
                         var programIcon = L.icon({
