@@ -30,9 +30,22 @@ CREATE TABLE program_tanam (
     longitude DECIMAL(9,6)
 );
 
-INSERT INTO program_tanam (id, nama, waktu, daerah, hasil, gambar, jumlah, deskripsi, latitude, longitude) VALUES
-    (1, 'Padi', 4, 'Subang, Jawa Barat', 7500000.00, '1.jpg', 10, '-', '-6.547082', '107.742275'),
-    (2, 'Jagung', 3, 'Garut, Jawa Barat', 6000000.00, '2.jpg', 5, '-', '-7.210950', '107.886832');
+INSERT INTO program_tanam (nama, waktu, daerah, hasil, gambar, jumlah, latitude, longitude) VALUES
+    ('Padi', 4, 'Subang, Jawa Barat', 7500000.00, 'padi.jpg', 10, '-6.547082', '107.742275'),
+    ('Padi', 5, 'Indramayu, Jawa Barat', 8000000.00, 'padi.jpg', 12, '-6.324444', '108.328611'),
+    ('Padi', 4, 'Karawang, Jawa Barat', 7200000.00, 'padi.jpg', 8, '-6.302778', '107.280556'),
+    ('Jagung', 3, 'Garut, Jawa Barat', 6000000.00, 'jagung.jpg', 5, '-7.210950', '107.886832'),
+    ('Jagung', 3, 'Sumedang, Jawa Barat', 5500000.00, 'jagung.jpg', 6, '-6.869722', '107.924167'),
+    ('Jagung', 2, 'Lampung Tengah, Lampung', 5800000.00, 'jagung.jpg', 7, '-4.450000', '105.266670'),
+    ('Kedelai', 3, 'Grobogan, Jawa Tengah', 4000000.00, 'kedelai.jpg', 4, '-7.120833', '110.915278'),
+    ('Kedelai', 4, 'Nganjuk, Jawa Timur', 4200000.00, 'kedelai.jpg', 5, '-7.604722', '111.900278'),
+    ('Kedelai', 3, 'Jombang, Jawa Timur', 3800000.00, 'kedelai.jpg', 3, '-7.557500', '112.237500'),
+    ('Teh', 6, 'Bandung, Jawa Barat', 3000000.00, 'teh.jpg', 2, '-6.816667', '107.583333'),
+    ('Teh', 5, 'Puncak, Jawa Barat', 2800000.00, 'teh.jpg', 3, '-6.700000', '106.983333'),
+    ('Teh', 7, 'Malang, Jawa Timur', 3200000.00, 'teh.jpg', 2, '-7.983333', '112.616670'),
+    ('Kentang', 3, 'Dieng, Jawa Tengah', 5000000.00, 'kentang.jpg', 6, '-7.208611', '109.897222'),
+    ('Kentang', 3, 'Pangalengan, Jawa Barat', 4800000.00, 'kentang.jpg', 5, '-7.083333', '107.450000'),
+    ('Kentang', 2, 'Batu, Jawa Timur', 4500000.00, 'kentang.jpg', 4, '-7.883333', '112.533330');
 
 CREATE TABLE alat (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -100,3 +113,20 @@ CREATE TABLE rekening_pemilik (
 INSERT INTO rekening_pemilik (id, id_user, jenis_rekening, nama_bank, nomor_rekening, atas_nama) VALUES
     (1, 2, 'Bank', 'BCA', 8290329013, 'CV. Mekar Tani'),
     (2, 2, 'E-Wallet', 'Gopay', 082909890822, 'CV. Mekar Tani');
+
+CREATE TABLE permohonan_pupuk (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_user INT NOT NULL,
+    tanggal_permohonan TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    alamat VARCHAR(255) NOT NULL,
+    nik VARCHAR(16) NOT NULL,
+    foto_ktp VARCHAR(255) NOT NULL,
+    foto_kk VARCHAR(255) NOT NULL,
+    luas_lahan DECIMAL(10,2) NOT NULL,
+    koordinat VARCHAR(255) NOT NULL,
+    jenis_pupuk ENUM('UREA', 'NPK', 'TSP') NOT NULL,
+    jumlah_pupuk INT NOT NULL,
+    status ENUM('Menunggu Konfirmasi', 'Diproses', 'Disetujui', 'Ditolak') DEFAULT 'Menunggu Konfirmasi',
+    alasan_penolakan TEXT NULL,
+    FOREIGN KEY (id_user) REFERENCES users(id)
+);

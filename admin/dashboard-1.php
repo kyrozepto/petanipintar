@@ -56,7 +56,7 @@ foreach ($tables as $table => $label) {
         <br>
         <a href="dashboard-1.php" class="pressed"><i class="fa-solid fa-house"></i>&nbsp Dashboard</a>
         <a href="dashboard-2.php"><i class="fa-solid fa-wheat-awn"></i>&nbsp&nbsp Program Tanam</a>
-        <!-- <a href="dashboard-3.php"><i class="fa-brands fa-pagelines"></i> &nbsp&nbsp Pupuk Subsidi</a> -->
+        <a href="dashboard-3.php"><i class="fa-brands fa-pagelines"></i> &nbsp&nbsp Pupuk Subsidi</a>
         <a href="dashboard-4.php"><i class="fa-solid fa-tractor"></i>&nbsp&nbspAlat</a>
         <a href="dashboard-5.php"><i class="fa-solid fa-users-gear"></i>&nbsp Users</a>
         <br><br><br>
@@ -75,7 +75,7 @@ foreach ($tables as $table => $label) {
                     <div class="col-lg-2 box">
                         <a href="dashboard-2.php">
                             <i class="fa-solid fa-wheat-awn fa-6x icon-style"></i>
-                            <p>Total Jenis Program Tanam</p>
+                            <p>Total Program Tanam</p>
                             <p class="count"><?php echo $row_counts['program_tanam']; ?></p>
                         </a>
                     </div>

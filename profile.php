@@ -20,7 +20,7 @@ while ($result = mysqli_fetch_assoc($query)) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -62,9 +62,10 @@ while ($result = mysqli_fetch_assoc($query)) {
                         <nav class="header-menu">
                             <ul class="menu">
                                 <li><a href="profile.php">Profil Akun</a></li>
+                                <li><a href="notifikasi.php">Notifikasi</a></li>
                                 <li><a href="#">Riwayat Panen</a></li>
                                 <li><a href="riwayat-pembayaran.php">Riwayat Pembayaran</a></li>
-                                <li><a href="#">Pengaturan Lainnya</a></li>
+                                <li><a href="bot.php">Gemini</a></li>
                                 <li>
                                     <button onclick="window.location.href='menu.php'" class="signup">Kembali</button>
                                 </li>
@@ -188,10 +189,10 @@ while ($result = mysqli_fetch_assoc($query)) {
                                             <h4 class="h4-title">Menu</h4>
                                             <ul class="column-2">
                                                 <li><a href="#">Profil Akun</a></li>
+                                                <li><a href="notifikasi.php">Notifikasi</a></li>
                                                 <li><a href="#">Riwayat Panen</a></li>
                                                 <li><a href="riwayat-pembayaran.php">Riwayat Pembayaran</a></li>
-                                                <li><a href="#">Pengaturan Lainnya</a></li>
-                                                <li><a href="#help">Pusat Bantuan</a></li>
+                                                <li><a href="#">Gemini</a></li>
                                             </ul>
                                         </div>
                                         <div class="footer-menu">

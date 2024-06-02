@@ -30,7 +30,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
         <br>
         <a href="dashboard-1.php"><i class="fa fa-house"></i>&nbsp Dashboard</a>
         <a href="dashboard-2.php"><i class="fa fa-wheat-awn"></i>&nbsp&nbsp Program Tanam</a>
-        <!-- <a href="dashboard-3.php"><i class="fa fa-pagelines"></i> &nbsp&nbsp Pupuk Subsidi</a> -->
+        <a href="dashboard-3.php"><i class="fa fa-pagelines"></i> &nbsp&nbsp Pupuk Subsidi</a>
         <a href="dashboard-4.php" class="pressed"><i class="fa fa-tractor"></i>&nbsp&nbspAlat</a>
         <a href="dashboard-5.php"><i class="fa fa-users-gear"></i>&nbsp Users</a>
         <br><br><br>
@@ -81,7 +81,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
                                         <td>{$row['deskripsi']}</td>
                                         <td>{$row['spesifikasi']}</td>
                                         <td>{$row['pemilik']}</td>
-                                        <td>{$row['harga']}</td>
+                                        <td>" . number_format($row['harga'], 0, '.', '.') . "</td>
                                         <td><img src='../image/alat/{$row['gambar']}' alt='Gambar' width='140'></td>
                                         <td>{$row['lokasi']}</td>
                                         <td>{$row['latitude']}</td>
