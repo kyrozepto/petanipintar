@@ -107,10 +107,10 @@ if (!empty($userAlamat)) {
                         <nav class="header-menu">
                             <ul class="menu">
                                 <li><a href="menu.php">PetaniPintar</a></li>
+                                <li><a href="bertani.php">Bertani</a></li>
                                 <li><a href="program-tanam.php">Program Tanam</a></li>
                                 <li><a href="program-pupuk-subsidi.php">Pupuk Subsidi</a></li>
                                 <li><a href="program-sewa-alat.php">Sewa Alat</a></li>
-                                <li><a href="#">Forum</a></li>
                                 <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
                                     echo '<li><a href="admin/dashboard-1.php">Kelola</a></li>';
                                 }?>
@@ -217,7 +217,7 @@ if (!empty($userAlamat)) {
                                                 $sql_user_program = "SELECT * FROM user_program_tanam WHERE id_user = " . $_SESSION['id'] . " AND id_program_tanam = " . $row["id"];
                                                 $result_user_program = $con->query($sql_user_program);
                                                 if ($result_user_program->num_rows > 0) {
-                                                    echo '<button onclick="window.location.href=\'kirim-hasil-panen.php.php?id=' . $row["id"] . '\'" class="signup">Kirim</button>';
+                                                    echo '<button onclick="window.location.href=\'kirim-hasil-panen.php?id=' . $row["id"] . '\'" class="signup">Kirim</button>';
                                                 } else {
                                                     echo '<button onclick="window.location.href=\'mulai-program-tanam.php?id=' . $row["id"] . '\'" class="signup">Mulai</button>';
                                                 }
@@ -287,7 +287,7 @@ if (!empty($userAlamat)) {
                                                             <button onclick="window.location.href=\'detail-program-tanam.php?id=' . $row["id"] . '\'" class="signin">Lihat Detail</button>';
 
                                             if ($result_user_program->num_rows > 0) {
-                                                echo '<button onclick="window.location.href=\'kirim-hasil-panen.php.php?id=' . $row["id"] . '\'" class="signup">Kirim</button>';
+                                                echo '<button onclick="window.location.href=\'kirim-hasil-panen.php?id=' . $row["id"] . '\'" class="signup">Kirim</button>';
                                             } else {
                                                 echo '<button onclick="window.location.href=\'mulai-program-tanam.php?id=' . $row["id"] . '\'" class="signup">Mulai</button>';
                                             }

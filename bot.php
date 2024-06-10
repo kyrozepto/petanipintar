@@ -195,8 +195,6 @@ if (!isset($_SESSION['valid'])) {
                     <div class="sec-wp">
                         <div class="container">
                             <div class="sec-title text-center mb-4">
-                                <!-- <p class="sec-sub-title mt-1 mb-0">PetaniPintar</p> -->
-                                <!-- <h2 class="h3-title mb-0">Tanya ke</h2> -->
                                 <h2 class="h2-title"><span>Gemini</span></h2>
                             </div>
                             <div class="row">
@@ -297,11 +295,14 @@ if (!isset($_SESSION['valid'])) {
 
                 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-                const result = await model.generateContent(prompt, generationConfig);
+                // Mengubah prompt style
+                const customPrompt = `${prompt} Respond in Bahasa Indonesia as a knowledgeable and friendly farming assistant, providing clear, step-by-step advice and helpful tips tailored to farmers. Make sure your response is encouraging and easy to understand.`;
+                // example: Simply answer in the style of a guidance from souls game.
+                const result = await model.generateContent(customPrompt, generationConfig);
                 const response = await result.response;
                 const text = await response.text();
 
-                // Format the text
+                // Format the text using marked
                 const formattedText = marked(text);
 
                 // Display the text on the web page
@@ -347,10 +348,6 @@ if (!isset($_SESSION['valid'])) {
                     run(prompt);
                     hideSuggestions();
                 }
-            // async function tanyakanProgram(namaProgram) {
-            //     const ask = `Deskripsi singkat budidaya ${namaProgram}.`;
-            //     run(ask);
-            // }
             document.getElementById("about-gemini").style.display = "none";
         });
 
