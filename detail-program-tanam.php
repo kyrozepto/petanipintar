@@ -91,10 +91,10 @@ function hitungProgressPanen($id_program_tanam, $id_user)
                         <nav class="header-menu">
                             <ul class="menu">
                                 <li><a href="menu.php">PetaniPintar</a></li>
+                                <li><a href="bertani.php">Bertani</a></li>
                                 <li><a href="program-tanam.php">Program Tanam</a></li>
                                 <li><a href="program-pupuk-subsidi.php">Pupuk Subsidi</a></li>
                                 <li><a href="program-sewa-alat.php">Sewa Alat</a></li>
-                                <li><a href="#">Forum</a></li>
                                 <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
                                     echo '<li><a href="admin/dashboard-1.php">Kelola</a></li>';
                                 }?>
@@ -169,7 +169,7 @@ function hitungProgressPanen($id_program_tanam, $id_user)
                                                 <div class="col-lg-12">
                                                     <h4 class="h4-title">Progress Panen <span><?php echo $row_program['nama']; ?></span></h4>
                                                     <div class="progress">
-                                                        <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $progress; ?>%;" aria-valuenow="
+                                                        <div class="progress-bar" role="progressbar" style="background-color: #2b8109; width: <?php echo $progress; ?>%;" aria-valuenow="
                                                         <?php echo $progress; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($progress, 2); ?>%</div>
                                                     </div>
                                                 </div>

@@ -49,7 +49,6 @@ if (isset($_POST['submit_panen'])) {
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
 
 <body class="body-fixed">
@@ -69,10 +68,10 @@ if (isset($_POST['submit_panen'])) {
                         <nav class="header-menu">
                             <ul class="menu">
                                 <li><a href="menu.php">PetaniPintar</a></li>
+                                <li><a href="bertani.php">Bertani</a></li>
                                 <li><a href="program-tanam.php">Program Tanam</a></li>
                                 <li><a href="program-pupuk-subsidi.php">Pupuk Subsidi</a></li>
                                 <li><a href="program-sewa-alat.php">Sewa Alat</a></li>
-                                <li><a href="#">Forum</a></li>
                                 <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
                                     echo '<li><a href="admin/dashboard-1.php">Kelola</a></li>';
                                 }?>
@@ -106,7 +105,7 @@ if (isset($_POST['submit_panen'])) {
                                             <label for="jumlah_panen">Jumlah Panen (ton):</label>
                                             <input type="number" class="form-control" id="jumlah_panen" name="jumlah_panen" required>
                                         </div>
-                                        <button type="submit" name="submit_panen" class="btn btn-primary">Kirim</button>
+                                        <button type="submit" name="submit_panen" class="add mt-3">Kirim Panen</button>
                                     </form>
                                 </div>
                             </div>
