@@ -63,9 +63,9 @@ while ($result = mysqli_fetch_assoc($query)) {
                             <ul class="menu">
                                 <li><a href="profile.php">Profil Akun</a></li>
                                 <li><a href="notifikasi.php">Notifikasi</a></li>
-                                <li><a href="#">Riwayat Panen</a></li>
+                                <li><a href="riwayat-panen.php">Riwayat Panen</a></li>
                                 <li><a href="riwayat-pembayaran.php">Riwayat Pembayaran</a></li>
-                                <li><a href="bot.php">Gemini</a></li>
+                                <li><a href="bot.php">Gemini AI</a></li>
                                 <li>
                                     <button onclick="window.location.href='menu.php'" class="signup">Kembali</button>
                                 </li>
@@ -190,7 +190,7 @@ while ($result = mysqli_fetch_assoc($query)) {
                                             <ul class="column-2">
                                                 <li><a href="#">Profil Akun</a></li>
                                                 <li><a href="notifikasi.php">Notifikasi</a></li>
-                                                <li><a href="#">Riwayat Panen</a></li>
+                                                <li><a href="riwayat-panen.php">Riwayat Panen</a></li>
                                                 <li><a href="riwayat-pembayaran.php">Riwayat Pembayaran</a></li>
                                                 <li><a href="#">Gemini</a></li>
                                             </ul>

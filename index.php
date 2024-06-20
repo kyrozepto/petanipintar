@@ -90,16 +90,14 @@ include("php/config.php");
                                 <div class="col-lg-6">
                                     <div class="banner-text">
                                         <h2 class="h2-title">Apa itu <span>PetaniPintar</span> dan bagaimana cara kerjanya</h2>
-                                        <p>
+                                        <p style="text-align: justify;">
                                             Petani Pintar adalah sebuah konsep yang menggabungkan teknologi dan kecerdasan buatan untuk meningkatkan
                                             produktivitas dan efisiensi di bidang pertanian.
-                                        </p>
-                                        <p>
+                                        <br><br>
                                             Melalui penerapan berbagai solusi teknologi seperti sensor, analisis data, dan perangkat lunak pintar,
                                             Petani Pintar memungkinkan petani memantau kondisi tanaman, mengelola sumber daya dengan lebih efisien,
                                             dan mengoptimalkan proses pertanian secara keseluruhan.
-                                        </p>
-                                        <p>
+                                        <br><br>
                                             Dengan demikian, Petani Pintar dapat membantu meningkatkan hasil panen,
                                             menurunkan biaya produksi, dan menjaga kelestarian lingkungan dalam industri pertanian
                                         </p>

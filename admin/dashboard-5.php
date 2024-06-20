@@ -26,10 +26,11 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
             <h5 style="margin-top:10px;">Halo, Admin</h5>
         </div>
         <br>
-        <a href="dashboard-1.php" ><i class="fa fa-house"></i>&nbsp Dashboard</a>
-        <a href="dashboard-2.php" ><i class="fa fa-wheat-awn"></i>&nbsp&nbsp Program Tanam</a>
-        <a href="dashboard-3.php" ><i class="fa fa-pagelines"></i> &nbsp&nbsp Pupuk Subsidi</a>
-        <a href="dashboard-4.php" ><i class="fa fa-tractor"></i>&nbsp&nbspAlat</a>
+        <a href="dashboard-1.php"><i class="fa fa-house"></i>&nbsp Dashboard</a>
+        <a href="dashboard-2.php"><i class="fa fa-wheat-awn"></i>&nbsp&nbsp Program Tanam</a>
+        <a href="dashboard-3.php"><i class="fa fa-pagelines"></i> &nbsp&nbsp Pupuk Subsidi</a>
+        <a href="dashboard-4.php"><i class="fa fa-tractor"></i>&nbsp&nbspAlat</a>
+        <a href="dashboard-6.php"><i class="fa fa-clipboard-list"></i>&nbsp&nbsp&nbsp Peminjaman Alat</a>
         <a href="dashboard-5.php" class="pressed"><i class="fa fa-users-gear"></i>&nbsp Users</a>
         <br><br><br>
         <a href="../menu.php"><i class="fa fa-earth-americas"></i> Halaman Utama</a>

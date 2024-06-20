@@ -174,9 +174,9 @@ if (!isset($_SESSION['valid'])) {
                             <ul class="menu">
                                 <li><a href="profile.php">Profil Akun</a></li>
                                 <li><a href="notifikasi.php">Notifikasi</a></li>
-                                <li><a href="#">Riwayat Panen</a></li>
+                                <li><a href="riwayat-panen.php">Riwayat Panen</a></li>
                                 <li><a href="riwayat-pembayaran.php">Riwayat Pembayaran</a></li>
-                                <li><a href="bot.php">Gemini</a></li>
+                                <li><a href="bot.php">Gemini AI</a></li>
                                 <li>
                                     <button onclick="window.location.href='menu.php'" class="signup">Kembali</button>
                                 </li>
@@ -200,7 +200,7 @@ if (!isset($_SESSION['valid'])) {
                             <div class="row">
                                 <div class="col-lg-12 mb-5">
                                     <div id="about-gemini" class="mt-4">
-                                        <p>Selamat datang di Gemini, asisten AI yang siap membantu Anda menjawab pertanyaan seputar pertanian dan budidaya tanaman.<br><br> 
+                                        <p>Selamat datang di Gemini, asisten pintar yang siap membantu Anda menjawab pertanyaan seputar pertanian dan budidaya tanaman.<br><br> 
                                             Gemini dikembangkan untuk memberikan informasi yang bermanfaat dan relevan bagi user PetaniPintar.
                                             Bertanyalah pada Gemini tentang pertanian, dan kami akan memberikan informasi yang Anda butuhkan!
                                         </p>
@@ -223,7 +223,7 @@ if (!isset($_SESSION['valid'])) {
                                                     <div class="suggestion">Apa yang harus dilakukan saat hama menyerang?</div>
                                                     <div class="suggestion">Apa saja pupuk yang baik untuk sayuran?</div>
                                                     <div class="suggestion">Apakah ada program tanam di sekitar saya?</div>
-                                                    <!-- Tambahkan lebih banyak pertanyaan jika diperlukan -->
+                                                    <!-- Tambahkan lebih banyak pertanyaan -->
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-between align-items-center">
