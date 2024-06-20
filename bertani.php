@@ -31,7 +31,7 @@ $userAlamat = $userData['alamat'];
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
     <style>
         #map {
-            height: 550px;
+            height: 300px;
             border-radius: 15px;
         }
 
@@ -149,7 +149,7 @@ $userAlamat = $userData['alamat'];
                             </div>
                             <div class="col-lg-6">
                                 <div class="banner-img-wp">
-                                    <img class="img-rounded" src="image/illustration/program1.png" alt="">
+                                    <img class="img-rounded" src="image/illustration/program3.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -263,17 +263,15 @@ $userAlamat = $userData['alamat'];
                                     <div id="weather-info"></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-2">
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="banner-text mt-4">
-                                            <p>
+                                    <div class="col-lg-6">
+                                        <div class="banner-text mt-5">
+                                            <p style="text-align: justify;">
                                                 Dapatkan informasi tentang cuaca dan kondisi wilayah di daerah Anda untuk meningkatkan hasil panen dan
                                                 memilih tanaman yang paling cocok untuk Anda.
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-6">
                                     </div>
                                 </div>
                             </div>
@@ -376,23 +374,54 @@ $userAlamat = $userData['alamat'];
                     const weatherInfo = document.getElementById('weather-info');
                     weatherInfo.innerHTML = `
                         <div class="row text-center" style="margin: 0 10vh">
-                            <div class="col-lg-3">
-                                <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Cuaca saat ini">
-                                <p>${data.weather[0].description}</p>
+                                <div class="col-lg-3">
+                                    <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Cuaca saat ini">
+                                    <p class="p-map">${data.weather[0].description}</p>
+                                </div>
+                                <div class="col-lg-3">
+                                    <p class="p-map">Suhu:</p>
+                                    <p class="p-map">${Math.round(data.main.temp)}°C</p>
+                                </div>
+                                <div class="col-lg-3">
+                                    <p class="p-map">Kelembaban:</p>
+                                    <p class="p-map">${data.main.humidity}%</p>
+                                </div>
+                                <div class="col-lg-3">
+                                    <p class="p-map">Kecepatan Angin:</p>
+                                    <p class="p-map">${data.wind.speed} m/s ke ${getWindDirection(data.wind.deg)}</p>
+                                </div>
                             </div>
-                            <div class="col-lg-3">
-                                <p></p>
-                                <p>Suhu: ${Math.round(data.main.temp)}°C</p>
+                            <div class="row text-center" style="margin: 0 10vh">
+                                <div class="col-lg-3">
+                                </div>
+                                <div class="col-lg-3">
+                                    <p class="p-map">Tekanan Udara:</p>
+                                    <p class="p-map">${data.main.pressure} hPa</p>
+                                </div>
+                                <div class="col-lg-3">
+                                    <p class="p-map">Visibilitas:</p>
+                                    <p class="p-map">${data.visibility / 1000} km</p>
+                                </div>
+                                <div class="col-lg-3">
+                                </div>
                             </div>
-                            <div class="col-lg-3">
-                                <p></p>
-                                <p>Kelembaban: ${Math.round(data.main.humidity)}%</p>
+                            <div class="row text-center mt-4" style="margin: 0 10vh">
+                                <div class="col-lg-3">
+                                    <p class="p-map"><b>Tanggal dan Waktu</b></p>
+                                    <p class="p-map">${new Date(data.dt * 1000).toLocaleDateString('id-ID')} ${new Date(data.dt * 1000).toLocaleTimeString('id-ID')}</p>
+                                </div>
+                                <div class="col-lg-3">
+                                    <p class="p-map">Matahari Terbit:</p>
+                                    <p class="p-map">${new Date(data.sys.sunrise * 1000).toLocaleTimeString('id-ID')}</p>
+                                </div>
+                                <div class="col-lg-3">
+                                    <p class="p-map">Matahari Terbenam:</p>
+                                    <p class="p-map">${new Date(data.sys.sunset * 1000).toLocaleTimeString('id-ID')}</p>
+                                </div>
+                                <div class="col-lg-3">
+                                </div>
                             </div>
-                            <div class="col-lg-3">
-                                <p>Kecepatan Angin:<br> ${data.wind.speed} m/s ke arah ${getWindDirection(data.wind.deg)}</p>
-                            </div>
-                        </div>
-                    `;
+                        `;
 
                     // Menambahkan marker dengan ikon cuaca ke peta
                     var weatherIcon = L.icon({
@@ -403,7 +432,7 @@ $userAlamat = $userData['alamat'];
                     L.marker([latitude, longitude], { icon: weatherIcon })
                         .addTo(map)
                         .bindPopup(`
-                            <b>${data.name}, ${data.sys.country}</b><br>
+                            <p class="p-map m-0"><b>${data.name}, ${data.sys.country}</b><br>
                             Suhu: ${data.main.temp}°C<br>
                             ${data.weather[0].description}
                         `)

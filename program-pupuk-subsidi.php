@@ -223,7 +223,7 @@ if (isset($_POST['submit'])) {
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="programs-box">
-                                        <div class="programs-img back-img" style="background-image: url(image/program_tanam.jpg);"></div>
+                                        <div class="programs-img back-img" style="background-image: url(image/permohonan/01.png);"></div>
                                         <div class="programs-text">
                                             <h4><b>1.</b> Buat Formulir Permohonan</h4>
                                             <p>Buat dan isi formulir permohonan dengan lengkap dan benar, termasuk data diri, lahan pertanian, dan kebutuhan pupuk.
@@ -233,7 +233,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="programs-box">
-                                        <div class="programs-img back-img" style="background-image: url(image/program_pupuk.jpg);"></div>
+                                        <div class="programs-img back-img" style="background-image: url(image/permohonan/02.jpg);"></div>
                                         <div class="programs-text">
                                             <h4><b>2.</b> Proses Verifikasi Berkas</h4>
                                             <p>Tim verifikator akan memeriksa kelengkapan dan keabsahan data dan dokumen yang Anda upload.
@@ -243,7 +243,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="programs-box">
-                                        <div class="programs-img back-img" style="background-image: url(image/program_sewa.jpg);"></div>
+                                        <div class="programs-img back-img" style="background-image: url(image/permohonan/03.jpg);"></div>
                                         <div class="programs-text">
                                             <h4><b>3.</b> Notifikasi Persetujuan</h4>
                                             <p>Jika verifikasi berkas berhasil, Anda akan menerima notifikasi persetujuan program melalui email.

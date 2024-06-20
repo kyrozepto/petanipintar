@@ -6,7 +6,8 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
     header("Location: ../index.php");
     exit;
 }
-// Array of table names
+
+// Array of table names and corresponding labels
 $tables = [
     'program_tanam' => 'Total Program Tanam',
     'rekening_pemilik' => 'Total Rekening Pemilik',
@@ -14,7 +15,8 @@ $tables = [
     'sewa_alat' => 'Total Sewa Alat',
     'panen' => 'Total Panen',
     'user_program_tanam' => 'Total User Program Tanam',
-    'users' => 'Total Users'
+    'users' => 'Total Users',
+    'permohonan_pupuk' => 'Total Permohonan Pupuk' // Add this line
 ];
 
 // Initialize an array to hold the row counts
@@ -32,6 +34,8 @@ foreach ($tables as $table => $label) {
     }
 }
 ?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -54,11 +58,12 @@ foreach ($tables as $table => $label) {
             <h5 style="margin-top:10px;">Halo, Admin</h5>
         </div>
         <br>
-        <a href="dashboard-1.php" class="pressed"><i class="fa-solid fa-house"></i>&nbsp Dashboard</a>
-        <a href="dashboard-2.php"><i class="fa-solid fa-wheat-awn"></i>&nbsp&nbsp Program Tanam</a>
-        <a href="dashboard-3.php"><i class="fa-brands fa-pagelines"></i> &nbsp&nbsp Pupuk Subsidi</a>
-        <a href="dashboard-4.php"><i class="fa-solid fa-tractor"></i>&nbsp&nbspAlat</a>
-        <a href="dashboard-5.php"><i class="fa-solid fa-users-gear"></i>&nbsp Users</a>
+        <a href="dashboard-1.php" class="pressed"><i class="fa fa-house"></i>&nbsp Dashboard</a>
+        <a href="dashboard-2.php"><i class="fa fa-wheat-awn"></i>&nbsp&nbsp Program Tanam</a>
+        <a href="dashboard-3.php"><i class="fa fa-pagelines"></i> &nbsp&nbsp Pupuk Subsidi</a>
+        <a href="dashboard-4.php"><i class="fa fa-tractor"></i>&nbsp&nbspAlat</a>
+        <a href="dashboard-6.php"><i class="fa fa-clipboard-list"></i>&nbsp&nbsp&nbsp Peminjaman Alat</a>
+        <a href="dashboard-5.php"><i class="fa fa-users-gear"></i>&nbsp Users</a>
         <br><br><br>
         <a href="../menu.php"><i class="fa-solid fa-earth-americas"></i> Halaman Utama</a>
         <a href="../login.php" onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin keluar?')){ window.location.href = '../login.php'; }"><i class="fa-solid fa-power-off"></i> Keluar</a>
@@ -106,6 +111,12 @@ foreach ($tables as $table => $label) {
                             <p>Total Jumlah Panen</p>
                             <p class="count"><?php echo $row_counts['panen']; ?></p>
                         </a>
+                    </div>
+                    <div class="col-lg-2 box">
+                        <a href="dashboard-3.php">
+                            <i class="fa-solid fa-seedling fa-6x icon-style"></i>
+                            <p>Total Permohonan Pupuk Subsidi</p>
+                            <p class="count"><?php echo $row_counts['permohonan_pupuk']; ?></p> </a>
                     </div>
                     <div class="col-lg-2 box">
                         <a>

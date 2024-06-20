@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
             header("Location: menu.php");
             exit();
         } else {
-            $error_message = "Wrong Username or Password";
+            $error_message = "Username atau Password salah";
         }
     }
 }

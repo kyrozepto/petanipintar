@@ -8,8 +8,23 @@ if (!isset($_SESSION['valid'])) {
 
 $id_user = $_SESSION['id'];
 
-$sql_notifikasi = "SELECT p.*, u.fullname FROM permohonan_pupuk p JOIN users u ON p.id_user = u.id WHERE p.id_user = $id_user ORDER BY p.tanggal_permohonan DESC";
-$result_notifikasi = $con->query($sql_notifikasi);
+if (isset($_GET['hapus_panen'])) {
+    $id_panen = $_GET['hapus_panen'];
+    $sql_hapus = "DELETE FROM panen WHERE id = $id_panen AND id_user = $id_user"; 
+
+    if ($con->query($sql_hapus) === TRUE) {
+        echo '<script>alert("Riwayat panen berhasil dihapus."); window.location.href = "riwayat-panen.php";</script>';
+    } else {
+        echo "Error: " . $sql_hapus . "<br>" . $con->error;
+    }
+}
+
+$sql_riwayat = "SELECT p.nama, panen.id AS id_panen, panen.tanggal_panen, panen.jumlah_panen, (panen.jumlah_panen * p.hasil) AS total_pendapatan 
+                FROM panen 
+                JOIN program_tanam p ON panen.id_program_tanam = p.id
+                WHERE panen.id_user = $id_user 
+                ORDER BY panen.tanggal_panen DESC";
+$result_riwayat = $con->query($sql_riwayat);
 
 ?>
 
@@ -19,17 +34,19 @@ $result_notifikasi = $con->query($sql_notifikasi);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notifikasi</title>
+    <title>Riwayat Panen</title>
     <link rel="icon" href="image/icon64.png" type="image/png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
         .card-title {
-            margin-top: 7px;
-            margin-bottom: 2vh;
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .add-alt {
+            font-size: 16px;
         }
     </style>
 </head>
@@ -75,50 +92,37 @@ $result_notifikasi = $con->query($sql_notifikasi);
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="text-center mb-4">
-                                        <h3 class="h3-title">Notifikasi<br><span>Program</span></h3>
+                                        <h3 class="h3-title">Riwayat<br><span>Panen</span></b></h3>
                                     </div>
 
                                     <?php
-                                    if ($result_notifikasi->num_rows > 0) {
-                                        while ($row = $result_notifikasi->fetch_assoc()) {
+                                    if ($result_riwayat->num_rows > 0) {
+                                        while ($row = $result_riwayat->fetch_assoc()) {
+                                            $jumlah_panen = (int)$row['jumlah_panen'] . ' ton';
+                                            $total_pendapatan = number_format($row['total_pendapatan'], 0, ',', '.');
+
                                             echo '<div class="card mb-4">';
                                             echo '<div class="card-body">';
                                             echo '<h5 class="card-title">';
-                                            echo '<span>Permohonan Pupuk: ' . $row['jenis_pupuk'] . ' (' . $row['jumlah_pupuk'] . ' Kg)</span>';
+                                            echo '<span>' . $row['nama'] . '</span>';
+                                            // Tombol Hapus
+                                            echo '<a href="?hapus_panen=' . $row['id_panen'] . '" class="add-alt" onclick="return confirm(\'Apakah Anda yakin ingin menghapus riwayat panen ini?\')">Hapus</a>'; 
                                             echo '</h5>';
                                             echo '<hr>';
-                                            echo '<p class="p-card">Tanggal Permohonan: <span>' . $row['tanggal_permohonan'] . '</span></p>';
-                                            echo '<p class="p-card">Status: <span' . ($row['status'] == 'Ditolak' ? ' style="color: red;"' : '') . '>' . $row['status'] . '</span></p>';
-                                             // Menampilkan alasan penolakan jika ada
-                                             if ($row['status'] == 'Ditolak' && !empty($row['alasan_penolakan'])) {
-                                                echo '<p class="p-card">Alasan Penolakan: <span>' . $row['alasan_penolakan'] . '</span></p>';
-                                            } 
+                                            echo '<p class="p-card">Tanggal Panen: <span>' . $row['tanggal_panen'] . '</span></p>';
+                                            echo '<p class="p-card">Jumlah Panen: <span>' . $jumlah_panen . '</span></p>';
+                                            echo '<p class="p-card">Total Pendapatan: <span>Rp' . $total_pendapatan . '</span></p>';
                                             echo '</div>';
                                             echo '</div>';
                                         }
                                     } else {
-                                    }
-                                    ?>
-                                    
-                                    <?php 
-                                    if (isset($_SESSION['notifikasi'])) {
-                                        foreach ($_SESSION['notifikasi'] as $notif) {
-                                            echo '<div class="card mb-4">';
-                                            echo '<div class="card-body">';
-                                            echo '<p class="p-card">' . $notif['message'] . '</p>';
-                                            echo '</div>';
-                                            echo '</div>';
-                                        }
-                                        // Hapus session notifikasi setelah ditampilkan
-                                        unset($_SESSION['notifikasi']); 
-                                    } else {
-                                        echo '<p>Tidak ada notifikasi.</p>';
+                                        echo '<p>Tidak ada riwayat panen.</p>';
                                     }
                                     ?>
                                 </div>
                             </div>
                         </div>
-                </section>
+                    </section>
                 </div>
                 <footer class="site-footer" id="help">
                     <div class="top-footer section">
@@ -179,9 +183,9 @@ $result_notifikasi = $con->query($sql_notifikasi);
                         </div>
                     </div>
                 </footer>
-                </div>
             </div>
         </div>
+    </div>
     </div>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
