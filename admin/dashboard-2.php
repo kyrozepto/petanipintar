@@ -88,7 +88,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] != true) {
                                     <td>{$row['longitude']}</td>
                                     <td>
                                         <a href='edit-programtanam.php?id={$row['id']}' class='btn btn-primary btn-sm'>Ubah</a>
-                                        <a href='delete-programtanam?id={$row['id']}' class='btn btn-danger btn-sm'>Hapus</a>
+                                        <a href='delete-programtanam.php?id={$row['id']}' class='btn btn-danger btn-sm'>Hapus</a>
                                     </td>
                                   </tr>";
                                 }
