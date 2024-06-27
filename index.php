@@ -91,14 +91,14 @@ include("php/config.php");
                                     <div class="banner-text">
                                         <h2 class="h2-title">Apa itu <span>PetaniPintar</span> dan bagaimana cara kerjanya</h2>
                                         <p style="text-align: justify;">
-                                            Petani Pintar adalah sebuah konsep yang menggabungkan teknologi dan kecerdasan buatan untuk meningkatkan
+                                            PetaniPintar adalah sebuah konsep yang menggabungkan teknologi dan kecerdasan buatan untuk meningkatkan
                                             produktivitas dan efisiensi di bidang pertanian.
                                         <br><br>
                                             Melalui penerapan berbagai solusi teknologi seperti sensor, analisis data, dan perangkat lunak pintar,
-                                            Petani Pintar memungkinkan petani memantau kondisi tanaman, mengelola sumber daya dengan lebih efisien,
+                                            PetaniPintar memungkinkan petani memantau kondisi tanaman, mengelola sumber daya dengan lebih efisien,
                                             dan mengoptimalkan proses pertanian secara keseluruhan.
                                         <br><br>
-                                            Dengan demikian, Petani Pintar dapat membantu meningkatkan hasil panen,
+                                            Dengan demikian, PetaniPintar dapat membantu meningkatkan hasil panen,
                                             menurunkan biaya produksi, dan menjaga kelestarian lingkungan dalam industri pertanian
                                         </p>
                                         <h5>Tertarik untuk bergabung?<button onclick="window.location.href='register.php'" class="signup">Daftarkan saya</button></h5>
@@ -167,7 +167,7 @@ include("php/config.php");
                                     <div class="banner-text">
                                         <h4 class="h4-title"><span>1.</span></h4>
                                         <h2>Kunjungi Situs</h2>
-                                        <p>Kunjungi Situs Website Petani Pintar pada link <span>kamipetanipintar.com</span>
+                                        <p>Kunjungi Situs Website PetaniPintar pada link <span>kamipetanipintar.com</span>
                                             Pada Browser kesayangan anda.</p>
                                         <h4 class="h4-title"><span>2.</span></h4>
                                         <h2>Buat Akun</h2>
@@ -175,7 +175,7 @@ include("php/config.php");
                                             Setelah membuat akun tunggu hingga akun baru anda diverifikasi.</p>
                                         <h4 class="h4-title"><span>3.</span></h4>
                                         <h2>Pilih Program</h2>
-                                        <p>Setelah berhasil login anda dapat menikmati berbagai program dan fitur yang petani pintar sediakan. </p>
+                                        <p>Setelah berhasil login anda dapat menikmati berbagai program dan fitur yang PetaniPintar sediakan. </p>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
