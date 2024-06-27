@@ -1,9 +1,9 @@
 ![petanipintar_logo80](https://github.com/kyrozepto/petanipintar/assets/108352285/768ca51b-4dda-4b36-85c1-f03d111320a0)
 # petanipintar
 
-**Setting Database**<br>
-![image](https://github.com/kyrozepto/petanipintar/assets/108352285/38f43acf-d2ba-4d6a-becc-abef9b055dd8)
-*contoh
+**1. Setting Database**<br>
+Buka localhost/phpmyadmin -> buat database 'petanipintar_db' -> input semua query sql di sql/petanipintar_db.sql<br>
 
-
-Buka localhost/phpmyadmin -> buat database 'petanipintar_db' -> input satu per satu semua SQL query di sql/petanipintar_db.sql
+**2. Setting API KEY**<br>
+- input gemini API key di php/config.php<br>
+- input openweathermap API key di php/get-weather.php
